@@ -1,12 +1,10 @@
 import Footer from '@/Components/Footer/Footer';
-import Link from 'next/link';
+import NavBar from '@/Components/Navbar';
 
 const MainLayout = ({children}) => {
     return (
         <div>
-            <nav>
-                <Link href={"/"}>home</Link>
-            </nav>
+            <NavBar></NavBar>
             {children}
             <Footer></Footer>
         </div>

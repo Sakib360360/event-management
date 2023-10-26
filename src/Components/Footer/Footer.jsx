@@ -72,7 +72,7 @@ import {
                 placeholder="username@site.com"
                 className="input rounded-lg w-full pr-16"
               />
-              <button className="btn btn-primary absolute top-0 right-0 rounded-full">
+              <button className="btn  absolute top-0 right-0 rounded-full">
                 <FaArrowAltCircleRight />
               </button>
             </div>
