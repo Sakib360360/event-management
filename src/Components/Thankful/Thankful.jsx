@@ -2,7 +2,7 @@ import "./Thankful.css";
 
 const Thankful = () => {
   return (
-    <div className="max-w-screen-lg mx-auto overflow-hidden px-[1em] min-h-[40em] relative mt-12 thankful-container">
+    <div className="max-w-screen-lg  mx-auto overflow-hidden px-[1em] min-h-[40em] relative mt-12 thankful-container">
       <div>
         <h1 className="text-5xl md:text-6xl font-semibold z-10 relative">
           We are thankful to
