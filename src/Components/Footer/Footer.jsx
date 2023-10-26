@@ -11,10 +11,25 @@ import {
   const Footer = () => {
     return (
       <>
-     <div className="mt-12"> 
-      <footer className="footer mx-auto p-10 bg-base-200">
+     <div className="mt-12  text-white"> 
+      <footer className="footer mx-auto p-10 bg-black">
+        <nav>
+          <header className="footer-title">TheEvenet</header>
+          <div className="">
+            <p>
+In alias aperiam. Placeat tempore <br /> facere. Officiis voluptate ipsam vel <br /> eveniet est dolor et totam porro. <br /> Perspiciatis ad omnis fugit molestiae <br /> recusandae possimus. Aut consectetur <br /> id quis. In inventore consequatur ad <br />voluptate cupiditate debitis <br /> accusamus repellat cumque.</p>
+          </div>
+        </nav>
         <nav>
           <header className="footer-title">EventGuru</header>
+          <div>
+          <div>
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p>United States</p>
+            <p>Phone: +1 5589 55488 55</p>
+            <p>Email: info@example.com</p>
+          </div>
           <div className="flex gap-4">
             <a
               href="https://facebook.com" // Replace with your Facebook URL
@@ -49,19 +64,21 @@ import {
               <FaTwitter />
             </a>
           </div>
+          
+          </div>
         </nav>
         <nav>
-          <header className="footer-title">Company</header>
-          <Link className="flex gap-1 items-center" href="/about-us"><FaGreaterThan/> About us</Link>
-          <Link className="flex gap-1 items-center" href="/advisors"><FaGreaterThan/> Advisors</Link>
-          <Link className="flex gap-1 items-center" href="/reviews"><FaGreaterThan/> Reviews</Link>
-          <Link className="flex gap-1 items-center" href="/partners"><FaGreaterThan/> Partners</Link>
+          <header className="footer-title text-black">Company</header>
+          <Link className="flex  gap-1 items-center" href="/about-us"><span className="text-red-600"><FaGreaterThan/></span>About us</Link>
+          <Link className="flex gap-1 items-center" href="/advisors"><span className="text-red-600"><FaGreaterThan/></span> Advisors</Link>
+          <Link className="flex gap-1 items-center" href="/reviews"><span className="text-red-600"><FaGreaterThan/></span> Reviews</Link>
+          <Link className="flex gap-1 items-center" href="/partners"><span className="text-red-600"><FaGreaterThan/></span> Partners</Link>
         </nav>
         <nav>
           <header className="footer-title">Legal</header>
-          <Link className="flex gap-1 items-center" href="/terms-of-use"><FaGreaterThan/>Terms of use</Link>
-          <Link className="flex gap-1 items-center" href="/privacy-policy"><FaGreaterThan/>Privacy policy</Link>
-          <Link className="flex gap-1 items-center" href="/cookie-policy"><FaGreaterThan/>Cookie policy</Link>
+          <Link className="flex gap-1 items-center" href="/terms-of-use"><span className="text-red-600"><FaGreaterThan/></span>Terms of use</Link>
+          <Link className="flex gap-1 items-center" href="/privacy-policy"><span className="text-red-600"><FaGreaterThan/></span>Privacy policy</Link>
+          <Link className="flex gap-1 items-center" href="/cookie-policy"><span className="text-red-600"><FaGreaterThan/></span>Cookie policy</Link>
         </nav>
         <form>
           <header className="footer-title">Newsletter</header>
@@ -82,7 +99,7 @@ import {
           </fieldset>
         </form>
       </footer>
-      <div className="mx-auto text-center justify-center bg-base-200">
+      <div className="mx-auto  text-center justify-center m bg-black text-white">
     
     <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
   
