@@ -2,6 +2,7 @@ import {
     FaArrowAltCircleRight,
     FaFacebook,
     FaGithub,
+    FaGreaterThan,
     FaLinkedinIn,
     FaTwitter,
   } from "react-icons/fa";
@@ -9,6 +10,8 @@ import {
   
   const Footer = () => {
     return (
+      <>
+     <div className="mt-12"> 
       <footer className="footer mx-auto p-10 bg-base-200">
         <nav>
           <header className="footer-title">EventGuru</header>
@@ -49,16 +52,16 @@ import {
         </nav>
         <nav>
           <header className="footer-title">Company</header>
-          <Link href="/about-us">About us</Link>
-          <Link href="/advisors">Advisors</Link>
-          <Link href="/reviews">Reviews</Link>
-          <Link href="/partners">Partners</Link>
+          <Link className="flex gap-1 items-center" href="/about-us"><FaGreaterThan/> About us</Link>
+          <Link className="flex gap-1 items-center" href="/advisors"><FaGreaterThan/> Advisors</Link>
+          <Link className="flex gap-1 items-center" href="/reviews"><FaGreaterThan/> Reviews</Link>
+          <Link className="flex gap-1 items-center" href="/partners"><FaGreaterThan/> Partners</Link>
         </nav>
         <nav>
           <header className="footer-title">Legal</header>
-          <Link href="/terms-of-use">Terms of use</Link>
-          <Link href="/privacy-policy">Privacy policy</Link>
-          <Link href="/cookie-policy">Cookie policy</Link>
+          <Link className="flex gap-1 items-center" href="/terms-of-use"><FaGreaterThan/>Terms of use</Link>
+          <Link className="flex gap-1 items-center" href="/privacy-policy"><FaGreaterThan/>Privacy policy</Link>
+          <Link className="flex gap-1 items-center" href="/cookie-policy"><FaGreaterThan/>Cookie policy</Link>
         </nav>
         <form>
           <header className="footer-title">Newsletter</header>
@@ -79,6 +82,13 @@ import {
           </fieldset>
         </form>
       </footer>
+      <div className="mx-auto text-center justify-center bg-base-200">
+    
+    <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+  
+      </div>
+      </div>
+      </>
     );
   };
   
