@@ -11,7 +11,7 @@ const ContactUs = () => {
           Nihil officia ut sint molestiae tenetur.
         </p>
       </div>
-
+        
       <div className="card w-full shadow-2xl bg-base-100">
         <form className="card-body">
           <div className='flex flex-col gap-4 w-full md:flex-row'>
@@ -41,7 +41,7 @@ const ContactUs = () => {
             <textarea placeholder="Your Message" className="textarea textarea-bordered" rows="4" required />
           </div>
           <div className="form-control mt-6 items-center w-full">
-            <button className="btn btn-primary w-full md:w-auto">Send Message</button>
+            <button className="btn  text-white bg-red-600 hover:text-black rounded-full md:w-auto">Send Message</button>
           </div>
         </form>
       </div>
