@@ -1,3 +1,4 @@
+import Footer from '@/Components/Footer/Footer';
 import Link from 'next/link';
 
 const MainLayout = ({children}) => {
@@ -7,7 +8,7 @@ const MainLayout = ({children}) => {
                 <Link href={"/"}>home</Link>
             </nav>
             {children}
-            <footer>&copy; copyright</footer>
+            <Footer></Footer>
         </div>
     );
 };
