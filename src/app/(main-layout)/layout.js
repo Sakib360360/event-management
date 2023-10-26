@@ -1,13 +1,12 @@
-import Link from 'next/link';
+import Footer from '@/Components/Footer/Footer';
+import NavBar from '@/Components/Navbar';
 
 const MainLayout = ({children}) => {
     return (
         <div>
-            <nav>
-                <Link href={"/"}>home</Link>
-            </nav>
+            <NavBar></NavBar>
             {children}
-            <footer>&copy; copyright</footer>
+            <Footer></Footer>
         </div>
     );
 };
