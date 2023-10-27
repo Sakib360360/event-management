@@ -1,6 +1,7 @@
 // Ensure that you're importing from 'react'
 "use client";
-import React, { useState } from 'react';
+import saveEvent from '@/utils/saveEvent';
+import { useState } from 'react';
 
 const CreateEventForm = () => {
     const [eventName, setEventName] = useState('');
@@ -18,7 +19,7 @@ const CreateEventForm = () => {
         setEventCategory(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Handle form submission, e.g., send data to server or perform other actions
@@ -37,6 +38,9 @@ const CreateEventForm = () => {
         console.log('Form submitted:', {
             createdEvent
         });
+
+        const event = await saveEvent(createdEvent)
+        console.log(e.target);
     };
 
     return (
