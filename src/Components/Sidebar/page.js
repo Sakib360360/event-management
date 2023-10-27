@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const SideBar = () => {
     const isAdmin = false;
-    const isOrganizer = true;
+    const isOrganizer = false;
 
     const navItems = <>
 
@@ -15,15 +15,15 @@ const SideBar = () => {
         }
         {
             isAdmin && <>
-                <li><Link href={'/#'}>Manage User</Link></li>
-                <li><Link href={'/#'}>All Events</Link></li>
+                <li><Link href={'/dashboard/manage-user'}>Manage User</Link></li>
+                <li><Link href={'/dashboard/all-events'}>All Events</Link></li>
             </>
         }
         {
             !isAdmin && !isOrganizer ? <>
-                <li><Link href={'/#'}>Enrolled Events</Link></li>
-                <li><Link href={'/#'}>Favourite Events</Link></li>
-                <li><Link href={'/#'}>Payments</Link></li>
+                <li><Link href={'/dashboard/enrolled-events'}>Enrolled Events</Link></li>
+                <li><Link href={'/dashboard/favourite-events'}>Favourite Events</Link></li>
+                <li><Link href={'/dashboard/payments'}>Payments</Link></li>
 
             </> : null
         }
