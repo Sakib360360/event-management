@@ -3,7 +3,7 @@ import React from 'react';
 const ContactUs = () => {
   return (
     <div>
-      <div className="mx-auto text-center md:w-4/12 my-8">
+      <div className="mx-auto text-center md:w-4/12 mt-12">
         <p className="text-yellow-600 font-extrabold text-3xl mb-2">
           --- CONTACT US ---
         </p>
@@ -11,7 +11,20 @@ const ContactUs = () => {
           Nihil officia ut sint molestiae tenetur.
         </p>
       </div>
-        
+      <div className="grid grid-cols-1 md:grid-cols-3 mt-12 max-w-screen-xl mx-auto gap-2">
+          <div className='border-r border-[#0E1B4D] pr-4'>
+            <h1 className="text-center text-[#0E1B4D] text-2xl font-bold">ADDRESS</h1>
+            <p className="text-center text-[#0E1B4D] text-1xl font-semibold">A108 Adam Street, NY 535022, USA</p>
+          </div>
+          <div className='border-r border-[#0E1B4D] pr-4'>
+            <h1 className="text-center text-[#0E1B4D] text-2xl font-bold">PHONE NUMBER</h1>
+            <p className="text-center text-[#0E1B4D] text-1xl font-semibold">+1 5589 55488 55</p>
+          </div>
+          <div>
+            <h1 className="text-center text-[#0E1B4D] text-2xl font-bold">EMAIL</h1>
+            <p className="text-center text-[#0E1B4D] text-1xl font-semibold">info@example.com</p>
+          </div>
+        </div>
       <div className="card w-full shadow-2xl bg-base-100">
         <form className="card-body">
           <div className='flex flex-col gap-4 w-full md:flex-row'>

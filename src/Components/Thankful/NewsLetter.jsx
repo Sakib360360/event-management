@@ -13,6 +13,7 @@ const NewsLetter = () => {
             Rerum numquam illum recusandae quia mollitia consequatur.
           </p>
         </div>
+        
         <div className="md:flex justify-center items-center bg-slate-500 bg-opacity-60 pb-20 pt-12 px-36">
           <div>
             <img src="https://i.ibb.co/h8VgkzL/organisers.jpg" alt="" />
