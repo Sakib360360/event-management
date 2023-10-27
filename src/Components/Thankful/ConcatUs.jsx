@@ -1,5 +1,8 @@
 import React from 'react';
-
+export const metadata = {
+  title: "Contact us | Event Manegment",
+  description: "Next Hero",
+};
 const ContactUs = () => {
   return (
     <div>
