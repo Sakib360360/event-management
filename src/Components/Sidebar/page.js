@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const SideBar = () => {
     const isAdmin = false;
-    const isOrganizer = false;
+    const isOrganizer = true;
 
     const navItems = <>
 
@@ -36,10 +36,15 @@ const SideBar = () => {
 
 
     return (
-        <ul className=" p-4 h-full bg-no-repeat bg-cover flex flex-col text-white">
-            {/* Sidebar content here */}
-            {navItems}
-        </ul>
+        <>
+            <ul className=" p-4 h-full bg-no-repeat bg-cover flex flex-col text-white">
+                {/* Sidebar content here */}
+                {navItems}
+            </ul>
+            <div>
+                <button className="text-white  absolute bottom-2"><Link href={'/'}>Go to Home</Link></button>
+            </div>
+        </>
     );
 };
 
