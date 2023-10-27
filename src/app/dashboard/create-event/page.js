@@ -15,6 +15,20 @@ const CreateEventForm = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [eventCategory, setEventCategory] = useState('');
 
+
+    const resetForm = () => {
+        setEventName('');
+        setEventDate('');
+        setEventStatus('pending');
+        setTicketAvailable(0);
+        setTicketPrice(0);
+        setEventLocation('');
+        setEventTime('');
+        setEventDescription('');
+        setImageUrl('');
+        setEventCategory('');
+      };
+
     const handleCategoryChange = (e) => {
         setEventCategory(e.target.value);
     };
@@ -41,6 +55,7 @@ const CreateEventForm = () => {
 
         const event = await saveEvent(createdEvent)
         console.log(e.target);
+        resetForm();
     };
 
     return (
