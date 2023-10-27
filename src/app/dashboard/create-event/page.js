@@ -29,7 +29,7 @@ const CreateEventForm = () => {
         setEventDescription('');
         setImageUrl('');
         setEventCategory('');
-      };
+    };
 
     const handleCategoryChange = (e) => {
         setEventCategory(e.target.value);
@@ -62,7 +62,8 @@ const CreateEventForm = () => {
     };
 
     return (
-        <form className="max-w-md mx-auto mt-8 p-8 bg-white rounded-md shadow-md">
+        
+        <form  className="max-w-md mx-auto mt-8 p-8  rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">Create Event</h2>
 
             {/* Event Name */}
@@ -117,7 +118,7 @@ const CreateEventForm = () => {
                 <select
                     id="eventStatus"
                     className="mt-1 p-2 w-full border rounded-md"
-                    
+
                     value={eventStatus}
                     onChange={(e) => setEventStatus(e.target.value)}
                 >
