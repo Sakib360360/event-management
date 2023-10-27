@@ -6,7 +6,7 @@ const TicketSelse = () => {
     <>
       <div className=" mx-auto">
       <div className="mx-auto text-center md:w-4/12 my-8">
-            <p className="text-yellow-600 text-xl font-extrabold mb-2">---   BUY TICKETS ---</p>
+            <p className="text-yellow-600 text-3xl font-extrabold mb-2">---   BUY TICKETS ---</p>
             <p className="text-1xl uppercase border-y-4 py-4"> Velit consequatur consequatur <span>inventore</span> iste fugit unde
             omnis eum aut.</p>
         </div>
