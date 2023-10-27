@@ -131,7 +131,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-      <div className="form-control">
+     {/*  <div className="form-control">
         <label htmlFor="confirmPassword" className="label label-text">
           Confirm Password
         </label>
@@ -154,30 +154,30 @@ const SignupForm = () => {
             {errors.confirmPassword.message || "Please confirm your password."}
           </span>
         )}
-      </div>
+      </div> */}
       <div className="form-control">
-        <label htmlFor="photo" className="label label-text">
+        <label htmlFor="photo" className="label label-text ">
           Photo
         </label>
         <input
           type="file"
           id="photo"
           onChange={uploadImage}
-          className="file-input file-input-bordered file-input-primary w-full"
+          className="file-input file-input-bordered file-input-error w-full"
         />
       </div>
       <div className="form-control mt-6">
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-error" type="submit">
           Sign Up
         </button>
       </div>
       <p className="mt-3">
         Already have an account?{" "}
-        <Link className="text-blue-500 underline ml-1" href="/login">
+        <Link className="text-orange-600 underline ml-1" href="/login">
           Login
         </Link>
       </p>
-      <div className="divider mt-5">OR</div>
+      <div className="divider mt-4">OR</div>
       <GoogleLogin from={from} />
     </form>
   );
