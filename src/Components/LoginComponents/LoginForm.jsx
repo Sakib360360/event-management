@@ -94,7 +94,7 @@ const LoginForm = () => {
       </div>
       <p className="mt-3">
         Don&apos;t have an account?
-        <Link className="text-blue-500 underline ml-1" href="/signup">
+        <Link className="text-orange-500 underline ml-1" href="/signup">
           Signup
         </Link>
       </p>
