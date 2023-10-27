@@ -1,4 +1,4 @@
-import SideBar from "./Sidebar/page";
+import SideBar from "@/Components/Sidebar/page";
 
 const DashboardLayout = ({ children }) => {
     return (

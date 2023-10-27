@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 
 const SideBar = () => {
     const isAdmin = false;
@@ -9,8 +8,8 @@ const SideBar = () => {
 
         {
             isOrganizer && <>
-                <li><Link href={'/#'}>Create Event</Link></li>
-                <li><Link href={'/#'}>My Events</Link></li>
+                <li><Link href={'/dashboard/create-event'}>Create Event</Link></li>
+                <li><Link href={'/dashboard/my-event'}>My Events</Link></li>
 
             </>
         }
