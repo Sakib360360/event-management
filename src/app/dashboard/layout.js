@@ -1,9 +1,16 @@
-const DashboardLayout = ({children}) => {
+import SideBar from "./Sidebar/page";
+
+const DashboardLayout = ({ children }) => {
+    const admin = true;
     return (
-        <div>
-            <div>side bar</div>
+        
+        <>
+            <div className="w-48 h-screen bg-gray-800 text-white p-4 fixed top-0 left-0">
+                <SideBar></SideBar>
+            </div>
             {children}
-        </div>
+        </>
+
     );
 };
 
