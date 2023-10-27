@@ -3,7 +3,7 @@ import React from 'react';
 
 const SideBar = () => {
     const isAdmin = false;
-    const isOrganizer = false;
+    const isOrganizer = true;
 
     const navItems = <>
 
@@ -37,7 +37,7 @@ const SideBar = () => {
 
 
     return (
-        <ul className="menu p-4 w-72 h-full bg-no-repeat bg-cover flex flex-col text-white">
+        <ul className=" p-4 h-full bg-no-repeat bg-cover flex flex-col text-white">
             {/* Sidebar content here */}
             {navItems}
         </ul>
