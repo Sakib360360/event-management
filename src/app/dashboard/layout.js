@@ -1,7 +1,6 @@
 import SideBar from "./Sidebar/page";
 
 const DashboardLayout = ({ children }) => {
-    const admin = true;
     return (
         
         <>
