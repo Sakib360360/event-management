@@ -48,29 +48,29 @@ function Navbar() {
               }`}
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
                   <Link href="/dashboard" onClick={() => setNavbar(!navbar)}>
                     Dasboard
                   </Link>
                 </li>
              
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
                   <Link href="/about" onClick={() => setNavbar(!navbar)}>
                     About
                   </Link>
 
                 </li>
-                <li className=" hidden md:block className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent cursor-pointer"><Profile></Profile></li>
+                <li className=" hidden md:block className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-orange-900  md:hover:text-purple-600 md:hover:bg-transparent cursor-pointer"><Profile></Profile></li>
                 {user ? (
               <li
                 onClick={logOut}
-                className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent cursor-pointer'
+                className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-orange-900 border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent cursor-pointer'
               >
                 Logout
               </li>
             ) : (
               <>
-              <li className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent'><Link
+              <li className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent'><Link
                   href='/login'
                   
                 >
