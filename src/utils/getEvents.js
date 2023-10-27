@@ -1,6 +1,6 @@
 
 const getEvents = async () => {
-    const res = await fetch("http://localhost:5000/events");
+    const res = await fetch("https://server-event-management.vercel.app/events");
     return res.json();
 };
 
