@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 const CreateEventForm = () => {
     const [eventName, setEventName] = useState('');
+    const [eventCreator, setEventCreator] = useState('');
     const [eventDate, setEventDate] = useState('');
     const [eventStatus, setEventStatus] = useState('pending');
     const [ticketAvailable, setTicketAvailable] = useState(0);
@@ -18,6 +19,7 @@ const CreateEventForm = () => {
 
     const resetForm = () => {
         setEventName('');
+        setEventCreator('');
         setEventDate('');
         setEventStatus('pending');
         setTicketAvailable(0);
@@ -39,6 +41,7 @@ const CreateEventForm = () => {
         // Handle form submission, e.g., send data to server or perform other actions
         const createdEvent = {
             eventName,
+            eventCreator,
             eventDate,
             eventStatus,
             ticketAvailable,
@@ -70,9 +73,24 @@ const CreateEventForm = () => {
                 <input
                     type="text"
                     id="eventName"
+                    required
                     className="mt-1 p-2 w-full border rounded-md"
                     value={eventName}
                     onChange={(e) => setEventName(e.target.value)}
+                />
+            </div>
+            {/* Event created by */}
+            <div className="mb-4">
+                <label htmlFor="eventCreator" className="block text-sm font-medium text-gray-600">
+                    Event Creator
+                </label>
+                <input
+                    type="email"
+                    required
+                    id="eventCreator"
+                    className="mt-1 p-2 w-full border rounded-md"
+                    value={eventCreator}
+                    onChange={(e) => setEventCreator(e.target.value)}
                 />
             </div>
 
@@ -83,6 +101,7 @@ const CreateEventForm = () => {
                 </label>
                 <input
                     type="date"
+                    required
                     id="eventDate"
                     className="mt-1 p-2 w-full border rounded-md"
                     value={eventDate}
@@ -98,6 +117,7 @@ const CreateEventForm = () => {
                 <select
                     id="eventStatus"
                     className="mt-1 p-2 w-full border rounded-md"
+                    
                     value={eventStatus}
                     onChange={(e) => setEventStatus(e.target.value)}
                 >
@@ -114,6 +134,7 @@ const CreateEventForm = () => {
                 </label>
                 <input
                     type="number"
+                    required
                     id="ticketAvailable"
                     className="mt-1 p-2 w-full border rounded-md"
                     value={ticketAvailable}
@@ -129,6 +150,7 @@ const CreateEventForm = () => {
                 <input
                     type="number"
                     id="ticketPrice"
+                    required
                     className="mt-1 p-2 w-full border rounded-md"
                     value={ticketPrice}
                     onChange={(e) => setTicketPrice(e.target.value)}
@@ -143,6 +165,7 @@ const CreateEventForm = () => {
                 <input
                     type="text"
                     id="eventLocation"
+                    required
                     className="mt-1 p-2 w-full border rounded-md"
                     value={eventLocation}
                     onChange={(e) => setEventLocation(e.target.value)}
@@ -156,6 +179,7 @@ const CreateEventForm = () => {
                 </label>
                 <input
                     type="time"
+                    required
                     id="eventTime"
                     className="mt-1 p-2 w-full border rounded-md"
                     value={eventTime}
@@ -170,6 +194,7 @@ const CreateEventForm = () => {
                 </label>
                 <textarea
                     id="eventDescription"
+                    required
                     className="mt-1 p-2 w-full border rounded-md"
                     value={eventDescription}
                     onChange={(e) => setEventDescription(e.target.value)}
@@ -184,6 +209,7 @@ const CreateEventForm = () => {
                 <input
                     type="text"
                     id="imageUrl"
+                    required
                     className="mt-1 p-2 w-full border rounded-md"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
@@ -197,6 +223,7 @@ const CreateEventForm = () => {
                 </label>
                 <select
                     id="eventCategory"
+                    required
                     className="mt-1 p-2 w-full border rounded-md"
                     value={eventCategory}
                     onChange={handleCategoryChange}
