@@ -1,5 +1,5 @@
+import LoginForm from "@/Components/LoginComponents/LoginForm";
 import LoginSvg from "@/Components/LoginSvg";
-import LoginForm from "./LoginForm";
 
 export const metadata = {
   title: "Login - Event Guru",

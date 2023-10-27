@@ -1,5 +1,5 @@
 import LoginSvg from "@/Components/LoginSvg";
-import SignupForm from "./SignupForm";
+import SignupForm from "@/Components/SignUpComponents/SignupForm";
 
 export const metadata = {
   title: "Signup - Event Guru",

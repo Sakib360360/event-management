@@ -1,4 +1,4 @@
- import AuthContext from "@/context/AuthContext";
+import AuthContext from "@/context/AuthContext";
 
 import auth, { googleProvider } from "@/firebase/firebase.auth";
 import {
@@ -62,7 +62,9 @@ const AuthProvider = ({ children }) => {
     logout: logOut,
   };
 
-  return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
