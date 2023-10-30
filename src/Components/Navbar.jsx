@@ -54,17 +54,13 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
-                  <Link href="/Contact" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/contact-us" onClick={() => setNavbar(!navbar)}>
                  Contact Us
                   </Link>
                 </li>
+                
                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
-                  <Link href="/Advisors" onClick={() => setNavbar(!navbar)}>
-                    Advisors
-                  </Link>
-                </li>
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
-                  <Link href="/Events" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/events" onClick={() => setNavbar(!navbar)}>
                     Events
                   </Link>
                 </li>

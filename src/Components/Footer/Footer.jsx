@@ -69,16 +69,16 @@ In alias aperiam. Placeat tempore <br /> facere. Officiis voluptate ipsam vel <b
         </nav>
         <nav>
           <header className="footer-title text-black">Company</header>
-          <Link className="flex  gap-1 items-center" href="/about-us"><span className="text-red-600"><FaGreaterThan/></span>About us</Link>
-          <Link className="flex gap-1 items-center" href="/advisors"><span className="text-red-600"><FaGreaterThan/></span> Advisors</Link>
-          <Link className="flex gap-1 items-center" href="/reviews"><span className="text-red-600"><FaGreaterThan/></span> Reviews</Link>
-          <Link className="flex gap-1 items-center" href="/partners"><span className="text-red-600"><FaGreaterThan/></span> Partners</Link>
+          <Link className="flex  gap-1 items-center" href="/about"><span className="text-red-600"><FaGreaterThan/></span>About us</Link>
+          {/* <Link className="flex gap-1 items-center" href="/advisors"><span className="text-red-600"><FaGreaterThan/></span> Advisors</Link> */}
+          {/* <Link className="flex gap-1 items-center" href="/reviews"><span className="text-red-600"><FaGreaterThan/></span> Reviews</Link> */}
+          {/* <Link className="flex gap-1 items-center" href="/partners"><span className="text-red-600"><FaGreaterThan/></span> Partners</Link> */}
         </nav>
         <nav>
           <header className="footer-title">Legal</header>
-          <Link className="flex gap-1 items-center" href="/terms-of-use"><span className="text-red-600"><FaGreaterThan/></span>Terms of use</Link>
-          <Link className="flex gap-1 items-center" href="/privacy-policy"><span className="text-red-600"><FaGreaterThan/></span>Privacy policy</Link>
-          <Link className="flex gap-1 items-center" href="/cookie-policy"><span className="text-red-600"><FaGreaterThan/></span>Cookie policy</Link>
+          <Link className="flex gap-1 items-center" href="/"><span className="text-red-600"><FaGreaterThan/></span>Terms of use</Link>
+          <Link className="flex gap-1 items-center" href="/"><span className="text-red-600"><FaGreaterThan/></span>Privacy policy</Link>
+          <Link className="flex gap-1 items-center" href="/"><span className="text-red-600"><FaGreaterThan/></span>Cookie policy</Link>
         </nav>
         <form>
           <header className="footer-title">Newsletter</header>
