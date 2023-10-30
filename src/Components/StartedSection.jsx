@@ -1,4 +1,6 @@
+"use client"
 /* eslint-disable @next/next/no-img-element */
+
 const StartedSection = () => {
   return (
     <section className="bg-purple-100 rounded-md max-w-screen-xl mx-auto py-[5em] px-[1em]">
