@@ -1,3 +1,4 @@
+"use client";
 const Categories = () => {
   return (
     <div className="max-w-screen-xl mx-auto py-[10em] px-[1em]">
