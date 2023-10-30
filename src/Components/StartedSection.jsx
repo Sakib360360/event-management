@@ -12,13 +12,13 @@ const StartedSection = () => {
           Our Upcoming Events
         </h2>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-          <div className="">
+          {/* <div className="">
             <img
               className="rounded-md"
               src="https://i.ibb.co/q79099G/photo-1492684223066-81342ee5ff30.jpg"
               alt=""
             />
-          </div>
+          </div> */}
           <div>
             <p className="text-gray-900">
               <span className="font-bold text-md ">
