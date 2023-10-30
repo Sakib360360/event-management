@@ -1,0 +1,78 @@
+.credits {
+    width: 40em;
+    height: 31em;
+    position: absolute;
+    width: 40em;
+    height: 31em;
+    left: 36%;
+    top: 8%;
+}
+
+.outer-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30em;
+    width: 30em;
+    /* background: green; */
+    border-radius: 50%;
+    border: 1px solid black;
+    z-index: 5;
+}
+
+.inner-circle {
+    position: absolute;
+    top: 10%;
+    left: -3%;
+    height: 25em;
+    width: 25em;
+    background: #eff7fa;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.contributor {
+    position: absolute;
+    top: 14%;
+    left: 44%;
+    background: #faf3ff;
+    width: 7em;
+    height: 7em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid black;
+    font-weight: 600;
+}
+
+.contributor-1 {
+    top: 60%;
+    left: -2%;
+}
+
+.contributor-2 {
+    top: 52%;
+    left: 28%;
+    background: white;
+    width: 8em;
+    height: 8em;
+}
+
+.contributor-3 {
+    top: 24%;
+    left: 8%;
+    background: white;
+}
+
+@media only screen and (max-width: 640px) {
+    .credits {
+        display: none;
+    }
+
+    .thankful-container {
+        min-height: auto !important;
+        padding: 4em 1em;
+        margin: 0 !important;
+    }
+}
