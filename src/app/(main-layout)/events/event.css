@@ -1,0 +1,8 @@
+.favoriteIcon {
+    color: transparent;
+    transition: color 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  .favoriteIcon:hover {
+    color: red;
+  }
