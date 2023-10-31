@@ -29,7 +29,18 @@ function Navbar() {
   );
 
   const logs = user ? (
-    ""
+    <>
+      <Link href={"/profile"} className="mx-3">
+        <div className="profile-image">
+          <img
+            className="profile"
+            src="/images/profile.png"
+            alt="profile"
+            title="name"
+          />
+        </div>
+      </Link>
+    </>
   ) : (
     <>
       <li className="mx-3">
