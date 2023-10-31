@@ -1,7 +1,7 @@
 import Banner from "@/Components/Banner/Banner";
 import Categories from "@/Components/Categories/Categories";
+import ConcatUs from "@/Components/ContactUs/ConcatUs";
 import StartedSection from "@/Components/StartedSection/StartedSection";
-import ConcatUs from "@/Components/Thankful/ConcatUs";
 
 export default function Home() {
   return (
