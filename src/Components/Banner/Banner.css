@@ -1,0 +1,50 @@
+.banner-section {
+    background-image: url("/images/eventsbackground.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.banner-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(var(--primary-color), 0.3), black);
+}
+
+.gradient {
+    background: linear-gradient(40deg, rgb(var(--first-gradient)), rgb(var(--second-gradient)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.vid-container {
+    position: relative;
+}
+
+.left-vid {
+    position: absolute;
+    top: -15%;
+    left: 20%;
+}
+
+.right-vid {
+    position: relative;
+    left: 20%;
+}
+
+@media only screen and (max-width: 1279px) {
+    .left-vid {
+        left: 0%;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .vid-container {
+        display: none;
+    }
+}
