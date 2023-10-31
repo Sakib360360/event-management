@@ -81,7 +81,7 @@ const SignupForm = () => {
           placeholder="name"
           id="name"
           name="name"
-          className="input text-black input-bordered"
+          className="input text-white bg-transparent border-b border-white input-bordered"
           {...register("name", { required: true })}
         />
         {errors.name && (
@@ -99,7 +99,7 @@ const SignupForm = () => {
           placeholder="email"
           id="email"
           name="email"
-          className="input text-black input-bordered"
+          className="input text-white bg-transparent border-b border-white input-bordered"
           autoComplete="email"
           {...register("email", {
             required: true,
@@ -121,7 +121,7 @@ const SignupForm = () => {
           placeholder="password"
           id="password"
           name="password"
-          className="input text-black input-bordered"
+          className="input text-white bg-transparent border-b border-white input-bordered"
           autoComplete="new-password"
           {...register("password", { required: true, minLength: 6 })}
         />
@@ -163,7 +163,7 @@ const SignupForm = () => {
           type="file"
           id="photo"
           onChange={uploadImage}
-          className="file-input file-input-bordered text-black  w-full"
+          className="file-input file-input-bordered text-white bg-transparent border-b border-white  w-full"
         />
       </div>
       <div className="form-control mt-6">
