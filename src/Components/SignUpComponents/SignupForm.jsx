@@ -162,7 +162,7 @@ const SignupForm = () => {
         <input
           type="file"
           id="photo"
-          onChange={uploadImage}
+          // onChange={uploadImage}
           className="file-input file-input-bordered file-input-error w-full"
         />
       </div>
