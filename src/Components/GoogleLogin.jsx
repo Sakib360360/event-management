@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { startTransition } from "react";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import "./GoogleLogin.css"
 
 const GoogleLogin = ({ from }) => {
   const { googleLogin } = useAuth();
@@ -30,7 +31,7 @@ const GoogleLogin = ({ from }) => {
     <button
       onClick={handleGoogleLogin}
       type="button"
-      className="btn btn-error mt-5 mx-auto"
+      className="btn bg-custom w-full mt-5 mx-auto"
     >
       <FcGoogle className="text-3xl mr-3" /> Continue with google
     </button>

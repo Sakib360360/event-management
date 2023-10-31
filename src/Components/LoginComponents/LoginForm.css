@@ -1,0 +1,9 @@
+/* .navigation {
+    transition: 0.5s ease-in-out;
+} */
+
+
+.bg-custom {
+    background: -webkit-linear-gradient(40deg, rgb(var(--third-gradient)), rgb(var(--first-gradient)), rgb(var(--second-gradient)));
+}
+

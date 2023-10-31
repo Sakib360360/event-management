@@ -71,9 +71,9 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+    <form onSubmit={handleSubmit(onSubmit)} className="card-body border rounded-lg">
       <div className="form-control">
-        <label htmlFor="name" className="label label-text">
+        <label htmlFor="name" className="label text-white label-text">
           Name
         </label>
         <input
@@ -81,7 +81,7 @@ const SignupForm = () => {
           placeholder="name"
           id="name"
           name="name"
-          className="input input-bordered"
+          className="input text-black input-bordered"
           {...register("name", { required: true })}
         />
         {errors.name && (
@@ -91,7 +91,7 @@ const SignupForm = () => {
         )}
       </div>
       <div className="form-control">
-        <label htmlFor="email" className="label label-text">
+        <label htmlFor="email" className="label text-white label-text">
           Email
         </label>
         <input
@@ -99,7 +99,7 @@ const SignupForm = () => {
           placeholder="email"
           id="email"
           name="email"
-          className="input input-bordered"
+          className="input text-black input-bordered"
           autoComplete="email"
           {...register("email", {
             required: true,
@@ -113,7 +113,7 @@ const SignupForm = () => {
         )}
       </div>
       <div className="form-control">
-        <label htmlFor="password" className="label label-text">
+        <label htmlFor="password" className="label text-white label-text">
           Password
         </label>
         <input
@@ -121,7 +121,7 @@ const SignupForm = () => {
           placeholder="password"
           id="password"
           name="password"
-          className="input input-bordered"
+          className="input text-black input-bordered"
           autoComplete="new-password"
           {...register("password", { required: true, minLength: 6 })}
         />
@@ -156,18 +156,18 @@ const SignupForm = () => {
         )}
       </div> */}
       <div className="form-control">
-        <label htmlFor="photo" className="label label-text ">
+        <label htmlFor="photo" className="label text-white label-text ">
           Photo
         </label>
         <input
           type="file"
           id="photo"
-          // onChange={uploadImage}
-          className="file-input file-input-bordered file-input-error w-full"
+          onChange={uploadImage}
+          className="file-input file-input-bordered text-black  w-full"
         />
       </div>
       <div className="form-control mt-6">
-        <button className="btn btn-error" type="submit">
+        <button className="btn bg-custom" type="submit">
           Sign Up
         </button>
       </div>
