@@ -12,6 +12,10 @@ function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const signOut = () => {
+    logOut();
+  };
+  console.log(user);
   const links = (
     <>
       <li className="mx-3">
@@ -39,6 +43,10 @@ function Navbar() {
             title="name"
           />
         </div>
+      </Link>
+      <Link className="mx-3" href={"/signup"}>
+        {" "}
+        <a onClick={signOut()}>Sign out</a>
       </Link>
     </>
   ) : (
