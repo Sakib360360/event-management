@@ -64,6 +64,7 @@ const CreateEventForm = () => {
     return (
         
         <form  className="max-w-md mx-auto mt-8 p-8  rounded-md shadow-md">
+            
             <h2 className="text-2xl font-semibold mb-4">Create Event</h2>
 
             {/* Event Name */}

@@ -4,8 +4,7 @@ import getEvents from '@/utils/getEvents';
 
 const MyEventsDashboard = async () => {
     // Mock data for testing purposes
-    const events = await getEvents();
-
+    const events = await getEvents()
     return (
         <div className="max-w-3xl mx-auto mt-8 p-8 bg-white rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
