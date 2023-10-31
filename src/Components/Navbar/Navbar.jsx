@@ -12,10 +12,10 @@ function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  const signOut = ()=>{
-    logOut()
-  }
-  console.log(user)
+  const signOut = () => {
+    logOut();
+  };
+  console.log(user);
   const links = (
     <>
       <li className="mx-3">
@@ -33,7 +33,22 @@ function Navbar() {
   );
 
   const logs = user ? (
-    <><Link  className="mx-3" href={"/signup"}> <a onClick={signOut()}>Sign out</a></Link></>
+    <>
+      <Link href={"/profile"} className="mx-3">
+        <div className="profile-image">
+          <img
+            className="profile"
+            src="/images/profile.png"
+            alt="profile"
+            title="name"
+          />
+        </div>
+      </Link>
+      <Link className="mx-3" href={"/signup"}>
+        {" "}
+        <a onClick={signOut()}>Sign out</a>
+      </Link>
+    </>
   ) : (
     <>
       <li className="mx-3">

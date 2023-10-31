@@ -35,6 +35,18 @@
     width: 100%;
 }
 
+.profile-image {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgb(var(--second-gradient));
+}
+
+.profile-image img {
+    width: 100%;
+}
+
 .mobile-menu {
     background-color: rgb(var(--accent-color));
     width: min(17em, 100%);
