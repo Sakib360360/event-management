@@ -55,19 +55,15 @@ const SignupForm = () => {
       await createUser(email, password);
       /*    await createJWT({ email }); */
       await profileUpdate(name, photo)
-      const saveUser = {
+      const createdUser = {
         name: name,
         email: email,
         photo: photo,
         /* role: "", */
       };
-      fetch("https://localhots:5000/users", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(saveUser),
-      })
+     
+
+      const user = await saveUser(createdUser);
       startTransition(() => {
         refresh();
         replace(from);
