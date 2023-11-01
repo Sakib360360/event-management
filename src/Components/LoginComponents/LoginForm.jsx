@@ -51,7 +51,7 @@ const LoginForm = () => {
           placeholder="email"
           id="email"
           name="email"
-          className="input text-black input-bordered"
+          className="input text-white bg-transparent border-b border-white input-bordered"
           autoComplete="email"
           {...register("email", {
             required: true,
@@ -73,7 +73,7 @@ const LoginForm = () => {
           placeholder="password"
           id="password"
           name="password"
-          className="input text-black input-bordered"
+          className="input text-white bg-transparent border-b border-white "
           autoComplete="new-password"
           {...register("password", { required: true, minLength: 6 })}
         />

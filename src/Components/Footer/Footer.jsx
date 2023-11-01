@@ -20,20 +20,20 @@ const Footer = () => {
   );
 
   return (
-    <footer>
+    <footer className="pt-[1px]">
       <div className="container mx-auto flex flex-col items-center md:justify-around md:flex-row md:items-start md:my-5">
-        <div className="logo my-3">
+        <div className="logo my-7">
           <Link href={"/"}>
-            <h1 className="mx-3 active font-bold text-3xl">Eveniu</h1>
+            <h1 className="mx-3 active font-bold text-3xl">EventGuru</h1>
           </Link>
         </div>
 
-        <div className="my-3">
+        <div className="my-7">
           <p className="text-2xl">Menu</p>
           <ul className="mt-2">{links}</ul>
         </div>
 
-        <div className="legal">
+        <div className="legal my-7">
           <p className="text-2xl">Legal</p>
           <ul className="mt-2">
             <li className="gray">
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container mx-auto flex flex-col items-center py-5 md:justify-between md:items-center md:flex-row">
+      <div className="container mx-auto flex flex-col items-center py-5 px-4 md:justify-between md:items-center md:flex-row">
         <p className="my-5">
           Copyright &copy; 2023 - All right reserved by Lunar Brigade
         </p>

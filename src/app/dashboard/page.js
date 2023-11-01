@@ -1,4 +1,5 @@
 // pages/dashboard.js
+import DashboardChart from '@/Components/DashboardChart';
 import React from 'react';
 
 const dashboard = () => {
@@ -14,7 +15,7 @@ const dashboard = () => {
   return (
     <div className="ml-12 mr-12 mx-auto  mt-8">
       <h1 className="text-3xl font-semibold mb-4">Dashboard</h1>
-
+<DashboardChart></DashboardChart>
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Events */}

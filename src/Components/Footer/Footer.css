@@ -1,3 +1,7 @@
+footer {
+    background-color: rgba(var(--secondary-color), 0.08);
+}
+
 .gray {
     color: rgba(var(--secondary-color), 0.7);
 }

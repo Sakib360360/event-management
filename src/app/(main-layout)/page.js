@@ -1,7 +1,7 @@
 import Banner from "@/Components/Banner/Banner";
 import Categories from "@/Components/Categories/Categories";
+import ContactUs from "@/Components/ContactUs/ContactUs";
 import StartedSection from "@/Components/StartedSection/StartedSection";
-import ConcatUs from "@/Components/Thankful/ConcatUs";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       {/* <Thankful></Thankful> */}
       {/* <NewsLetter></NewsLetter> */}
       {/* <TicketSelse></TicketSelse> */}
-      <ConcatUs></ConcatUs>
+      <ContactUs></ContactUs>
     </main>
   )
 }

@@ -51,6 +51,7 @@ function Navbar() {
         {" "}
         <a onClick={signOut()}>Sign out</a>
       </Link>
+      <Link href={"/dashboard"}>Dashboard</Link>
     </>
   ) : (
     <>
@@ -75,7 +76,7 @@ function Navbar() {
       <nav className="navigation container mx-auto flex justify-between items-center py-5 overflow-x-hidden">
         <div className="logo">
           <Link href={"/"}>
-            <h1 className="mx-3 active font-bold text-3xl">Eveniu</h1>
+            <h1 className="mx-3 active font-bold text-3xl">EventGuru</h1>
           </Link>
         </div>
 
