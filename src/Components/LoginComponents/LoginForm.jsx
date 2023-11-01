@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { startTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import "./LoginForm.css"
 
 const LoginForm = () => {
   const {
@@ -42,7 +43,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
       <div className="form-control">
-        <label htmlFor="email" className="label label-text">
+        <label htmlFor="email" className="label label-text text-white">
           Email
         </label>
         <input
@@ -50,7 +51,7 @@ const LoginForm = () => {
           placeholder="email"
           id="email"
           name="email"
-          className="input input-bordered"
+          className="input text-white bg-transparent border-b border-white input-bordered"
           autoComplete="email"
           {...register("email", {
             required: true,
@@ -64,7 +65,7 @@ const LoginForm = () => {
         )}
       </div>
       <div className="form-control">
-        <label htmlFor="password" className="label label-text">
+        <label htmlFor="password" className="label text-white label-text">
           Password
         </label>
         <input
@@ -72,7 +73,7 @@ const LoginForm = () => {
           placeholder="password"
           id="password"
           name="password"
-          className="input input-bordered"
+          className="input text-white bg-transparent border-b border-white "
           autoComplete="new-password"
           {...register("password", { required: true, minLength: 6 })}
         />
@@ -82,13 +83,13 @@ const LoginForm = () => {
           </span>
         )}
         <label className="label">
-          <a href="#" className="label-text-alt link link-hover">
+          <a href="#" className="label-text-alt text-white underline link link-hover">
             Forgot password?
           </a>
         </label>
       </div>
       <div className="form-control mt-6">
-        <button className="btn btn-error" type="submit">
+        <button className="btn bg-custom" type="submit" >
           Login
         </button>
       </div>
