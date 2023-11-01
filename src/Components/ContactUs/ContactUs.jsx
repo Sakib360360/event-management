@@ -10,7 +10,8 @@ const ContactUs = () => {
     const name = form.name.value;
     const email = form.email.value;
     const message = form.message.value;
-    console.log(form, name, email, message);
+    const status = "unseen";
+    console.log(form, name, email, message, status);
   };
 
   return (
@@ -25,14 +26,14 @@ const ContactUs = () => {
         >
           <div className="my-12">
             <div>
-              <label for="name">Name</label>
+              <label htmlFor="name">Name</label>
             </div>
             <input className="w-full h-[2em]" type="text" name="name" id="id" />
           </div>
 
           <div className="my-12">
             <div>
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
             </div>
             <input
               className="w-full h-[2em]"
@@ -44,7 +45,7 @@ const ContactUs = () => {
 
           <div className="w-full my-12">
             <div>
-              <label for="message">Message</label>
+              <label htmlFor="message">Message</label>
             </div>
             <textarea
               className="w-full"

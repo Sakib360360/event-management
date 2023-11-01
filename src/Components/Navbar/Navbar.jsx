@@ -48,6 +48,7 @@ function Navbar() {
         {" "}
         <a onClick={signOut()}>Sign out</a>
       </Link>
+      <Link href={"/dashboard"}>Dashboard</Link>
     </>
   ) : (
     <>
