@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 const SideBar = () => {
-    const isAdmin = false;
-    const isOrganizer = true;
+    const isAdmin = true;
+    const isOrganizer = false;
 
     const navItems = <>
 
@@ -17,6 +17,7 @@ const SideBar = () => {
             isAdmin && <>
                 <li><Link href={'/dashboard/manage-user'}>Manage User</Link></li>
                 <li><Link href={'/dashboard/all-events'}>All Events</Link></li>
+                <li><Link href={'/dashboard/messages'}>Messages</Link></li>
             </>
         }
         {
