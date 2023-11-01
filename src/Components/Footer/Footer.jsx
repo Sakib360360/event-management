@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center md:justify-around md:flex-row md:items-start md:my-5">
         <div className="logo my-7">
           <Link href={"/"}>
-            <h1 className="mx-3 active font-bold text-3xl">Eveniu</h1>
+            <h1 className="mx-3 active font-bold text-3xl">EventGuru</h1>
           </Link>
         </div>
 
