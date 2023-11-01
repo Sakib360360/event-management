@@ -50,7 +50,7 @@ function Navbar() {
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
                   <Link href="/dashboard" onClick={() => setNavbar(!navbar)}>
-                    Dasboard
+                    Dasboard 
                   </Link>
                 </li>
                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-orange-900  border-orange-900  md:hover:text-orange-600 md:hover:bg-transparent">
