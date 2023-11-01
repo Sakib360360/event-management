@@ -1,3 +1,4 @@
+"use client"
 import useAuth from "@/hooks/useAuth";
 /* import createJWT from "@/utils/createJWT"; */
 import { useRouter } from "next/navigation";
@@ -5,6 +6,7 @@ import { startTransition } from "react";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import "./GoogleLogin.css"
+import saveUser from "@/utils/saveUser";
 
 const GoogleLogin = ({ from }) => {
   const { googleLogin } = useAuth();
@@ -13,19 +15,33 @@ const GoogleLogin = ({ from }) => {
   const handleGoogleLogin = async () => {
     const toastId = toast.loading("Loading...");
     try {
-      const { user } = await googleLogin();
-      /* await createJWT({ email: user.email }); */
+      const result = await googleLogin();
+      const loggedInUser = result.user;
+
+      const createdUser = {
+        name: loggedInUser.displayName,
+        email: loggedInUser.email,
+        photo: loggedInUser.photoURL,
+      };
+
+      const user = await saveUser(createdUser);
+
+      // Now you can perform any other actions using the 'user' object
+      // For example, you can redirect the user or update the UI.
       startTransition(() => {
         refresh();
         replace(from);
         toast.dismiss(toastId);
         toast.success("User signed in successfully");
       });
+      
     } catch (error) {
+      
       toast.dismiss(toastId);
       toast.error(error.message || "User not signed in");
     }
   };
+      
 
   return (
     <button

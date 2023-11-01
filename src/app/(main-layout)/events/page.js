@@ -2,47 +2,16 @@
 import React from 'react';
 import getEvents from '@/utils/getEvents';
 import { FaHeart } from 'react-icons/fa';
-import "./event.css"
+import "./event.module.css"
+import Search from './Search';
+
 
 const Events = async () => {
     const events = await getEvents()
     
     return (
         <>
-            <div className='flex justify-center'>
-                <div className="relative flex items-center">
-                    <div className="relative text-white">
-                        <input
-                            type="text"
-                            placeholder="Search event..."
-                            className="bg-transparent border-2 border-white rounded-full py-2 px-4 pl-10 focus:outline-none focus:border-blue-500 transition-all duration-300"
-                        />
-
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M12 4a8 8 0 100 16 8 8 0 000-16z"
-                            />
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M21 21l-4-4"
-                            />
-                        </svg>
-
-                    </div>
-
-                </div>
-            </div>
+            <Search></Search>
             {/* filter */}
 
 
