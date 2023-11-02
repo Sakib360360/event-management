@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 // components/MyEventsDashboard.js
-import DashboardChart from '@/Components/DashboardChart';
 import getEvents from '@/utils/getEvents';
 
 const MyEventsDashboard = async () => {
@@ -34,7 +33,7 @@ const MyEventsDashboard = async () => {
                             Edit Event
                         </button>
                     </div>
-                    <DashboardChart></DashboardChart>
+                    
                 </div>
             ))}
         </div>
