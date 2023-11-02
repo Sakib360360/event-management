@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center md:justify-around md:flex-row md:items-start md:my-5">
         <div className="logo my-7">
           <Link href={"/"}>
-            <h1 className="mx-3 active font-bold text-3xl">Eveniu</h1>
+            <h1 className="mx-3 active font-bold text-3xl">EventGuru</h1>
           </Link>
         </div>
 
@@ -37,13 +37,13 @@ const Footer = () => {
           <p className="text-2xl">Legal</p>
           <ul className="mt-2">
             <li className="gray">
-              <Link href={"/terms-of-use"}>Terms of use</Link>
+              <Link href={"/legal?id=terms-of-use"}>Terms of use</Link>
             </li>
             <li className="gray">
-              <Link href={"/privacy-policy"}>Privacy Policy</Link>
+              <Link href={"/legal?id=privacy-policy"}>Privacy Policy</Link>
             </li>
             <li className="gray">
-              <Link href={"/cookie-policy"}>Cookie Policy</Link>
+              <Link href={"/legal?id=cookie-policy"}>Cookie Policy</Link>
             </li>
           </ul>
         </div>

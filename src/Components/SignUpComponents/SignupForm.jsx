@@ -54,10 +54,16 @@ const SignupForm = () => {
     try {
       await createUser(email, password);
       /*    await createJWT({ email }); */
-      await profileUpdate({
-        displayName: name,
-        photoURL: photo,
-      });
+      await profileUpdate(name, photo)
+      const createdUser = {
+        name: name,
+        email: email,
+        photo: photo,
+        /* role: "", */
+      };
+     
+
+      const user = await saveUser(createdUser);
       startTransition(() => {
         refresh();
         replace(from);
@@ -131,30 +137,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-     {/*  <div className="form-control">
-        <label htmlFor="confirmPassword" className="label label-text">
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          id="confirmPassword"
-          name="confirmPassword"
-          className="input input-bordered"
-          autoComplete="new-password"
-          {...register("confirmPassword", {
-            required: true,
-            minLength: 6,
-            validate: (value) =>
-              value === getValues("password") || "The passwords do not match.",
-          })}
-        />
-        {errors.confirmPassword && (
-          <span className="text-red-500 text-base mt-1">
-            {errors.confirmPassword.message || "Please confirm your password."}
-          </span>
-        )}
-      </div> */}
+    
       <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
