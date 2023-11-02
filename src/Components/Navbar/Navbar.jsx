@@ -12,6 +12,7 @@ function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  // const user = true;
   const signOut = () => {
     logOut();
   };
