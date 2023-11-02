@@ -1,5 +1,6 @@
 import Footer from '@/Components/Footer/Footer';
-import Navbar from '@/Components/Navbar';
+import Navbar from '@/Components/Navbar/Navbar';
+
 import Providers from '@/providers';
 
 const MainLayout = ({children}) => {
