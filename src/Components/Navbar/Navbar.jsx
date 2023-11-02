@@ -16,6 +16,20 @@ function Navbar() {
     logOut();
   };
   console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        localStorage.removeItem("access-token");
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const getUserProfilePicture = () => {
+    // Replace this with your logic to get the user's profile picture URL
+    return user.photoURL;
+  };
+
+
   const links = (
     <>
       <li className="mx-3">
