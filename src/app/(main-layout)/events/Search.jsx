@@ -105,9 +105,14 @@ const Search = ({ events }) => {
                             </button>
                             <div className='flex'>
                                 <button
-                                    className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+                                    className="bg-blue-500 text-white p-2 mr-4 rounded-md hover:bg-blue-600"
                                 >
                                     Buy
+                                </button>
+                                <button
+                                    className="bg-blue-500 mr-4 text-white p-2 rounded-md hover:bg-blue-600"
+                                >
+                                    Share
                                 </button>
                                 <FaHeart color="red" className='favoriteIcon cursor-pointer ml-2 mt-1' size={30} />
                             </div>

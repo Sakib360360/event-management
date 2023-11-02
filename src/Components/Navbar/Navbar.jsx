@@ -11,7 +11,6 @@ import "./Navbar.css";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-
   console.log(user);
   const links = (
     <>
