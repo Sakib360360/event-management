@@ -17,3 +17,30 @@ body {
     background-color: rgb(var(--primary-color));
     color: rgb(var(--secondary-color));
 }
+
+/* Add custom styles for react-select */
+.react-select-container {
+    width: 100%;
+  }
+  
+  .react-select__control {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+  }
+  
+  .react-select__menu {
+    margin-top: 4px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  }
+  
+  .react-select__option {
+    color: #ffffff; /* White text color */
+  }
+  
+  .react-select__single-value {
+    color: #ffffff; /* White text color for the selected value */
+  }
