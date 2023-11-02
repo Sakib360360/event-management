@@ -4,16 +4,19 @@ import getEvents from '@/utils/getEvents';
 import { FaHeart } from 'react-icons/fa';
 import "./event.module.css"
 import Search from './Search';
+import Filter from './Filter';
 
 
 const Events = async () => {
     const events = await getEvents()
-    
+
     return (
         <>
-            <Search></Search>
-            {/* filter */}
-
+            <div className='flex justify-center md:gap-44 gap-8 md:mt-14 mt-4'>
+                <Search></Search>
+                {/* filter */}
+                <Filter></Filter>
+            </div>
 
 
 
