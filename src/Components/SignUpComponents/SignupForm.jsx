@@ -54,14 +54,14 @@ const SignupForm = () => {
     try {
       await createUser(email, password);
       /*    await createJWT({ email }); */
-      await profileUpdate(name, photo)
+      await profileUpdate(name, photo);
       const createdUser = {
         name: name,
         email: email,
         photo: photo,
         /* role: "", */
       };
-     
+      console.log(createdUser);
 
       const user = await saveUser(createdUser);
       startTransition(() => {
@@ -77,7 +77,10 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card-body border rounded-lg">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="card-body border rounded-lg"
+    >
       <div className="form-control">
         <label htmlFor="name" className="label text-white label-text">
           Name
@@ -137,7 +140,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-    
+
       <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
