@@ -23,7 +23,7 @@ const SignupForm = () => {
   const from = search.get("redirectUrl") || "/";
   const { replace, refresh } = useRouter();
 
- /*  const uploadImage = async (event) => {
+  /*  const uploadImage = async (event) => {
     const formData = new FormData();
     if (!event.target.files[0]) return;
     formData.append("image", event.target.files[0]);
@@ -53,15 +53,16 @@ const SignupForm = () => {
     const toastId = toast.loading("Loading...");
     try {
       await createUser(email, password);
+      console.log(name, email, password, photoUrl);
       /*    await createJWT({ email }); */
-      await profileUpdate(name, photoUrl)
+      await profileUpdate(name, photoUrl);
       const createdUser = {
         name: name,
         email: email,
-        
+
         /* role: "", */
       };
-     console.log(createdUser)
+      console.log(createdUser);
 
       const user = await saveUser(createdUser);
       startTransition(() => {
@@ -77,7 +78,10 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card-body border rounded-lg">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="card-body border rounded-lg"
+    >
       <div className="form-control">
         <label htmlFor="name" className="label text-white label-text">
           Name
@@ -155,7 +159,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
- {/*      <div className="form-control">
+      {/*      <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
         </label>
