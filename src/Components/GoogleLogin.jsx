@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import useAuth from "@/hooks/useAuth";
 /* import createJWT from "@/utils/createJWT"; */
+import saveUser from "@/utils/saveUser";
 import { useRouter } from "next/navigation";
 import { startTransition } from "react";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
-import "./GoogleLogin.css"
-import saveUser from "@/utils/saveUser";
+import "./GoogleLogin.css";
 
 const GoogleLogin = ({ from }) => {
   const { googleLogin } = useAuth();
@@ -21,9 +21,8 @@ const GoogleLogin = ({ from }) => {
       const createdUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
-       
       };
-console.log(createdUser);
+      console.log(createdUser);
       const user = await saveUser(createdUser);
 
       // Now you can perform any other actions using the 'user' object
@@ -34,14 +33,11 @@ console.log(createdUser);
         toast.dismiss(toastId);
         toast.success("User signed in successfully");
       });
-      
     } catch (error) {
-      
       toast.dismiss(toastId);
       toast.error(error.message || "User not signed in");
     }
   };
-      
 
   return (
     <button
