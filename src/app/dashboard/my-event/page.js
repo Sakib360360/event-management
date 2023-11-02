@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 // components/MyEventsDashboard.js
-
 import getEvents from '@/utils/getEvents';
 
 const MyEventsDashboard = async () => {
