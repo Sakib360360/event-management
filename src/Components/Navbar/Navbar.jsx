@@ -9,12 +9,9 @@ import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
-  const [navbar, setNavbar] = useState(false);
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  const signOut = () => {
-    logOut();
-  };
+
   console.log(user);
   const links = (
     <>
@@ -47,10 +44,9 @@ function Navbar() {
           />
         </div>
       </Link>
-      <Link className="mx-3" href={"/signup"}>
-        {" "}
-        <a onClick={signOut()}>Sign out</a>
-      </Link>
+      <button onClick={logOut} className="mx-3" href={"/signup"}>
+        Log out
+      </button>
       <Link href={"/dashboard"}>Dashboard</Link>
     </>
   ) : (
