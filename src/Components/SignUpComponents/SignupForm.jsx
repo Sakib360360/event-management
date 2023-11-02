@@ -23,7 +23,7 @@ const SignupForm = () => {
   const from = search.get("redirectUrl") || "/";
   const { replace, refresh } = useRouter();
 
-  const uploadImage = async (event) => {
+  /*  const uploadImage = async (event) => {
     const formData = new FormData();
     if (!event.target.files[0]) return;
     formData.append("image", event.target.files[0]);
@@ -46,19 +46,20 @@ const SignupForm = () => {
       toast.error("Image not uploaded!");
       toast.dismiss(toastId);
     }
-  };
+  }; */
 
   const onSubmit = async (data, event) => {
-    const { name, email, password, photo } = data;
+    const { name, email, password, photoUrl } = data;
     const toastId = toast.loading("Loading...");
     try {
       await createUser(email, password);
+      console.log(name, email, password, photoUrl);
       /*    await createJWT({ email }); */
-      await profileUpdate(name, photo);
+      await profileUpdate(name, photoUrl);
       const createdUser = {
         name: name,
         email: email,
-        photo: photo,
+
         /* role: "", */
       };
       console.log(createdUser);
@@ -140,8 +141,25 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-
       <div className="form-control">
+        <label htmlFor="photoUrl" className="label text-white label-text">
+          Photo
+        </label>
+        <input
+          type="text"
+          placeholder="photo URL"
+          id="photoUrl"
+          name="photoUrl"
+          className="input text-white bg-transparent border-b border-white input-bordered"
+          {...register("photoUrl", { required: true })}
+        />
+        {errors.photoUrl && (
+          <span className="text-red-500 text-base mt-1">
+            Please enter your photo URL.
+          </span>
+        )}
+      </div>
+      {/*      <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
         </label>
@@ -151,7 +169,7 @@ const SignupForm = () => {
           onChange={uploadImage}
           className="file-input file-input-bordered text-white bg-transparent border-b border-white  w-full"
         />
-      </div>
+      </div> */}
       <div className="form-control mt-6">
         <button className="btn bg-custom" type="submit">
           Sign Up
