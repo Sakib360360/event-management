@@ -16,6 +16,9 @@ const Footer = () => {
       <li className="gray">
         <Link href={"/events"}>Events</Link>
       </li>
+      <li className="gray">
+        <Link href={"/feedback"}>Feedback</Link>
+      </li>
     </>
   );
 
