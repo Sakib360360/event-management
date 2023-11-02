@@ -1,0 +1,45 @@
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Default styles for desktop devices */
+.error-img {
+    border: 2px solid white;
+    border-radius: 100%;
+    width: 500px;
+    height: 500px;
+    animation: rotate 4s infinite linear;
+  }
+  
+  /* Media query for mobile devices with a maximum width of 768px */
+  @media (max-width: 768px) {
+    .error-img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+ 
+  .HomeBtn{
+    background-color: rgb(var(--accent-color));
+    color: rgb(var(--secondary-color));
+    cursor: pointer;
+    border-radius: 50% 0 0 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

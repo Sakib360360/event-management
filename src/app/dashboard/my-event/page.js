@@ -33,7 +33,7 @@ const MyEventsDashboard = async () => {
                             Edit Event
                         </button>
                     </div>
-                    
+                   
                 </div>
             ))}
         </div>

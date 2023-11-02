@@ -21,9 +21,9 @@ const GoogleLogin = ({ from }) => {
       const createdUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
-        photo: loggedInUser.photoURL,
+       
       };
-
+console.log(createdUser);
       const user = await saveUser(createdUser);
 
       // Now you can perform any other actions using the 'user' object
