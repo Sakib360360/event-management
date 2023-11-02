@@ -6,9 +6,9 @@ import "./UserPage.css";
 const UserPage = () => {
   return (
     <>
-      <div className="userPage mt-24 min-h-screen ">
+      <div className="userPage  min-h-screen ">
         <div className="hero-content flex-col lg:flex-row gap-32">
-          <div className="mt-8">
+          <div className="mt-20">
             <div>
               <img
                 src="https://i.ibb.co/x2wg0zr/1.jpg"
@@ -16,7 +16,7 @@ const UserPage = () => {
               />
             </div>
 
-            <div className="social mt-8 gap-8 flex justify-center items-center">
+            <div className="social mt-20 gap-8 flex justify-center items-center">
               <Link className="text-xl " href={"/"}>
                 <FaFacebook></FaFacebook>
               </Link>
@@ -31,8 +31,8 @@ const UserPage = () => {
               </Link>
             </div>
             <div className="mt-10 flex gap-6">
-              <button className="btn bg-gradient-to-r from-blue-400 hover:to-blue-400 via-purple-500 to-pink-500 hover:from-pink-500 py-2 px-3 rounded-full ">Message</button>
-              <button className="btn bg-gradient-to-r from-blue-400 hover:to-blue-400 via-purple-500 to-pink-500 hover:from-pink-500 py-2 px-3 rounded-full">Contact</button>
+              <button className="btn bg-gradient-to-r from-blue-400 hover:to-blue-400 via-purple-500 to-pink-500 hover:from-pink-500 py-2 px-5 rounded-full ">Message</button>
+              <button className="btn bg-gradient-to-r from-blue-400 hover:to-blue-400 via-purple-500 to-pink-500 hover:from-pink-500 py-2 px-5 rounded-full">Contact</button>
             </div>
           </div>
           <div>
@@ -44,7 +44,7 @@ const UserPage = () => {
             </div>
             <div> 
               <Link href="/">
-                  <button className="btn btn-primary mt-8 bg-gradient-to-r from-blue-400 hover:to-blue-400 via-purple-500 to-pink-500 hover:from-pink-500 py-2 px-3 rounded-full">
+                  <button className="btn btn-primary mt-8 bg-gradient-to-r from-blue-400 hover:to-blue-400 via-purple-500 to-pink-500 hover:from-pink-500 py-2 px-5 rounded-full">
                     Go to Home Page
                   </button>
               </Link>
