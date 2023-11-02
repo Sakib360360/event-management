@@ -15,7 +15,7 @@ const ContactUs = () => {
 
   return (
     <section className="container mx-auto my-[7em]">
-      <h1 className="text-4xl md:text-6xl font-bold mb-12">GET IN TOUCH</h1>
+      <h1 className="text-4xl md:text-6xl font-bold  mb-12">GET IN TOUCH</h1>
       <div className="flex flex-col justify-center items-center md:justify-around md:items-center md:flex-row">
         <form
           className="min-w-full px-3 md:min-w-[30em]"
