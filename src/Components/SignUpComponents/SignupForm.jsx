@@ -66,6 +66,7 @@ const SignupForm = () => {
       console.log(createdUser);
 
       const user = await saveUser(createdUser);
+      
       startTransition(() => {
         refresh();
         replace(from);
