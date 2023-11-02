@@ -58,7 +58,7 @@ const SignupForm = () => {
       const createdUser = {
         name: name,
         email: email,
-        photo: photo,
+        
         /* role: "", */
       };
      console.log(createdUser)
