@@ -1,6 +1,6 @@
 
 const saveUser = async (body) => {
-    const res = await fetch("http://localhost:5000/users", {
+    const res = await fetch("https://server-event-management-hw2vpz2a7-sakib360360.vercel.app/users", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
