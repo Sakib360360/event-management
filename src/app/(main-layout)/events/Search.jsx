@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./event.module.css";
 import "./HeartIcon.css"
+import { useRouter } from "next/navigation";
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
     const [selectedFilter, setSelectedFilter] = useState("");
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
-
+    const router = useRouter();
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
@@ -56,7 +57,7 @@ const Search = ({ events }) => {
             (a, b) => new Date(b.eventDate) - new Date(a.eventDate)
         );
     }
-
+  
     return (
         <div>
             <div className="flex justify-center gap-4 md:gap-40">
@@ -137,9 +138,10 @@ const Search = ({ events }) => {
                                 Details
                             </button>
                             <div className="flex">
-                                <button className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
+                                <button onClick={() => router.push('/dashboard/payments')} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
                                     Buy
                                 </button>
+                      
                                 <div className="">
                                     <button
                                         className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
