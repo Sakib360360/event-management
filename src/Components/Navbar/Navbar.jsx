@@ -14,7 +14,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const pathname = usePathname();
-  console.log(user);
+  // console.log(user);
   const links = (
     <>
       <li className={`mx-3 ${pathname === "/" ? "active" : ""}`}>
