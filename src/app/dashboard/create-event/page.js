@@ -92,6 +92,7 @@ const CreateEventForm = () => {
                     id="eventCreator"
                     className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
                     value={eventCreator}
+                    // defaultValue={'user email'} //todo
                     onChange={(e) => setEventCreator(e.target.value)}
                 />
             </div>
