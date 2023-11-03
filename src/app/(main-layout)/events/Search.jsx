@@ -1,12 +1,11 @@
 "use client";
-import React, { useContext, useState } from "react";
-import { FaHeart, FaShare } from "react-icons/fa";
-import "./event.module.css";
-import "./HeartIcon.css"
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+import { FaHeart, FaShare } from "react-icons/fa";
+import "./HeartIcon.css";
+import "./event.module.css";
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
