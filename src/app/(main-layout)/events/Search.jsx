@@ -8,11 +8,22 @@ const Search = ({ events }) => {
     const [search, setSearch] = useState("");
     const [selectedFilter, setSelectedFilter] = useState("");
     const [selectedEventId, setSelectedEventId] = useState(null);
-    const [isLiked, setIsLiked] = useState(false);
+    const [likedEvents, setLikedEvents] = useState([]);
 
-  const handleIconClick = () => {
-    setIsLiked((prevIsLiked) => !prevIsLiked);
-  };
+    const handleIconClick = (eventId) => {
+        const isEventLiked = likedEvents.includes(eventId);
+
+        if (isEventLiked) {
+            // Remove event ID from liked events
+            setLikedEvents((prevLikedEvents) =>
+                prevLikedEvents.filter((id) => id !== eventId)
+            );
+        } else {
+            // Add event ID to liked events
+            setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
+        }
+    };
+    console.log(likedEvents)
     const handleSelectChange = (event) => {
         const selectedValue = event.target.value;
         setSelectedFilter(selectedValue);
@@ -162,7 +173,11 @@ const Search = ({ events }) => {
                                 )}
 
                                 {/* favoutite */}
-                                <div className={`heart-icon-container text-3xl mt-2 ${isLiked ? 'liked' : ''}`} onClick={handleIconClick}>
+                                <div
+                                    className={`heart-icon-container text-3xl mt-2 ${likedEvents.includes(event._id) ? 'liked' : ''
+                                        }`}
+                                    onClick={() => handleIconClick(event._id)}
+                                >
                                     <FaHeart />
                                 </div>
                             </div>
