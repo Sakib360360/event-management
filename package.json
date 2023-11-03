@@ -23,6 +23,7 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-select": "^5.7.7",
+    "rechart": "^0.0.1",
     "use-client": "^1.1.0"
   },
   "devDependencies": {

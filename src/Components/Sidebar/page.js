@@ -10,6 +10,7 @@ const SideBar = () => {
             isOrganizer && <>
                 <li><Link href={'/dashboard/create-event'}>Create Event</Link></li>
                 <li><Link href={'/dashboard/my-event'}>My Events</Link></li>
+                <li><Link href={'/dashboard/event-analytics'}>Event Analytics</Link></li>
 
             </>
         }
