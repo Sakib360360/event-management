@@ -13,7 +13,7 @@ const Search = ({ events }) => {
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
 
-    const handleIconClick = async(eventId) => {
+    const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
         if (isEventLiked) {
@@ -26,18 +26,21 @@ const Search = ({ events }) => {
             setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
         }
 
+        addBackend();
 
-        // const saveFavoriteEvents = await saveFavorite(userLikedEvents)
-        
+
     };
     // make object for backend
-    const userLikedEvents = {
-        "email":user?.email,
-        likedEvents
+    const addBackend = async () => {
+        const userLikedEvents = {
+            "email": user?.email,
+            likedEvents
+        }
+        console.log(userLikedEvents)
+        const saveFavoriteEvents = await saveFavorite(userLikedEvents)
     }
-    console.log(userLikedEvents)
-    
-    
+
+
 
     const handleSelectChange = (event) => {
         const selectedValue = event.target.value;
