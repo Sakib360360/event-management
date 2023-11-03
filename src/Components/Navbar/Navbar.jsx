@@ -7,25 +7,26 @@ import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
+import { usePathname, useRouter } from 'next/navigation'
 
 function Navbar() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const pathname = usePathname();
   console.log(user);
   const links = (
     <>
-      <li className="mx-3">
-        <Link href={"/"} className="active">
-          Home
-        </Link>
+      <li className={`mx-3 ${pathname === "/" ? "active" : ""}`}>
+        <Link href={"/"}>Home</Link>
       </li>
-      <li className="mx-3">
+      <li className={`mx-3 ${pathname === "/contact-us" ? "active" : ""}`}>
         <Link href={"/contact-us"}>Contact Us</Link>
       </li>
-      <li className="mx-3">
+      <li className={`mx-3 ${pathname === "/events" ? "active" : ""}`}>
         <Link href={"/events"}>Events</Link>
       </li>
-      <li className="mx-3">
+      <li className={`mx-3 ${pathname === "/about" ? "active" : ""}`}>
         <Link href={"/about"}>About</Link>
       </li>
     </>
