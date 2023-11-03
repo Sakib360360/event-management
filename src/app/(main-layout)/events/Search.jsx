@@ -1,16 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./event.module.css";
 import "./HeartIcon.css"
+import AuthContext from "@/context/AuthContext";
+import saveFavorite from "@/utils/saveFavorite";
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
     const [selectedFilter, setSelectedFilter] = useState("");
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
+    const { user } = useContext(AuthContext);
 
-    const handleIconClick = (eventId) => {
+    const handleIconClick = async(eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
         if (isEventLiked) {
@@ -22,8 +25,20 @@ const Search = ({ events }) => {
             // Add event ID to liked events
             setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
         }
+
+
+        // const saveFavoriteEvents = await saveFavorite(userLikedEvents)
+        
     };
-    console.log(likedEvents)
+    // make object for backend
+    const userLikedEvents = {
+        "email":user?.email,
+        likedEvents
+    }
+    console.log(userLikedEvents)
+    
+    
+
     const handleSelectChange = (event) => {
         const selectedValue = event.target.value;
         setSelectedFilter(selectedValue);
