@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const SideBar = () => {
-    const isAdmin = true;
+    const isAdmin = false;
     const isOrganizer = false;
 
     const navItems = <>
