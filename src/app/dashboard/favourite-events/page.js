@@ -1,14 +1,12 @@
+"use client"
 
-import getEvents from '@/utils/getEvents';
 import React from 'react';
 
-const FavouriteEvents = async() => {
-    const getMyAllEvents = await getEvents()
-    console.log(getMyAllEvents,"here")
-    console.log("jlkhl")
+const FavouriteEvents =({liked}) => {
+    console.log(liked)
     return (
         <div>
-            evetns are coming
+            hello
         </div>
     );
 };
