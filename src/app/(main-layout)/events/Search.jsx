@@ -3,16 +3,24 @@ import React, { useContext, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./event.module.css";
 import "./HeartIcon.css"
+<<<<<<< HEAD
+import { useRouter } from "next/navigation";
+=======
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
+>>>>>>> e73567a541f3549786107b7e5b7f84da42ed0667
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
     const [selectedFilter, setSelectedFilter] = useState("");
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
+<<<<<<< HEAD
+    const router = useRouter();
+=======
     const { user } = useContext(AuthContext);
 
+>>>>>>> e73567a541f3549786107b7e5b7f84da42ed0667
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
@@ -74,7 +82,7 @@ const Search = ({ events }) => {
             (a, b) => new Date(b.eventDate) - new Date(a.eventDate)
         );
     }
-
+  
     return (
         <div>
             <div className="flex justify-center gap-4 md:gap-40">
@@ -155,9 +163,10 @@ const Search = ({ events }) => {
                                 Details
                             </button>
                             <div className="flex">
-                                <button className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
+                                <button onClick={() => router.push('/dashboard/payments')} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
                                     Buy
                                 </button>
+                      
                                 <div className="">
                                     <button
                                         className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
