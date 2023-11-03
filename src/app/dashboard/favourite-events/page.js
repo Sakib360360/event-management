@@ -1,9 +1,14 @@
+
+import getEvents from '@/utils/getEvents';
 import React from 'react';
 
-const FavouriteEvents = () => {
+const FavouriteEvents = async() => {
+    const getMyAllEvents = await getEvents()
+    console.log(getMyAllEvents,"here")
+    console.log("jlkhl")
     return (
         <div>
-            jlkjflaksdjf;lkasdfasdfasdfasdfasdf
+            evetns are coming
         </div>
     );
 };

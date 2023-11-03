@@ -1,0 +1,14 @@
+.heart-icon-container {
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .heart-icon-container:hover {
+    color: red;
+  }
+  
+  .heart-icon-container.liked {
+    color: red;
+  }
+  
