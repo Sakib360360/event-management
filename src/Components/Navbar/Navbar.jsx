@@ -4,10 +4,10 @@ import { useContext, useState } from "react";
 
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
-import { usePathname, useRouter } from 'next/navigation'
 
 function Navbar() {
   const router = useRouter();
@@ -38,9 +38,9 @@ function Navbar() {
         <div className="profile-image">
           <img
             className="profile"
-            src={user.photoURL}
-            alt={user.displayName}
-            title={user.displayName}
+            src={user?.photoURL}
+            alt={user?.displayName}
+            title={user?.displayName}
           />
         </div>
       </Link>
