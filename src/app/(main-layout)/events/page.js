@@ -6,6 +6,7 @@ import Search from './Search';
 
 const Events = async () => {
     const events = await getEvents()
+    
 
     return (
         <>
