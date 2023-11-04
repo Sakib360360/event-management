@@ -1,10 +1,11 @@
 "use client";
-import React, { useContext, useState } from "react";
-import { FaHeart, FaShare } from "react-icons/fa";
-import "./event.module.css";
-import "./HeartIcon.css"
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+import { FaHeart, FaShare } from "react-icons/fa";
+import "./HeartIcon.css";
+import "./event.module.css";
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
@@ -12,7 +13,7 @@ const Search = ({ events }) => {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
-
+    const router = useRouter();
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
@@ -141,11 +142,11 @@ const Search = ({ events }) => {
                         key={event._id}
                         className="mb-8 p-4 bg-transparent border border-white rounded-md"
                     >
-                        <img
-                            src={event.imageUrl}
-                            alt={event.eventName}
-                            className="mb-4 w-full h-48 object-cover rounded-md"
-                        />
+                      <img
+              src={event.imageUrl}
+              alt={event.eventName}
+              className="mb-4 w-full h-48 object-cover rounded-md"
+            />
                         <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
                         <p className="text-gray-600 mb-2">{event.eventDate}</p>
                         <p className="text-gray-600 mb-2">{event.eventLocation}</p>
@@ -155,7 +156,7 @@ const Search = ({ events }) => {
                                 Details
                             </button>
                             <div className="flex">
-                                <button className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
+                                <button onClick={() => router.push('/dashboard/payments')} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
                                     Buy
                                 </button>
                                 <div className="">
