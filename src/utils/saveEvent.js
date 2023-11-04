@@ -1,6 +1,6 @@
 
 const saveEvent = async (body) => {
-    const res = await fetch("https://server-event-management-hw2vpz2a7-sakib360360.vercel.app", {
+    const res = await fetch("https://server-event-management-k3cs1bbdd-sakib360360.vercel.app", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
