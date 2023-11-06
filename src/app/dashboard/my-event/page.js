@@ -7,12 +7,12 @@ const MyEventsDashboard = async () => {
     const events = await getEvents()
     
     return (
-        <div className="max-w-3xl mx-auto mt-8 p-8 bg-white rounded-md shadow-md">
+        <div className="max-w-3xl mx-auto  p-8 bg-transparent rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
 
             {/* List of Events */}
             {events.map((event) => (
-                <div key={event.id} className="mb-8 p-4 bg-gray-100 rounded-md">
+                <div key={event.id} className="mb-8 p-4 bg-transparent border border-white rounded-md">
                     <img
                         src={event.imageUrl}
                         alt={event.eventName}
