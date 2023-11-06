@@ -15,7 +15,8 @@ const UserPage = () => {
           <div className="mt-20">
             <div>
               <img
-                src={user.photoURL}
+                src={user?.photoURL}
+                
                 className="max-w-sm rounded-lg shadow-2xl"
               />
             </div>
@@ -25,11 +26,11 @@ const UserPage = () => {
             <div>
               <h1 className="py-4">
                 <span className="text-2xl font-semibold">Name : </span>{" "}
-                {user.displayName}
+                {user?.displayName}
               </h1>
               <p className="py-4">
                 <span className="text-2xl font-semibold">Email : </span>{" "}
-                {user.email}
+                {user?.email}
               </p>
             </div>
             <div>

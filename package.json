@@ -24,8 +24,8 @@
     "react-hook-form": "^7.47.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-select": "^5.7.7",
-    
     "use-client": "^1.1.0"
   },
   "devDependencies": {
