@@ -1,11 +1,20 @@
+import formatDate from "@/utils/formatDate";
+import getSingleMessage from "@/utils/getSingleMessage";
+import markAsSeen from "@/utils/markAsSeen";
 
-const Message = ({params}) => {
+const Message = async ({ params }) => {
+    const message = await getSingleMessage(params.id);
+    const seen = await markAsSeen(params.id);
+
     return (
-        <div>
-            <div>
-                <p>User name</p>
-                <p>User email</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis labore qui quos. Quis necessitatibus natus iste nisi cum eius aliquam sit itaque blanditiis architecto provident, eveniet libero dolor dicta vitae.</p>
+        <div className="min-h-screen">
+            <div className="p-12">
+                <p className="">Name: {message.name}</p>
+                <p className="my-2">Email: {message.email}</p>
+                <p className="my-8">Date: {formatDate(message.date)}</p>
+                <p className="my-4">
+                    {message.message}
+                </p>
             </div>
         </div>
     );
