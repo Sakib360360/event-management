@@ -5,6 +5,7 @@ import FavouriteEvents from './page';
 
 const eventsLiked = async() => {
     const liked = await getFavorite()
+    console.log(liked)
     return (
         <div>
             <FavouriteEvents liked={liked}></FavouriteEvents>
