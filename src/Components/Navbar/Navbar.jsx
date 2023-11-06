@@ -34,13 +34,13 @@ function Navbar() {
 
   const logs = user ? (
     <>
-      <Link href={"/profile"} className="mx-3 profile">
+      <Link href={"/profile"} className="mx-3">
         <div className="profile-image">
           <img
             className="profile"
-            src={user.photoURL}
-            alt={user.displayName}
-            title={user.displayName}
+            src="/images/profile.png"
+            alt="profile"
+            title="name"
           />
         </div>
       </Link>

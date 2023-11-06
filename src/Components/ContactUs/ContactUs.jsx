@@ -1,32 +1,17 @@
 "use client";
 
-import saveMessage from "@/utils/saveMessage";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import "./ContactUs.css";
 
 const ContactUs = () => {
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const message = form.message.value;
     const status = "unseen";
-    const date = new Date();
-
-    const msg = {
-      name,
-      email,
-      message,
-      status,
-      date,
-    };
-
-    const response = await saveMessage(msg);
-
-    if (response.insertedId) {
-      form.reset();
-    }
+    console.log(form, name, email, message, status);
   };
 
   return (

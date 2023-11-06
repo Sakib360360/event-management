@@ -40,19 +40,7 @@
     height: 2em;
     border-radius: 50%;
     overflow: hidden;
-}
-
-/* .profile-image:hover{
-
-} */
-
-.profile {
-    padding: 0.1em;
-    border-radius: 50%;
-}
-
-.profile:hover {
-    background-color: rgba(var(--secondary-color), 0.3);
+    background-color: rgb(var(--second-gradient));
 }
 
 .profile-image img {
