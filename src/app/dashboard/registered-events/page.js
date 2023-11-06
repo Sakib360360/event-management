@@ -1,6 +1,6 @@
-import React from 'react';
 
-const EnrolledEvents = () => {
+
+const RegisteredEvents = () => {
     return (
         <div>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio non beatae eligendi possimus praesentium fugit enim neque ratione laudantium id eveniet, eaque, ipsam, iusto maxime quia laborum adipisci voluptas amet.
@@ -8,4 +8,4 @@ const EnrolledEvents = () => {
     );
 };
 
-export default EnrolledEvents;
+export default RegisteredEvents;

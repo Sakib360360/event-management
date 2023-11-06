@@ -16,6 +16,7 @@ const UserPage = () => {
             <div>
               <img
                 src={user?.photoURL}
+                
                 className="max-w-sm rounded-lg shadow-2xl"
                 alt={user?.displayName}
               />

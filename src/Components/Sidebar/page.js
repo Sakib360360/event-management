@@ -1,8 +1,14 @@
 import Link from 'next/link';
+/* import { MdFavorite, MdPayments } from 'react-icons/md';
+import { TiPointOfInterestOutline } from 'react-icons/ti'; */
 
-const SideBar = () => {
-    const isAdmin = true;
-    const isOrganizer = false;
+
+import { MdFavorite, MdPayments } from 'react-icons/md';
+import { TiPointOfInterestOutline } from 'react-icons/ti';
+
+ const SideBar = () => {
+    const isAdmin = false;
+    const isOrganizer = true;
 
     const navItems = <>
 
@@ -22,9 +28,10 @@ const SideBar = () => {
         }
         {
             !isAdmin && !isOrganizer ? <>
-                <li><Link href={'/dashboard/enrolled-events'}>Enrolled Events</Link></li>
-                <li><Link href={'/dashboard/favourite-events'}>Favourite Events</Link></li>
-                <li><Link href={'/dashboard/payments'}>Payments</Link></li>
+                   
+                <li className='flex gap-2 items-center text-lg'> <TiPointOfInterestOutline></TiPointOfInterestOutline><Link href={'/dashboard/enrolled-events'}> Registered </Link></li>
+                <li className='flex gap-2 items-center text-lg'><MdFavorite></MdFavorite> <Link href={'/dashboard/favourite-events'}>Favourite </Link></li>
+                <li className='flex gap-2 items-center text-lg'><MdPayments></MdPayments><Link href={'/dashboard/payments'}>Payments</Link></li>
 
             </> : null
         }
@@ -38,8 +45,8 @@ const SideBar = () => {
 
     return (
         <>
-            <ul className=" p-4 h-full bg-no-repeat bg-cover flex flex-col text-white">
-                {/* Sidebar content here */}
+            <ul className=" p-4 h-full bg-no-repeat bg-cover flex flex-col text-white gap-4">
+                
                 {navItems}
             </ul>
             <div>
@@ -49,4 +56,7 @@ const SideBar = () => {
     );
 };
 
-export default SideBar;
+
+
+  export default SideBar;
+  
