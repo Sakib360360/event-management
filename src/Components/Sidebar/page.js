@@ -8,7 +8,7 @@ import { TiPointOfInterestOutline } from 'react-icons/ti';
 
  const SideBar = () => {
     const isAdmin = false;
-    const isOrganizer = false;
+    const isOrganizer = true;
 
     const navItems = <>
 
