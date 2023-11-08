@@ -12,7 +12,7 @@
 
 
 const getFavorite = async () => {
-    const res = await fetch("https://server-event-management-k3cs1bbdd-sakib360360.vercel.app/liked/saakibabrar@gmail.com");
+    const res = await fetch("https://server-event-management-lyml1m723-sakib360360.vercel.app/liked/saakibabrar@gmail.com");
     return res.json();
 };
 
