@@ -5,7 +5,6 @@ const useTextReveal = (selectors)=>{
     useEffect(()=>{
         // elements selector
         const elements = document.querySelectorAll(selectors);
-        console.log(elements);
 
         // animate text reveal
         gsap.to(elements, {

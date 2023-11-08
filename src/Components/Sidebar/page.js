@@ -2,6 +2,11 @@ import Link from 'next/link';
 /* import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti'; */
 
+<<<<<<< HEAD
+const SideBar = () => {
+    const isAdmin = true;
+    const isOrganizer = false;
+=======
 
 import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti';
@@ -9,6 +14,7 @@ import { TiPointOfInterestOutline } from 'react-icons/ti';
  const SideBar = () => {
     const isAdmin = false;
     const isOrganizer = true;
+>>>>>>> a8f96948e90d5dae7cdfd454bd74430648755417
 
     const navItems = <>
 
@@ -23,7 +29,7 @@ import { TiPointOfInterestOutline } from 'react-icons/ti';
             isAdmin && <>
                 <li><Link href={'/dashboard/manage-user'}>Manage User</Link></li>
                 <li><Link href={'/dashboard/all-events'}>All Events</Link></li>
-                <li><Link href={'/dashboard/messages'}>Messages</Link></li>
+                <li><Link href={'/dashboard/messages'} prefetch={true}	>Messages</Link></li>
             </>
         }
         {
