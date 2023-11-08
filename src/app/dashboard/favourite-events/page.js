@@ -1,11 +1,7 @@
 "use client"
 import getEvents from '@/utils/getEvents';
-<<<<<<< HEAD
-
-=======
 import React from 'react';
 import {RiDeleteBin6Line} from 'react-icons/ri'
->>>>>>> a8f96948e90d5dae7cdfd454bd74430648755417
 const FavouriteEvents = async() => {
     const getMyAllEvents = await getEvents()
     console.log(getMyAllEvents,"here")
@@ -26,7 +22,7 @@ const FavouriteEvents = async() => {
           </thead>
           <tbody>
           {getMyAllEvents.map((event) => (
-              <tr key={event.id}>
+              <tr key={event._id}>
                 <td className="">{event.eventName}</td>
                 <td className="">{event.ticketPrice}</td>
                 <td className="">{event.eventTime}</td>
