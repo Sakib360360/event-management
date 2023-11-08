@@ -1,15 +1,19 @@
 "use client"
+import AuthContext from '@/context/AuthContext';
 import updateEvent from '@/utils/updateEvent';
 // import updateFunction from '@/utils/updateFunction';
 // pages/editEvent.js
 
 
 import React, { useState } from 'react';
+import { useContext } from 'react';
+import Swal from 'sweetalert2';
 
 const EditEvent = ({ params }) => {
+  const {user} = useContext(AuthContext)
   console.log(params.id)
   const [eventName, setEventName] = useState('');
-  const [eventCreator, setEventCreator] = useState('');
+  const eventCreator = user?.email;
   const [eventDate, setEventDate] = useState('');
   const [eventStatus, setEventStatus] = useState('pending');
   const [ticketAvailable, setTicketAvailable] = useState(0);
@@ -22,7 +26,6 @@ const EditEvent = ({ params }) => {
 
   const resetForm = () => {
     setEventName('');
-    setEventCreator('');
     setEventDate('');
     setEventStatus('pending');
     setTicketAvailable(0);
@@ -36,9 +39,9 @@ const EditEvent = ({ params }) => {
   const handleCategoryChange = (e) => {
     setEventCategory(e.target.value);
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
 
     // Handle form submission, e.g., send data to server or perform other actions
     const createdEvent = {
@@ -58,6 +61,22 @@ const EditEvent = ({ params }) => {
       createdEvent
     });
     const upEv = await updateEvent(createdEvent, params.id)
+    if (upEv.modifiedCount > 0) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Updated successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Couldn't update",
+        text: "Something went wrong!",
+        footer: ''
+      });
+    }
     console.log(upEv)
     // updateFunction(createdEvent, id)
     console.log(createdEvent);
@@ -101,9 +120,9 @@ const EditEvent = ({ params }) => {
               required
               id="eventCreator"
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
-              value={eventCreator}
+              defaultValue={eventCreator}
               // defaultValue={'user email'} //todo
-              onChange={(e) => setEventCreator(e.target.value)}
+              
             />
           </div>
 
@@ -239,7 +258,7 @@ const EditEvent = ({ params }) => {
             <select
               id="eventCategory"
               required
-              className="mt-1 p-2 w-full border bg-transparent text-black rounded-md"
+              className="mt-1 p-2 w-full border bg-black text-white rounded-md"
               value={eventCategory}
               onChange={handleCategoryChange}
             >

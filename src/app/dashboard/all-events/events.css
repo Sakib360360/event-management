@@ -1,0 +1,118 @@
+.event-container {
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.search-box,
+.drop-down {
+    border: 2px solid rgba(var(--secondary-color), 0.5);
+    outline: none;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box>input {
+    background-color: transparent;
+    outline: none;
+}
+
+.drop-down {
+    color: rgb(var(--secondary-color));
+    background-color: transparent;
+}
+
+option {
+    background-color: rgba(var(--primary-color), 0.8);
+    border-radius: 0.3em;
+}
+
+thead tr {
+    color: rgba(var(--secondary-color), 0.7)
+}
+
+.id {
+    color: rgb(var(--accent-color));
+}
+
+.table {
+    overflow-x: auto;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0 1.5em;
+    flex-wrap: wrap;
+}
+
+.page {
+    margin: 0 0.3em;
+    padding: 5px 10px;
+    background-color: rgba(var(--secondary-color), 0.3);
+    color: rgb(var(--secondary-color));
+    cursor: pointer;
+    border-radius: 0.3em;
+}
+
+.page.active {
+    background-color: rgba(var(--accent-color));
+    color: white;
+}
+
+.prev,
+.next {
+    margin: 0 0.3em;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 0.3em;
+    background-color: rgba(var(--secondary-color), 0.5);
+    color: rgb(var(--secondary-color));
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+
+    50%,
+    100% {
+        top: 24px;
+        height: 32px;
+    }
+}

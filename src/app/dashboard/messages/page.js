@@ -1,23 +1,14 @@
 import Message from "@/Components/Message/Message";
 import getMessages from "@/utils/getMessages";
-import Link from "next/link";
 
 const MessagesPage = async () => {
-    const messages = await getMessages()
-    console.log(messages)
-    const message = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    let messages = await getMessages();
 
     return (
         <div className="py-1 min-h-screen">
-            <Link href={"/dashboard/messages/1"}>
-                <Message user={"user Name"} message={message}></Message>
-            </Link>
-            <Link href={"/dashboard/messages/2"}>
-                <Message user={"user Name"} message={message}></Message>
-            </Link>
-            <Link href={"/dashboard/messages/3"}>
-                <Message user={"user Name"} message={message}></Message>
-            </Link>
+            {
+                messages.map((msg) => <Message key={msg._id} message={msg}></Message>)
+            }
         </div>
     );
 };

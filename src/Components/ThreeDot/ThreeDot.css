@@ -1,0 +1,43 @@
+.three-dot {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.three-dot:hover {
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.dots {
+    position: relative;
+    z-index: 10;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-group {
+    position: absolute;
+    background-color: rgb(var(--accent-color));
+    min-width: 11em;
+    height: auto;
+    top: -0.5em;
+    left: -9em;
+}
+
+.msg-btn {
+    margin: 0.2em 0;
+    padding: 0.5em 2em;
+    width: 100%;
+}
+
+.msg-btn:hover {
+    background-color: rgba(var(--primary-color), 0.2);
+}
+
+.d-none {
+    display: none;
+}

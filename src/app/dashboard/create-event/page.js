@@ -1,11 +1,14 @@
 // Ensure that you're importing from 'react'
 "use client";
+import AuthContext from '@/context/AuthContext';
 import saveEvent from '@/utils/saveEvent';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const CreateEventForm = () => {
+    const { user } = useContext(AuthContext)
     const [eventName, setEventName] = useState('');
-    const [eventCreator, setEventCreator] = useState('');
+    const eventCreator = user?.email;
     const [eventDate, setEventDate] = useState('');
     const [eventStatus, setEventStatus] = useState('pending');
     const [ticketAvailable, setTicketAvailable] = useState(0);
@@ -19,7 +22,6 @@ const CreateEventForm = () => {
 
     const resetForm = () => {
         setEventName('');
-        setEventCreator('');
         setEventDate('');
         setEventStatus('pending');
         setTicketAvailable(0);
@@ -57,8 +59,25 @@ const CreateEventForm = () => {
         });
 
         const event = await saveEvent(createdEvent)
+        console.log(event)
+        if (event.insertedId) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Created successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Couldn't create",
+                text: "Something went wrong!",
+                footer: ''
+            });
+        }
         console.log(e.target);
-        resetForm();
+        // resetForm(); todo
     };
 
     return (
@@ -83,6 +102,7 @@ const CreateEventForm = () => {
                     />
                 </div>
                 {/* Event created by */}
+                {/* Event created by */}
                 <div className="mb-4">
                     <label htmlFor="eventCreator" className="block text-sm font-medium text-white">
                         Event Creator
@@ -92,9 +112,9 @@ const CreateEventForm = () => {
                         required
                         id="eventCreator"
                         className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
-                        value={eventCreator}
-                        // defaultValue={'user email'} //todo
-                        onChange={(e) => setEventCreator(e.target.value)}
+                        defaultValue={eventCreator}
+                    // defaultValue={'user email'} //todo
+
                     />
                 </div>
 
@@ -230,7 +250,7 @@ const CreateEventForm = () => {
                     <select
                         id="eventCategory"
                         required
-                        className="mt-1 p-2 w-full border bg-transparent text-black rounded-md"
+                        className="mt-1 p-2 w-full border bg-black text-white rounded-md"
                         value={eventCategory}
                         onChange={handleCategoryChange}
                     >
