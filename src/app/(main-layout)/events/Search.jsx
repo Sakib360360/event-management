@@ -1,11 +1,12 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
-import { useRouter } from "next/navigation";
+
 import { useContext, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
+import Link from "next/link";
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
@@ -13,7 +14,7 @@ const Search = ({ events }) => {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
-    const router = useRouter();
+  
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
@@ -75,6 +76,18 @@ const Search = ({ events }) => {
             (a, b) => new Date(b.eventDate) - new Date(a.eventDate)
         );
     }
+
+
+    const handleBuyClick = () => {
+    /*     if (!user) {
+         
+          router.push('/login'); 
+        } else {
+          
+          router.push('/dashboard/payments');
+        } */
+        console.log('yes')
+      };
 
     return (
         <div>
@@ -156,9 +169,11 @@ const Search = ({ events }) => {
                                 Details
                             </button>
                             <div className="flex">
-                                <button onClick={() => router.push('/dashboard/payments')} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
+                              <Link href={`/dashboard/payments/${event._id}`}>
+                              <button onClick={() => handleBuyClick(event)} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
                                     Buy
                                 </button>
+                              </Link>
                                 <div className="">
                                     <button
                                         className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
