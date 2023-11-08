@@ -121,7 +121,6 @@ const EditEvent = ({ params }) => {
               id="eventCreator"
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               defaultValue={eventCreator}
-              value={eventCreator}
               // defaultValue={'user email'} //todo
               
             />
