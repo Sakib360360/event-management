@@ -40,7 +40,7 @@ const AllEvents = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/all-events/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
+      `https://server-event-management-lyml1m723-sakib360360.vercel.app/all-events/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
     )
       .then((res) => res.json())
       .then((data) => {
