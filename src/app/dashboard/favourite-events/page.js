@@ -1,14 +1,15 @@
-"use client"
+'use client'  // we cannot async await from 2 client component getFavorite have to be server components
 import getEvents from '@/utils/getEvents';
 <<<<<<< HEAD
 
 =======
+//import getFavorite from '@/utils/getFavorite';
 import React from 'react';
 import {RiDeleteBin6Line} from 'react-icons/ri'
 >>>>>>> a8f96948e90d5dae7cdfd454bd74430648755417
 const FavouriteEvents = async() => {
-    const getMyAllEvents = await getEvents()
-    console.log(getMyAllEvents,"here")
+    const favoriteEvents = await getEvents()  //get favorite will be add later after fix
+    console.log(favoriteEvents,"here")
     console.log("jlkhl")
     return (
         <div className="flex justify-center items-center h-screen bg-white text-black">
@@ -25,7 +26,7 @@ const FavouriteEvents = async() => {
             </tr>
           </thead>
           <tbody>
-          {getMyAllEvents.map((event) => (
+          {favoriteEvents.map((event) => (
               <tr key={event.id}>
                 <td className="">{event.eventName}</td>
                 <td className="">{event.ticketPrice}</td>
