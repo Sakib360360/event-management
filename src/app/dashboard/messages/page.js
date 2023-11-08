@@ -2,7 +2,6 @@ import Message from "@/Components/Message/Message";
 import getMessages from "@/utils/getMessages";
 
 const MessagesPage = async () => {
-    // get all message from database
     let messages = await getMessages();
 
     return (
