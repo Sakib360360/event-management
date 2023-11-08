@@ -2,19 +2,9 @@ import Link from 'next/link';
 /* import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti'; */
 
-<<<<<<< HEAD
 const SideBar = () => {
     const isAdmin = true;
     const isOrganizer = false;
-=======
-
-import { MdFavorite, MdPayments } from 'react-icons/md';
-import { TiPointOfInterestOutline } from 'react-icons/ti';
-
- const SideBar = () => {
-    const isAdmin = false;
-    const isOrganizer = true;
->>>>>>> a8f96948e90d5dae7cdfd454bd74430648755417
 
     const navItems = <>
 
