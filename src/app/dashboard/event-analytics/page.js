@@ -12,7 +12,7 @@ const AnalyticsPage = () => {
       <select
         value={selectedEvent}
         onChange={(e) => setSelectedEvent(e.target.value)}
-        className="p-2 rounded"
+        className="p-2 rounded "
       >
         {Object.keys(events).map((eventId) => (
           <option key={eventId} value={eventId}>

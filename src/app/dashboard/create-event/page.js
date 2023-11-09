@@ -212,7 +212,7 @@ const CreateEventForm = () => {
                     Image URL
                 </label>
                 <input
-                    type="text"
+                    type="file"
                     id="imageUrl"
                     required
                     className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"

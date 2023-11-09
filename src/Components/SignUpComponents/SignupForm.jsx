@@ -6,7 +6,7 @@ import saveUser from "@/utils/saveUser";
 /* import createJWT from "@/utils/createJWT"; */
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { startTransition } from "react";
+import { startTransition, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
@@ -49,18 +49,38 @@ const SignupForm = () => {
     }
   }; */
 
-  const onSubmit = async (data, event) => {
+  const onSubmit = async (data) => {
     const { name, email, password, photoUrl } = data;
+
+
+                          // ********sadia********//
+    const img=data.photoUrl[0];//extract image
+
+    const formData = new FormData(); //create instance
+
+    formData.append('file', img);//append the img
+    formData.append('upload_preset', 'lunar-brigade')//bind upload preset
+    console.log(formData);
+
+    const uploadImg=await fetch(`https://api.cloudinary.com/v1_1/dmaabideu/image/upload`,{
+      method:'POST',
+      body:formData,
+    })
+    const uploadedImgData= await uploadImg.json()
+
+                          // **************//
+
+                          
     const toastId = toast.loading("Loading...");
     try {
-      await createUser(email, password);
+      await createUser(email, password,photoUrl);
       console.log(name, email, password, photoUrl);
       /*    await createJWT({ email }); */
       await profileUpdate(name, photoUrl);
       const createdUser = {
         name: name,
         email: email,
-
+        photoUrl:uploadedImgData.secure_url,
         /* role: "", */
       };
       console.log(createdUser);
@@ -143,7 +163,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-      <div className="form-control">
+      {/* <div className="form-control">
         <label htmlFor="photoUrl" className="label text-white label-text">
           Photo
         </label>
@@ -160,18 +180,19 @@ const SignupForm = () => {
             Please enter your photo URL.
           </span>
         )}
-      </div>
-      {/*      <div className="form-control">
+      </div> */}
+           <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
         </label>
         <input
           type="file"
-          id="photo"
-          onChange={uploadImage}
+          id="photoUrl"
+          {...register("photoUrl")}
+          // onChange={uploadImage}
           className="file-input file-input-bordered text-white bg-transparent border-b border-white  w-full"
         />
-      </div> */}
+      </div>
       <div className="form-control mt-6">
         <button className="btn bg-custom" type="submit">
           Sign Up
