@@ -1,36 +1,61 @@
+"use client"
 /* eslint-disable @next/next/no-img-element */
 // components/MyEventsDashboard.js
+import React, { useEffect, useState } from 'react'; // Import React and useEffect, useState
 import getEvents from '@/utils/getEvents';
 import DeleteButton from '../../../Components/delete-button/DeleteButton';
-// import EditButton from '../../../Components/EditButton';
 import Link from 'next/link';
-const MyEventsDashboard = async () => {
-    
-    const events = await getEvents()
+import useAuth from '@/hooks/useAuth';
+import AuthContext from '@/context/AuthContext';
+const MyEventsDashboard = () => {
+    const {user} = useAuth(AuthContext)
+    const [events, setEvents] = useState([]); // Use state to manage the events
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const eventsData = await getEvents();
+                setEvents(eventsData);
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        };
+
+        fetchData(); // Call the async function
+    }, []); 
+    // console.log(events,user)
+    const myEvents = events.filter(event=>event?.eventCreator===user?.email)
+    console.log(myEvents)
     return (
-        <div className="max-w-3xl mx-auto  p-8 bg-transparent rounded-md shadow-md">
+        <div className="max-w-3xl mx-auto h-screen p-8 bg-transparent rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
 
             {/* List of Events */}
-            {events.map((event) => (
-                <div key={event.id} className="mb-8 p-4 bg-transparent border border-white rounded-md">
-                    <img
-                        src={event.imageUrl}
-                        alt={event.eventName}
-                        className="mb-4 w-full h-48 object-cover rounded-md"
-                    />
-                    <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
-                    <p className="text-gray-600 mb-2">{event.eventDate}</p>
-                    <p className="text-gray-600 mb-2">{event.eventLocation}</p>
-                    <p className="text-gray-600 mb-4">{event.eventDescription}</p>
-                    <div className="flex justify-between items-center">
-                        <DeleteButton id={event._id}></DeleteButton>
-                        {/* <EditButton event={event}></EditButton> */}
-                        <Link className='btn btn-primary' href={`/dashboard/my-event/${event._id}`}>Edit</Link>
+            {
+                myEvents.length>0?<>{myEvents?.map((event) => (
+                    <div key={event._id} className="mb-8 p-4 bg-transparent border border-white rounded-md">
+                        <img
+                            src={event.imageUrl}
+                            alt={event.eventName}
+                            className="mb-4 w-full h-48 object-cover rounded-md"
+                        />
+                        <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
+                        <p className="text-gray-600 mb-2">{event.eventDate}</p>
+                        <p className="text-gray-600 mb-2">{event.eventLocation}</p>
+                        <p className="text-gray-600 mb-4">{event.eventDescription}</p>
+                        <div className="flex justify-between items-center">
+                            <DeleteButton id={event._id}></DeleteButton>
+                            {/* <EditButton event={event}></EditButton> */}
+                            <Link className='btn btn-primary' href={`/dashboard/my-event/${event._id}`}>Edit</Link>
+                        </div>
+    
                     </div>
-
+                ))}</>:<>
+                <div>
+                    <h1 className=''>You didn't have any event yet. Please create an event...</h1>
                 </div>
-            ))}
+                </>
+            }
         </div>
     );
 };
