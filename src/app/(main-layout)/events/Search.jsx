@@ -1,14 +1,12 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
-
 import { useContext, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// import { useRouter } from "next/navigation";
 
 
 const Search = ({ events }) => {
@@ -17,8 +15,8 @@ const Search = ({ events }) => {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
-    const router = useRouter;
-    const approvedEvents = events.filter(event=>event.eventStatus==="approved")
+    const router = useRouter();
+    const approvedEvents = events.filter(event => event.eventStatus === "approved")
     // console.log(approvedEvents)
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
