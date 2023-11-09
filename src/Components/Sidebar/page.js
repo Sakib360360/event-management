@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { TiPointOfInterestOutline } from 'react-icons/ti'; 
 
 const SideBar = () => {
-    const isAdmin = false;
-    const isOrganizer = true;
+    const isAdmin = true;
+    const isOrganizer = false;
 
     const navItems = <>
 

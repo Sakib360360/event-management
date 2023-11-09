@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const singleEvent = () => {
@@ -6,7 +6,7 @@ const singleEvent = () => {
   const { _id } = router.query;
   console.log(_id);
   const getSingleEvent = async () => {
-    const res = await fetch(`http://localhost:5000/events/${_id}`);
+    const res = await fetch(`https://server-event-management-iota.vercel.app/events/${_id}`);
     const data =await res.json();
 };
     return (

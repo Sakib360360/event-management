@@ -1,6 +1,6 @@
 
 const saveMessage = async (body) => {
-    const res = await fetch("https://server-event-management-lyml1m723-sakib360360.vercel.app/messages", {
+    const res = await fetch("https://server-event-management-iota.vercel.app/messages", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

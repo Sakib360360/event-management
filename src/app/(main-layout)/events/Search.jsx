@@ -16,30 +16,33 @@ const Search = ({ events }) => {
   const [likedEvents, setLikedEvents] = useState([]);
   const { user } = useContext(AuthContext);
   const router = useRouter();
-  const handleIconClick = (eventId) => {
-    const isEventLiked = likedEvents.includes(eventId);
+  console.log(events)
+  const approvedEvents = events.filter(event=>event.eventStatus==="approved")
+  console.log(approvedEvents)
+  // const handleIconClick = (eventId) => {
+  //   const isEventLiked = likedEvents.includes(eventId);
 
-    if (isEventLiked) {
-      // Remove event ID from liked events
-      setLikedEvents((prevLikedEvents) =>
-        prevLikedEvents.filter((id) => id !== eventId)
-      );
-    } else {
-      // Add event ID to liked events
-      setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
-    }
+  //   if (isEventLiked) {
+  //     // Remove event ID from liked events
+  //     setLikedEvents((prevLikedEvents) =>
+  //       prevLikedEvents.filter((id) => id !== eventId)
+  //     );
+  //   } else {
+  //     // Add event ID to liked events
+  //     setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
+  //   }
 
-    addBackend();
-  };
+  //   addBackend();
+  // };
   // make object for backend
-  const addBackend = async () => {
-    const userLikedEvents = {
-      email: user?.email,
-      likedEvents,
-    };
-    console.log(userLikedEvents);
-    const saveFavoriteEvents = await saveFavorite(userLikedEvents);
-  };
+  // const addBackend = async () => {
+  //   const userLikedEvents = {
+  //     email: user?.email,
+  //     likedEvents,
+  //   };
+  //   console.log(userLikedEvents);
+  //   const saveFavoriteEvents = await saveFavorite(userLikedEvents);
+  // };
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -58,7 +61,7 @@ const Search = ({ events }) => {
   };
 
   // Filter events based on search and selected filter
-  const filteredEvents = events.filter((event) => {
+  const filteredEvents = approvedEvents.filter((event) => {
     const eventNameMatch = event.eventName
       .toLowerCase()
       .includes(search.toLowerCase());

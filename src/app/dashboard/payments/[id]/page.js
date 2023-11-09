@@ -6,7 +6,7 @@ const page = ({ params }) => {
   const [singleEvents, setSingleEvents] = useState({});
   const { id } = params;
   useEffect(() => {
-    fetch(`http://localhost:5000/events/${id}`)
+    fetch(`https://server-event-management-iota.vercel.app/events/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleEvents(data));
   }, []);
