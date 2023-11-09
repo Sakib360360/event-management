@@ -33,6 +33,41 @@ const CreateEventForm = () => {
         setEventCategory('');
     };
 
+                //*********sadia********/
+                
+    const handleImageUpload = async (e) => {
+        const fileInput = e.target;
+        const file = fileInput.files[0];
+    
+        if (file) {
+            try {
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append('upload_preset', 'lunar-brigade')
+                console.log(formData);
+    
+                const response = await fetch(`https://api.cloudinary.com/v1_1/dmaabideu/image/upload`, {
+                    method: "POST",
+                    body: formData,
+                });
+    
+                const data = await response.json();
+                if (data.secure_url) {
+                    console.log(data.secure_url)
+                    setImageUrl(data.secure_url);
+                } else {
+                    console.error("Error uploading image to Cloudinary");
+                }
+
+
+            } catch (error) {
+                console.error("Error uploading image:", error);
+            }
+        }
+    };
+
+    //**************************/
+
     const handleCategoryChange = (e) => {
         setEventCategory(e.target.value);
     };
@@ -227,20 +262,22 @@ const CreateEventForm = () => {
                     />
                 </div>
 
-                {/* Image URL */}
-                <div className="mb-4">
-                    <label htmlFor="imageUrl" className="block text-sm font-medium text-white">
-                        Image URL
-                    </label>
-                    <input
-                        type="text"
-                        id="imageUrl"
-                        required
-                        className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                    />
-                </div>
+            {/* Image URL */}
+            <div className="mb-4">
+                <label htmlFor="imageUrl" className="block text-sm font-medium text-white">
+                    Image URL
+                </label>
+                <input
+                    type="file"
+                    id="imageUrl"
+                    required
+                    className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
+                    // value={imageUrl}
+                    onChange={handleImageUpload}
+                        // setImageUrl(e.target.value)
+                      
+                />
+            </div>
 
                 {/* Event Category */}
                 <div className="mb-4">

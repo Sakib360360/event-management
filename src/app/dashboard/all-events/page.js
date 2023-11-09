@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdDeleteSweep, MdGppGood } from "react-icons/md";
@@ -9,10 +10,12 @@ import "./events.css";
 
 const AllEvents = () => {
   const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [selectedPageSize, setSelectedPageSize] = useState(10);
+  const router = useRouter();
 
   const getPageRange = () => {
     const maxPagesToShow = 7; // Number of page numbers to show at once
@@ -40,7 +43,7 @@ const AllEvents = () => {
 
   useEffect(() => {
     fetch(
-      `https://server-event-management-lyml1m723-sakib360360.vercel.app/all-events/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
+      `https://server-event-management-iota.vercel.app/all-events/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -71,11 +74,49 @@ const AllEvents = () => {
     }
   };
 
+  const handleApproved = (id)=>{
+    console.log(id)
+    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=approved`, {
+      method: "PATCH"
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.modifiedCount > 0){
+        router.refresh();
+      }
+    })
+    .catch(err => console.log(err));
+  }
+
+  const handleDenied = (id)=>{
+    console.log(id)
+    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=denied`, {
+      method: "PATCH"
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.modifiedCount > 0){
+        router.refresh();
+      }
+      console.log(data);
+    })
+    .catch(err => console.log(err));
+  }
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  }
+
+  // Filter data based on search query
+  const filteredData = data.filter(item =>
+    item.eventName?.toLowerCase().includes(searchQuery)
+  );
+
   return (
     <div className="min-h-screen px-4 md:px-12 py-6 event-container">
       <div className="filter-container flex flex-col md:flex-row md:justify-between md:items-center">
         <div className="search-box sm:mb-4 px-4 py-2 rounded-xl">
-          <input type="text" placeholder="Search" className="mr-3 h-10" />
+          <input type="search" placeholder="Search" className="mr-3 h-10" onChange={handleSearch} />
           <HiOutlineSearch className="text-2xl"></HiOutlineSearch>
         </div>
 
@@ -84,7 +125,7 @@ const AllEvents = () => {
           <select
             className="drop-down rounded-xl px-4 py-2"
             name="filter"
-            onChange={(e) => handleFilterChange(e)}
+            onChange={handleFilterChange}
           >
             <option>all</option>
             <option>pending</option>
@@ -121,13 +162,15 @@ const AllEvents = () => {
           </thead>
 
           <tbody>
-            {data.map((dt) => (
+            {(searchQuery ? filteredData : data).map((dt) => (
               <tr key={dt._id}>
                 <td className="id">{dt._id}</td>
                 <td>{dt.eventName}</td>
                 <td>{dt.eventStatus}</td>
                 <td className="flex flex-wrap justify-center items-center">
                   <button
+                    onClick={()=> handleApproved(dt._id)}
+                    disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
                     className="p-1 rounded-md text-xl bg-green-500 text-black"
                     title="Approve"
                   >
@@ -135,6 +178,8 @@ const AllEvents = () => {
                   </button>
 
                   <button
+                    onClick={()=> handleDenied(dt._id)}
+                    disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
                     className="p-1 rounded-md mx-2 text-xl bg-red-500 text-black"
                     title="Deny"
                   >

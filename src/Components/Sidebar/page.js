@@ -1,10 +1,10 @@
 import Link from 'next/link';
- import { MdFavorite, MdPayments } from 'react-icons/md';
+import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti'; 
 
 const SideBar = () => {
     const isAdmin = false;
-    const isOrganizer = false;
+    const isOrganizer = true;
 
     const navItems = <>
 
@@ -12,6 +12,7 @@ const SideBar = () => {
             isOrganizer && <>
                 <li><Link href={'/dashboard/create-event'}>Create Event</Link></li>
                 <li><Link href={'/dashboard/my-event'}>My Events</Link></li>
+                <li><Link href={'/dashboard/event-analytics'}>Event Analytics</Link></li>
 
             </>
         }
