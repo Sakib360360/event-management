@@ -24,31 +24,6 @@ const SignupForm = () => {
   const from = search.get("redirectUrl") || "/";
   const { replace, refresh } = useRouter();
 
-  /*  const uploadImage = async (event) => {
-    const formData = new FormData();
-    if (!event.target.files[0]) return;
-    formData.append("image", event.target.files[0]);
-    const toastId = toast.loading("Image uploading...");
-    try {
-      const res = await fetch(
-        `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      if (!res.ok) throw new Error("Failed to upload image");
-
-      const data = await res.json();
-      toast.dismiss(toastId);
-      toast.success("Image uploaded successfully!");
-      setValue("photo", data.data.url);
-    } catch (error) {
-      toast.error("Image not uploaded!");
-      toast.dismiss(toastId);
-    }
-  }; */
-
   const onSubmit = async (data) => {
     const { name, email, password, photoUrl } = data;
 
@@ -67,16 +42,17 @@ const SignupForm = () => {
       body:formData,
     })
     const uploadedImgData= await uploadImg.json()
+    console.log(uploadedImgData)
 
                           // **************//
 
                           
     const toastId = toast.loading("Loading...");
     try {
-      await createUser(email, password,photoUrl);
-      console.log(name, email, password, photoUrl);
+      await createUser(email, password,uploadedImgData.secure_url);
+      console.log(name, email, password, uploadedImgData.secure_url);
       /*    await createJWT({ email }); */
-      await profileUpdate(name, photoUrl);
+      await profileUpdate(name, uploadedImgData.secure_url);
       const createdUser = {
         name: name,
         email: email,

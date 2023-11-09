@@ -7,7 +7,7 @@ import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
 import Link from "next/link";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Search = ({ events }) => {
   const [search, setSearch] = useState("");
