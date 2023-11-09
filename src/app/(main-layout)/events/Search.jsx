@@ -14,7 +14,9 @@ const Search = ({ events }) => {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
-  
+    
+    const approvedEvents = events.filter(event=>event.eventStatus==="approved")
+    // console.log(approvedEvents)
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
 
@@ -29,20 +31,16 @@ const Search = ({ events }) => {
         }
 
         addBackend();
-
-
     };
     // make object for backend
     const addBackend = async () => {
         const userLikedEvents = {
-            "email": user?.email,
-            likedEvents
-        }
-        console.log(userLikedEvents)
-        const saveFavoriteEvents = await saveFavorite(userLikedEvents)
-    }
-
-
+            email: user?.email,
+            likedEvents,
+        };
+        console.log(userLikedEvents);
+        const saveFavoriteEvents = await saveFavorite(userLikedEvents);
+    };
 
     const handleSelectChange = (event) => {
         const selectedValue = event.target.value;
@@ -60,10 +58,8 @@ const Search = ({ events }) => {
         setSelectedEventId(eventId === selectedEventId ? null : eventId);
     };
 
-
-
     // Filter events based on search and selected filter
-    const filteredEvents = events.filter((event) => {
+    const filteredEvents = approvedEvents.filter((event) => {
         const eventNameMatch = event.eventName
             .toLowerCase()
             .includes(search.toLowerCase());
@@ -79,15 +75,15 @@ const Search = ({ events }) => {
 
 
     const handleBuyClick = () => {
-    /*     if (!user) {
-         
-          router.push('/login'); 
-        } else {
-          
-          router.push('/dashboard/payments');
-        } */
+        /*     if (!user) {
+             
+              router.push('/login'); 
+            } else {
+              
+              router.push('/dashboard/payments');
+            } */
         console.log('yes')
-      };
+    };
 
     return (
         <div>
@@ -155,11 +151,11 @@ const Search = ({ events }) => {
                         key={event._id}
                         className="mb-8 p-4 bg-transparent border border-white rounded-md"
                     >
-                      <img
-              src={event.imageUrl}
-              alt={event.eventName}
-              className="mb-4 w-full h-48 object-cover rounded-md"
-            />
+                        <img
+                            src={event.imageUrl}
+                            alt={event.eventName}
+                            className="mb-4 w-full h-48 object-cover rounded-md"
+                        />
                         <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
                         <p className="text-gray-600 mb-2">{event.eventDate}</p>
                         <p className="text-gray-600 mb-2">{event.eventLocation}</p>

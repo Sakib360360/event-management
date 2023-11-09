@@ -43,7 +43,7 @@ const AllEvents = () => {
 
   useEffect(() => {
     fetch(
-      `https://server-event-management-lyml1m723-sakib360360.vercel.app/all-events/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
+      `https://server-event-management-iota.vercel.app/all-events/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -76,7 +76,7 @@ const AllEvents = () => {
 
   const handleApproved = (id)=>{
     console.log(id)
-    fetch(`http://localhost:5000/update-event/${id}?status=approved`, {
+    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=approved`, {
       method: "PATCH"
     })
     .then(res => res.json())
@@ -90,7 +90,7 @@ const AllEvents = () => {
 
   const handleDenied = (id)=>{
     console.log(id)
-    fetch(`http://localhost:5000/update-event/${id}?status=denied`, {
+    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=denied`, {
       method: "PATCH"
     })
     .then(res => res.json())
