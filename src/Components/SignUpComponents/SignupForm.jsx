@@ -51,7 +51,7 @@ const SignupForm = () => {
 
   const onSubmit = async (data) => {
     const { name, email, password, photoUrl } = data;
-
+console.log(data)
 
                           // ********sadia********//
     const img=data.photoUrl[0];//extract image

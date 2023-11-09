@@ -7,7 +7,9 @@ import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
 import Link from "next/link";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+
 
 const Search = ({ events }) => {
   const [search, setSearch] = useState("");
@@ -15,7 +17,7 @@ const Search = ({ events }) => {
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [likedEvents, setLikedEvents] = useState([]);
   const { user } = useContext(AuthContext);
-  const router = useRouter();
+  const router = useRouter;
   const handleIconClick = (eventId) => {
     const isEventLiked = likedEvents.includes(eventId);
 
@@ -161,7 +163,15 @@ const Search = ({ events }) => {
             <p className="text-gray-600 mb-4">{event.eventDescription}</p>
             <div className="flex justify-between items-center">
               <Link
-              href={`/events/${event._id}`}
+              href={{
+                pathname: '/events/[id]',
+                query: {
+                  eventId: event?._id,
+                  // Add other data you want to pass
+                },
+              }}
+              as={`/events/${event._id}`}
+              //href={`/events/${event._id}`}
               ><button 
                 type="button"
                 // onClick={() =>

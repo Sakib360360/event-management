@@ -1,14 +1,30 @@
-import { useRouter } from 'next/router';
+"use client"
 import React from 'react';
+// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { data } from 'autoprefixer';
 
-const singleEvent = () => {
-  const router = useRouter();
-  const { _id } = router.query;
-  console.log(_id);
-  const getSingleEvent = async () => {
-    const res = await fetch(`http://localhost:5000/events/${_id}`);
-    const data =await res.json();
-};
+const singleEvent = ({params}) => {
+  // const router = useRouter();
+  // const { id } = router.query;
+  const id=params.id;
+  console.log(id);
+   useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/events/${id}`);
+        const data = await res.json();
+        setEventData(data);
+      } catch (error) {
+        console.error('Error fetching event data:', error);
+      }
+    };
+
+    if (id) {
+      fetchEvent();
+    }
+  }, [id]);
     return (
       <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
       <div className="flex justify-between">
@@ -26,7 +42,7 @@ const singleEvent = () => {
         </div>
       </div>
       <div className="mt-4">
-        <img src={image} alt={name} className="w-full h-64 object-cover rounded-lg" />
+        <img src={data.imageUrl} alt='event' className="w-full h-64 object-cover rounded-lg" />
       </div>
       <div className="mt-4">
         <p className="text-gray-400">Date</p>
