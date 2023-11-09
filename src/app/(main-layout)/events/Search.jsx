@@ -6,8 +6,6 @@ import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-
 
 const Search = ({ events }) => {
     const [search, setSearch] = useState("");
@@ -15,8 +13,8 @@ const Search = ({ events }) => {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
-    const router = useRouter();
-    const approvedEvents = events.filter(event => event.eventStatus === "approved")
+    
+    const approvedEvents = events.filter(event=>event.eventStatus==="approved")
     // console.log(approvedEvents)
     const handleIconClick = (eventId) => {
         const isEventLiked = likedEvents.includes(eventId);
@@ -162,50 +160,21 @@ const Search = ({ events }) => {
                         <p className="text-gray-600 mb-2">{event.eventLocation}</p>
                         <p className="text-gray-600 mb-4">{event.eventDescription}</p>
                         <div className="flex justify-between items-center">
-                            <Link
-                                href={{
-                                    pathname: '/events/[id]',
-                                    query: {
-                                        eventId: event?._id,
-                                        // Add other data you want to pass
-                                    },
-                                }}
-                                as={`/events/${event._id}`}
-                            //href={`/events/${event._id}`}
-                            ><button
-                                type="button"
-                                // onClick={() =>
-                                //   router.push({
-                                //     pathname: `/events/${event._id}`,
-                                //     query: {
-                                //         // event:event
-                                //         // name:sadia
-                                //       title: event.eventName,
-                                //       description: event.eventDescription,
-                                //       // Add other data you want to pass
-                                //     },
-                                //   })
-                                // }
-                                className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
-                            >
-                                    Details
-                                </button></Link>
+                            <button className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500">
+                                Details
+                            </button>
                             <div className="flex">
-                                <button
-                                    onClick={() => router.push("/dashboard/payments")}
-                                    className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500"
-                                >
+                              <Link href={`/dashboard/payments/${event._id}`}>
+                              <button onClick={() => handleBuyClick(event)} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
                                     Buy
                                 </button>
+                              </Link>
                                 <div className="">
                                     <button
                                         className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
                                         onClick={() => handleShareClick(event._id)}
                                     >
-                                        Share{" "}
-                                        <span>
-                                            <FaShare />
-                                        </span>
+                                        Share <span><FaShare /></span>
                                     </button>
                                 </div>
 
@@ -234,7 +203,7 @@ const Search = ({ events }) => {
 
                                 {/* favoutite */}
                                 <div
-                                    className={`heart-icon-container text-3xl mt-2 ${likedEvents.includes(event._id) ? "liked" : ""
+                                    className={`heart-icon-container text-3xl mt-2 ${likedEvents.includes(event._id) ? 'liked' : ''
                                         }`}
                                     onClick={() => handleIconClick(event._id)}
                                 >
