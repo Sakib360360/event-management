@@ -227,20 +227,20 @@ const CreateEventForm = () => {
                     />
                 </div>
 
-                {/* Image URL */}
-                <div className="mb-4">
-                    <label htmlFor="imageUrl" className="block text-sm font-medium text-white">
-                        Image URL
-                    </label>
-                    <input
-                        type="text"
-                        id="imageUrl"
-                        required
-                        className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                    />
-                </div>
+            {/* Image URL */}
+            <div className="mb-4">
+                <label htmlFor="imageUrl" className="block text-sm font-medium text-white">
+                    Image URL
+                </label>
+                <input
+                    type="file"
+                    id="imageUrl"
+                    required
+                    className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
+                />
+            </div>
 
                 {/* Event Category */}
                 <div className="mb-4">
