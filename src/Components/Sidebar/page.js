@@ -1,5 +1,5 @@
 import Link from 'next/link';
- import { MdFavorite, MdPayments } from 'react-icons/md';
+import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti'; 
 
 const SideBar = () => {
