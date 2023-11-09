@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
@@ -14,6 +14,8 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const pathname = usePathname();
+  
+  console.log(user)
 
   // console.log(user);
   const links = (
