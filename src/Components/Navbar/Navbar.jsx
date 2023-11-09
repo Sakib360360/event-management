@@ -14,6 +14,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const pathname = usePathname();
+
   // console.log(user);
   const links = (
     <>

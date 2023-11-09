@@ -1,11 +1,12 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
-import { useRouter } from "next/navigation";
+
 import { useContext, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
+import Link from "next/link";
 import Link from "next/link";
 
 const Search = ({ events }) => {
@@ -71,18 +72,30 @@ const Search = ({ events }) => {
     );
   }
 
-  return (
-    <div>
-      <div className="flex justify-center gap-4 md:gap-40">
-        <div className="relative flex items-center">
-          <div className="relative text-white">
-            <input
-              type="text"
-              placeholder="Search event..."
-              value={search}
-              onChange={handleSearchChange}
-              className="bg-transparent border-2 border-white rounded-full py-2 px-4 pl-10 focus:outline-none focus:border-blue-500 transition-all duration-300"
-            />
+
+    const handleBuyClick = () => {
+    /*     if (!user) {
+         
+          router.push('/login'); 
+        } else {
+          
+          router.push('/dashboard/payments');
+        } */
+        console.log('yes')
+      };
+
+    return (
+        <div>
+            <div className="flex justify-center gap-4 md:gap-40">
+                <div className="relative flex items-center">
+                    <div className="relative text-white">
+                        <input
+                            type="text"
+                            placeholder="Search event..."
+                            value={search}
+                            onChange={handleSearchChange}
+                            className="bg-transparent border-2 border-white rounded-full py-2 px-4 pl-10 focus:outline-none focus:border-blue-500 transition-all duration-300"
+                        />
 
             <svg
               xmlns="http://www.w3.org/2000/svg"

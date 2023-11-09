@@ -1,6 +1,6 @@
 
 const saveFavorite = async (body) => {
-    const res = await fetch("https://server-event-management-k3cs1bbdd-sakib360360.vercel.app/addToLiked", {
+    const res = await fetch("https://server-event-management-lyml1m723-sakib360360.vercel.app/addToLiked", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
