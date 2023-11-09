@@ -23,7 +23,7 @@ const FavouriteEvents = async() => {
           </thead>
           <tbody>
           {favoriteEvents.map((event) => (
-              <tr key={event.id}>
+              <tr key={event._id}>
                 <td className="">{event.eventName}</td>
                 <td className="">{event.ticketPrice}</td>
                 <td className="">{event.eventTime}</td>

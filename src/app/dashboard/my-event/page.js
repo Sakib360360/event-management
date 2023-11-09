@@ -5,6 +5,7 @@ import DeleteButton from '../../../Components/delete-button/DeleteButton';
 // import EditButton from '../../../Components/EditButton';
 import Link from 'next/link';
 const MyEventsDashboard = async () => {
+    
     const events = await getEvents()
     return (
         <div className="max-w-3xl mx-auto  p-8 bg-transparent rounded-md shadow-md">
@@ -23,7 +24,7 @@ const MyEventsDashboard = async () => {
                     <p className="text-gray-600 mb-2">{event.eventLocation}</p>
                     <p className="text-gray-600 mb-4">{event.eventDescription}</p>
                     <div className="flex justify-between items-center">
-                        <DeleteButton></DeleteButton>
+                        <DeleteButton id={event._id}></DeleteButton>
                         {/* <EditButton event={event}></EditButton> */}
                         <Link className='btn btn-primary' href={`/dashboard/my-event/${event._id}`}>Edit</Link>
                     </div>
