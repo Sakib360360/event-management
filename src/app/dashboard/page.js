@@ -19,11 +19,11 @@ const upcomingEvents = events.filter((event) => event.date >= currentDate);
 
   return (
     <div className="ml-12 mr-12 min-h-screen">
-      <div className='my-4'>
+      <div className='p-20'>
       <DashCard totalEvents={totalEvents}></DashCard>
       <DashCard totalParticipants={totalParticipants}></DashCard>
 
-<div className="flex flex-col md:flex-row gap-4">
+<div className="flex flex-col md:flex-row gap-4 mt-10">
   <div className='rounded w-full md:w-1/2 bg-stone-800'>
   <DashboardChart></DashboardChart>
   </div>
