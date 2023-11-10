@@ -25,11 +25,17 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const profileUpdate = async (updateUser = {}) => {
+/*   const profileUpdate = async (updateUser = {}) => {
     setLoading(true);
     await updateProfile(auth.currentUser, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
-  };
+  }; */
+  const profileUpdate = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+  }
 
   const googleLogin = () => {
     setLoading(true);
