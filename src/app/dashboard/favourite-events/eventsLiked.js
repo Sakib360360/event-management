@@ -1,17 +1,14 @@
-
-import getFavorite from '@/utils/getFavorite';
 import React from 'react';
 import FavouriteEvents from './page';
-import useAuth from '@/hooks/useAuth';
+import { useContext } from 'react';
 import AuthContext from '@/context/AuthContext';
 
 const eventsLiked = async() => {
-    const {user} = useAuth(AuthContext)
-    const liked = await getFavorite(user?.email)
-    console.log(liked)
+    const {user} = useContext(AuthContext)
+    console.log(user,"user form ev")
     return (
         <div>
-            <FavouriteEvents liked={liked}></FavouriteEvents>
+            <FavouriteEvents></FavouriteEvents>
         </div>
     );
 };
