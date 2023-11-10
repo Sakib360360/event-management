@@ -26,7 +26,7 @@ const SideBar = () => {
         {
             !isAdmin && !isOrganizer ? <>
                    
-                <li className='flex gap-2 items-center text-lg'> <TiPointOfInterestOutline></TiPointOfInterestOutline><Link href={'/dashboard/enrolled-events'}> Registered </Link></li>
+                <li className='flex gap-2 items-center text-lg'> <TiPointOfInterestOutline></TiPointOfInterestOutline><Link href={'/dashboard/registered-events'}> Registered </Link></li>
                 <li className='flex gap-2 items-center text-lg'><MdFavorite></MdFavorite> <Link href={'/dashboard/favourite-events'}>Favourite </Link></li>
                 <li className='flex gap-2 items-center text-lg'><MdPayments></MdPayments><Link href={'/dashboard/payments'}>Payments</Link></li>
 
