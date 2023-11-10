@@ -2,7 +2,8 @@ import Banner from "@/Components/Banner/Banner";
 import Categories from "@/Components/Categories/Categories";
 import ContactUs from "@/Components/ContactUs/ContactUs";
 import StartedSection from "@/Components/StartedSection/StartedSection";
-import Testimonial from "@/Components/Testimonial/Testimonial";
+// import Testimonial from "@/Components/Testimonial/Testimonial";
+import Testimonial2 from "@/Components/Testimonial/Testimonial2";
 
 export default function Home() {
   return (
@@ -14,7 +15,8 @@ export default function Home() {
       {/* <Thankful></Thankful> */}
       {/* <NewsLetter></NewsLetter> */}
       {/* <TicketSelse></TicketSelse> */}
-      <Testimonial></Testimonial>
+      {/* <Testimonial></Testimonial> */}
+      <Testimonial2></Testimonial2>
       <ContactUs></ContactUs>
     </main>
   )
