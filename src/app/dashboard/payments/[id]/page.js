@@ -1,13 +1,17 @@
 "use client";
+import useAuth from "@/hooks/useAuth";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useForm} from "react-hook-form";
 
 const page = ({ params }) => {
   const [singleEvents, setSingleEvents] = useState({});
+  const {user} = useAuth();
   const { id } = params;
+  
+  console.log(params);
   useEffect(() => {
-    fetch(`https://server-event-management-iota.vercel.app/events/${id}`)
+    fetch(`http://localhost:5000/events/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleEvents(data));
   }, []);
@@ -34,13 +38,13 @@ const page = ({ params }) => {
     .then((res) => res.json())
     .then((result) => {
       window.location.replace(result.url)
-      console.log(result);
+      //console.log(result);
     });
     
   };
   return (
     <>
-      <div className="flex justify-center items-center h-screen gap-20">
+      <div className="flex justify-center items-center min-h-screen gap-20">
         <div className="card w-96 bg-base-100 shadow-xl text-black ">
           <figure>
             <img src={imageUrl} alt={eventName} />
@@ -81,7 +85,7 @@ const page = ({ params }) => {
           name="email"
           {...register('email', { required: true})}
           className="input input-bordered input-primary w-full max-w-xs"
-          placeholder="john@example.com"
+          defaultValue={user?.email}
         />
       </div>
 
