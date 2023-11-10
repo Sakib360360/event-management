@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const UserButton = ({ data }) => {
   const handleAdmin = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/${id}?role=admin`, {
+    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=admin`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -28,7 +28,7 @@ const UserButton = ({ data }) => {
 
   const handleOrganizer = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/${id}?role=organizer`, {
+    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=organizer`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -48,7 +48,7 @@ const UserButton = ({ data }) => {
 
   const handleAttendee = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/${id}?role=attendee`, {
+    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=attendee`, {
       method: "PATCH",
     })
       .then((res) => res.json())

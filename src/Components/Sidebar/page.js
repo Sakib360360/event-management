@@ -1,10 +1,23 @@
+"use client"
+import AuthContext from '@/context/AuthContext';
 import Link from 'next/link';
+import { useContext, useEffect, useState } from 'react';
 import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti';
 
 const SideBar = () => {
-    const isAdmin = true;
-    const isOrganizer = false;
+    const { user } = useContext(AuthContext)
+    const [role,setRole] = useState('')
+    useEffect(() => {
+        fetch(`https://server-event-management-iota.vercel.app/users/role/${user?.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setRole(data.role)
+        })
+    }, [user])
+    console.log(role)
+    const isAdmin = role==="admin";
+    const isOrganizer = role==="organizer";
 
     const navItems = <>
 
@@ -25,7 +38,7 @@ const SideBar = () => {
         }
         {
             !isAdmin && !isOrganizer ? <>
-                   
+
                 <li className='flex gap-2 items-center text-lg'> <TiPointOfInterestOutline></TiPointOfInterestOutline><Link href={'/dashboard/enrolled-events'}> Registered </Link></li>
                 <li className='flex gap-2 items-center text-lg'><MdFavorite></MdFavorite> <Link href={'/dashboard/favourite-events'}>Favourite </Link></li>
                 <li className='flex gap-2 items-center text-lg'><MdPayments></MdPayments><Link href={'/dashboard/payments'}>Payments</Link></li>
@@ -43,7 +56,7 @@ const SideBar = () => {
     return (
         <>
             <ul className=" p-4 h-full bg-no-repeat bg-cover flex flex-col text-white gap-4">
-                
+
                 {navItems}
             </ul>
             <div>
@@ -55,5 +68,5 @@ const SideBar = () => {
 
 
 
-  export default SideBar;
-  
+export default SideBar;
+
