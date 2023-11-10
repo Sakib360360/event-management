@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 import { MdFavorite, MdPayments } from 'react-icons/md';
 import { TiPointOfInterestOutline } from 'react-icons/ti';
+import { FaArchive,FaAddressBook,FaChartLine,FaMale,FaEnvelopeOpenText } from "react-icons/fa";
 
 const SideBar = () => {
     const { user } = useContext(AuthContext)
@@ -23,17 +24,17 @@ const SideBar = () => {
 
         {
             isOrganizer && <>
-                <li><Link href={'/dashboard/create-event'}>Create Event</Link></li>
-                <li><Link href={'/dashboard/my-event'}>My Events</Link></li>
-                <li><Link href={'/dashboard/event-analytics'}>Event Analytics</Link></li>
+                <li><Link className='flex gap-2 items-center' href={'/dashboard/create-event'}><FaArchive></FaArchive>Create Event</Link></li>
+                <li><Link className='flex gap-2 items-center' href={'/dashboard/my-event'}><FaAddressBook></FaAddressBook>My Events</Link></li>
+                <li><Link className='flex gap-2 items-center' href={'/dashboard/event-analytics'}><FaChartLine></FaChartLine>Event Analytics</Link></li>
 
             </>
         }
         {
             isAdmin && <>
-                <li><Link href={'/dashboard/manage-user'}>Manage User</Link></li>
-                <li><Link href={'/dashboard/all-events'}>All Events</Link></li>
-                <li><Link href={'/dashboard/messages'} prefetch={true}	>Messages</Link></li>
+                <li><Link className='flex gap-2 items-center text-lg' href={'/dashboard/manage-user'}><FaMale></FaMale>Manage User</Link></li>
+                <li><Link className='flex gap-2 items-center text-lg' href={'/dashboard/all-events'}><FaArchive></FaArchive>All Events</Link></li>
+                <li><Link className='flex gap-2 items-center text-lg' href={'/dashboard/messages'} prefetch={true}	><FaEnvelopeOpenText></FaEnvelopeOpenText>Messages</Link></li>
             </>
         }
         {
