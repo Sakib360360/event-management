@@ -15,7 +15,7 @@ function Navbar() {
   const { user, logOut } = useContext(AuthContext);
   const pathname = usePathname();
   
-  console.log(user)
+  //console.log(user)
 
   // console.log(user);
   const links = (
