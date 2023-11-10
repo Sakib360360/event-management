@@ -25,11 +25,11 @@ const SignupForm = () => {
   const { replace, refresh } = useRouter();
 
   const onSubmit = async (data) => {
-    const { name, email, password, photoUrl } = data;
-console.log(data)
+    const { name, email, password, photoUrl, role} = data;
+       //console.log(data)
 
                           // ********sadia********//
-    const img=data.photoUrl[0];//extract image
+    const img = photoUrl[0];//extract image
 
     const formData = new FormData(); //create instance
 
@@ -42,22 +42,26 @@ console.log(data)
       body:formData,
     })
     const uploadedImgData= await uploadImg.json()
-    console.log(uploadedImgData)
+    //console.log(uploadedImgData)
 
                           // **************//
-
+    const photo = uploadedImgData.secure_url
                           
     const toastId = toast.loading("Loading...");
     try {
-      await createUser(email, password,uploadedImgData.secure_url);
-      console.log(name, email, password, uploadedImgData.secure_url);
+      await createUser(email, password);
+      console.log(name, email, password, photo);
       /*    await createJWT({ email }); */
-      await profileUpdate(name, uploadedImgData.secure_url);
+      await profileUpdate(name, photo)
+      .then(() => {
+        toast.success('Signup successful')});
+
+
       const createdUser = {
         name: name,
         email: email,
-        photoUrl:uploadedImgData.secure_url,
-        /* role: "", */
+        photoUrl: photo,
+        role: role,
       };
       console.log(createdUser);
 
@@ -139,24 +143,7 @@ console.log(data)
           </span>
         )}
       </div>
-      {/* <div className="form-control">
-        <label htmlFor="photoUrl" className="label text-white label-text">
-          Photo
-        </label>
-        <input
-          type="text"
-          placeholder="photo URL"
-          id="photoUrl"
-          name="photoUrl"
-          className="input text-white bg-transparent border-b border-white input-bordered"
-          {...register("photoUrl", { required: true })}
-        />
-        {errors.photoUrl && (
-          <span className="text-red-500 text-base mt-1">
-            Please enter your photo URL.
-          </span>
-        )}
-      </div> */}
+    
            <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
@@ -168,6 +155,35 @@ console.log(data)
           // onChange={uploadImage}
           className="file-input file-input-bordered text-white bg-transparent border-b border-white  w-full"
         />
+          {errors.photUrl && (
+          <span className="text-red-500 text-base mt-1">
+            Please select a profile photo.
+          </span>
+        )}
+      </div>
+      {/*  role button here */}
+      <div className="form-control">
+        <label htmlFor="role" className="label text-white label-text">
+          Sign up as:
+        </label>
+
+        {/* Select Input */}
+        <select
+          id="role"
+          name="role"
+          className="select select-bordered w-full max-w-xs bg-transparent  border-b border-white "
+          {...register("role", { required: true })}
+        >
+          <option value="" disabled>Select Role</option>
+          <option className="text-black" value="attendee">Attendee</option>
+          <option className="text-black" value="organizer">Organizer</option>
+        </select>
+
+        {errors.role && (
+          <span className="text-red-500 text-base mt-1">
+            Please select a role.
+          </span>
+        )}
       </div>
       <div className="form-control mt-6">
         <button className="btn bg-custom" type="submit">
