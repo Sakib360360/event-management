@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdDeleteSweep, MdGppGood } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
+import Swal from "sweetalert2";
 import "./events.css";
 
 const AllEvents = () => {
@@ -39,6 +40,18 @@ const AllEvents = () => {
       (_, index) => startPage + index
     );
   };
+
+  const refetch = (url)=>{
+    fetch(
+      `${url}/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.items);
+        setTotalPages(data.totalPages);
+      })
+      .catch((err) => console.log(err));
+  }
 
 
   useEffect(() => {
@@ -83,6 +96,16 @@ const AllEvents = () => {
     .then(data => {
       if(data.modifiedCount > 0){
         router.refresh();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Event Approved",
+          showConfirmButton: false,
+          timer: 1500
+      });
+          
+      // refetch the data
+      refetch("https://server-event-management-iota.vercel.app/all-events")
       }
     })
     .catch(err => console.log(err));
@@ -97,8 +120,17 @@ const AllEvents = () => {
     .then(data => {
       if(data.modifiedCount > 0){
         router.refresh();
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Event Denied",
+          showConfirmButton: false,
+          timer: 1500
+      });
+
+      // refetch the data
+      refetch("https://server-event-management-iota.vercel.app/all-events")
       }
-      console.log(data);
     })
     .catch(err => console.log(err));
   }
