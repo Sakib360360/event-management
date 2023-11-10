@@ -63,6 +63,7 @@ const DashboardChart = ()=> {
       legend: true,
     },
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         ticks: {
@@ -78,7 +79,7 @@ const DashboardChart = ()=> {
             bottom: 10,
           },
           font: {
-            size: 30,
+            size: 20,
             style: "italic",
             family: "Arial",
           },
@@ -99,7 +100,7 @@ const DashboardChart = ()=> {
             top: 10,
           },
           font: {
-            size: 30,
+            size: 20,
             style: "italic",
             family: "Arial",
           },
@@ -110,13 +111,12 @@ const DashboardChart = ()=> {
 
   return (
     <div>
-      <h1 className="font-bold text-3xl text-center mt-10">
-       Ticket Sales Chart
+      <h1 className="font-semisbold text-2xl text-center mt-8">
+       Ticket Sales
       </h1>
       <div
         style={{
-          width: "1000px",
-          height: "500px",
+          width: "100%",
           padding: "25px",
           cursor: "pointer",
         }}
