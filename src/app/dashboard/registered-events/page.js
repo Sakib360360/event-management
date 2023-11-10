@@ -20,7 +20,7 @@ const RegisteredEvents = () => {
           <h1 className="text-2xl font-bold mb-5 text-center col-span-full ">
             Registered Events
           </h1>
-           <div className="grid grid-cols-3">
+           <div className="grid grid-cols-3 gap-10">
           {registeredEvents?.map((registered) => (
           <div key={registered._id} className="bg-white w-96 text-black rounded shadow p-4">
             <img className="object-fit mb-4" src={registered.event.imageUrl} alt="" />

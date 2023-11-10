@@ -27,7 +27,7 @@ const dashboard = async () => {
             <DashboardChart></DashboardChart>
           </div>
           <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-stone-800">
-            <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
+            <h1 className="font-semibold text-2xl text-center mt-4">Upcoming Events</h1>
 
             <div className="overflow-y-auto sm:h-60 scroll-bar">
               <div className="grid grid-cols-1 gap-8">

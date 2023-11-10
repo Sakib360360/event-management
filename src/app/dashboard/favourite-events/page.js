@@ -1,5 +1,5 @@
 'use client'  // we cannot async await from 2 client component getFavorite have to be server components
-
+import {BiMoney} from 'react-icons/bi'
 import AuthContext from '@/context/AuthContext';
 import getEvents from '@/utils/getEvents';
 import getFavorite from '@/utils/getFavorite';
@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import Link from 'next/link';
 const FavouriteEvents = () => {
   const [allEvents,setAllEvents] = useState([])
   const [favorites,setFavorites] = useState([])
@@ -60,6 +61,13 @@ const FavouriteEvents = () => {
                   <td className="">{event.eventTime}</td>
                   <td className="">
                     <button className="px-2 py-1 bg-red-500 text-white rounded" onClick={() => handleRemoveFavorite(event.id)}> <RiDeleteBin6Line></RiDeleteBin6Line></button>
+                  </td>
+                  <td className="">
+                  <Link href={`/dashboard/payments/${event._id}`}>
+                                    <button onClick={() => handleBuyClick(event)} className="px-2 py-1 bg-green-500 text-white rounded">
+                                    <BiMoney></BiMoney>
+                                    </button>
+                  </Link>
                   </td>
                 </tr>
               ))}
