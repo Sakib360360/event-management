@@ -1,8 +1,7 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
-
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
@@ -18,20 +17,23 @@ const Search = ({ events }) => {
     const approvedEvents = events.filter(event=>event.eventStatus==="approved")
     // console.log(approvedEvents)
     const handleIconClick = (eventId) => {
-        const isEventLiked = likedEvents.includes(eventId);
-
-        if (isEventLiked) {
-            // Remove event ID from liked events
-            setLikedEvents((prevLikedEvents) =>
-                prevLikedEvents.filter((id) => id !== eventId)
-            );
-        } else {
-            // Add event ID to liked events
-            setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
-        }
-
-        addBackend();
+        setLikedEvents((prevLikedEvents) => {
+            const isEventLiked = prevLikedEvents.includes(eventId);
+    
+            if (isEventLiked) {
+                // Remove event ID from liked events
+                return prevLikedEvents.filter((id) => id !== eventId);
+            } else {
+                // Add event ID to liked events
+                return [...prevLikedEvents, eventId];
+            }
+        });
     };
+    
+    useEffect(() => {
+        // This will be executed after the state has been updated
+        addBackend();
+    }, [likedEvents]);
     // make object for backend
     const addBackend = async () => {
         const userLikedEvents = {
