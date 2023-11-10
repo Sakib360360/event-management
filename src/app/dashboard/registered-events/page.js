@@ -8,7 +8,7 @@ import { useState } from "react";
 const RegisteredEvents = () => {
     const {user} = useAuth();
     const [registeredEvents, setRegisteredEvents] = useState([]);
-    const url =`http://localhost:5000/payments/registeredevents?email=${user?.email}`
+    const url =`https://server-event-management-iota.vercel.app/payments/registeredevents?email=${user?.email}`
     useEffect(() => {
       fetch(url)
         .then(res => res.json())
