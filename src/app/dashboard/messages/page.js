@@ -5,7 +5,7 @@ const MessagesPage = async () => {
     let messages = await getMessages();
 
     return (
-        <div className="py-1 min-h-screen">
+        <div className="py-1 min-h-screen message-wrapper">
             {
                 messages.map((msg) => <Message key={msg._id} message={msg}></Message>)
             }
