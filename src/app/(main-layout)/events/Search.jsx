@@ -171,21 +171,8 @@ const Search = ({ events }) => {
                 },
               }}
               as={`/events/${event._id}`}
-              //href={`/events/${event._id}`}
               ><button 
                 type="button"
-                // onClick={() =>
-                //   router.push({
-                //     pathname: `/events/${event._id}`,
-                //     query: {
-                //         // event:event
-                //         // name:sadia
-                //       title: event.eventName,
-                //       description: event.eventDescription,
-                //       // Add other data you want to pass
-                //     },
-                //   })
-                // }
                 className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
               >
                 Details
