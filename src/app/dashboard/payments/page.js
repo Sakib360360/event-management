@@ -1,30 +1,54 @@
-import React from 'react';
+'use client'
+import useAuth from '@/hooks/useAuth';
+import React, { useEffect, useState } from 'react';
 
-const PaymentCard = ({event}) => {
+const PaymentHistory = () => {
+  const [paymentHistory, setPaymentHistory] =useState([]); 
+  const {user } = useAuth();
+   const url =`http://localhost:5000/payments/registeredevents?email=${user?.email}`
+     useEffect(()=>{
+ 
+         fetch(url)
+         .then(res => res.json())
+         .then(data => setPaymentHistory(data))
+     },[url, user])
+     console.log(paymentHistory)
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="px-6 py-4">
-          <div className="text-2xl font-bold mb-2 text-black">Ticket Checkout</div>
-          <input
-            type="text"
-            placeholder="Visa Card Number"
-            className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
-          />
-        </div>
-        <div className="px-6 py-4">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-         {/*    {event.ticketPrice} */}
-          </span>
-        </div>
-        <div className="px-6 py-4 flex justify-center">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring focus:ring-blue-300">
-            Pay Now
-          </button>
-        </div>
+    <div className='min-h-screen p-20'>
+    <div className="flex justify-center">
+        <div className="w-full">
+        <h1 className="text-2xl font-bold mb-4 text-center">Payment History</h1>
+        <div className='overflow-x-auto'>
+        <table className="table" >
+          <thead className='text-white'>
+            <tr>
+              <th className=" text-lg py-2 px-4 border-b">#</th>
+              <th className=" text-lg py-2 px-4 border-b">Name</th>
+              <th className=" text-lg py-2 px-4 border-b">Date</th> 
+              <th className=" text-lg py-2 px-4 border-b">Price</th>
+              <th className=" text-lg py-2 px-4 border-b">Transaction</th>
+           
+            </tr>
+          </thead>
+          <tbody>
+          
+            {paymentHistory?.map((history, index) => (
+              <tr key={history._id} className='hover hover:text-black'>
+                <td className="py-2 px-4 border-b">{index + 1}</td>
+                <td className="py-2 px-4 border-b">{history.event.eventName}</td>
+                <td className="py-2 px-4 border-b">{history.event.eventTime}</td>
+                <td className="py-2 px-4 border-b">${history.event.ticketPrice}</td>
+                <td className="py-2 px-4 border-b">{history.tranjectionId}</td>
+               
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
+      </div>
+      </div>
+      </div>
   );
 };
 
-export default PaymentCard;
+export default PaymentHistory;

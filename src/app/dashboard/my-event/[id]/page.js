@@ -5,24 +5,35 @@ import updateEvent from '@/utils/updateEvent';
 // pages/editEvent.js
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import Swal from 'sweetalert2';
 
 const EditEvent = ({ params }) => {
   const {user} = useContext(AuthContext)
-  console.log(params.id)
-  const [eventName, setEventName] = useState('');
+  const [prevEvent,setPrevEvent] = useState([]);
+  // console.log(params.id)
+  const [eventName, setEventName] = useState(prevEvent.eventName);
   const eventCreator = user?.email;
-  const [eventDate, setEventDate] = useState('');
+  const [eventDate, setEventDate] = useState(prevEvent.eventDate);
   const [eventStatus, setEventStatus] = useState('pending');
-  const [ticketAvailable, setTicketAvailable] = useState(0);
-  const [ticketPrice, setTicketPrice] = useState(0);
-  const [eventLocation, setEventLocation] = useState('');
-  const [eventTime, setEventTime] = useState('');
-  const [eventDescription, setEventDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [eventCategory, setEventCategory] = useState('');
+  const [ticketAvailable, setTicketAvailable] = useState(prevEvent.ticketAvailable);
+  const [ticketPrice, setTicketPrice] = useState(prevEvent.ticketPrice);
+  const [eventLocation, setEventLocation] = useState(prevEvent.eventLocation);
+  const [eventTime, setEventTime] = useState(prevEvent.eventTime);
+  const [eventDescription, setEventDescription] = useState(prevEvent.eventDescription);
+  const [imageUrl, setImageUrl] = useState(prevEvent.imageUrl);
+  const [eventCategory, setEventCategory] = useState(prevEvent.eventCategory);
+  
+
+  useEffect(()=>{
+    fetch(`https://server-event-management-iota.vercel.app/events/${params.id}`)
+    .then(res=>res.json())
+    .then(data=>{
+      setPrevEvent(data)
+    })
+  },[user])
+  console.log(prevEvent)
 
   const resetForm = () => {
     setEventName('');
@@ -143,6 +154,7 @@ const EditEvent = ({ params }) => {
               required
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={eventName}
+              defaultValue={prevEvent.eventName}
               onChange={(e) => setEventName(e.target.value)}
             />
           </div>
@@ -173,6 +185,7 @@ const EditEvent = ({ params }) => {
               id="eventDate"
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={eventDate}
+              defaultValue={prevEvent.eventDate}
               onChange={(e) => setEventDate(e.target.value)}
             />
           </div>
@@ -206,6 +219,7 @@ const EditEvent = ({ params }) => {
               id="ticketAvailable"
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={ticketAvailable}
+              defaultValue={prevEvent.ticketAvailable}
               onChange={(e) => setTicketAvailable(e.target.value)}
             />
           </div>
@@ -221,6 +235,7 @@ const EditEvent = ({ params }) => {
               required
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={ticketPrice}
+              defaultValue={prevEvent.ticketPrice}
               onChange={(e) => setTicketPrice(e.target.value)}
             />
           </div>
@@ -236,6 +251,7 @@ const EditEvent = ({ params }) => {
               required
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={eventLocation}
+              defaultValue={prevEvent.eventLocation}
               onChange={(e) => setEventLocation(e.target.value)}
             />
           </div>
@@ -253,6 +269,7 @@ const EditEvent = ({ params }) => {
               id="eventTime"
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={eventTime}
+              defaultValue={prevEvent.eventTime}
               onChange={(e) => setEventTime(e.target.value)}
             />
           </div>
@@ -267,6 +284,7 @@ const EditEvent = ({ params }) => {
               required
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={eventDescription}
+              defaultValue={prevEvent.eventDescription}
               onChange={(e) => setEventDescription(e.target.value)}
             />
           </div>
@@ -279,7 +297,6 @@ const EditEvent = ({ params }) => {
             <input
               type="file"
               id="imageUrl"
-              required
               className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               //value={imageUrl}
               onChange={handleImageUpload}
@@ -296,6 +313,7 @@ const EditEvent = ({ params }) => {
               required
               className="mt-1 p-2 w-full border bg-black text-white rounded-md"
               value={eventCategory}
+              defaultValue={prevEvent.eventCategory}
               onChange={handleCategoryChange}
             >
               <option value="">Select a category</option>
