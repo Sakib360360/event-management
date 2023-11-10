@@ -1,8 +1,7 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
 import saveFavorite from "@/utils/saveFavorite";
-
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaHeart, FaShare } from "react-icons/fa";
 import "./HeartIcon.css";
 import "./event.module.css";
@@ -14,24 +13,27 @@ const Search = ({ events }) => {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [likedEvents, setLikedEvents] = useState([]);
     const { user } = useContext(AuthContext);
-    
-    const approvedEvents = events.filter(event=>event.eventStatus==="approved")
+
+    const approvedEvents = events.filter(event => event.eventStatus === "approved")
     // console.log(approvedEvents)
     const handleIconClick = (eventId) => {
-        const isEventLiked = likedEvents.includes(eventId);
+        setLikedEvents((prevLikedEvents) => {
+            const isEventLiked = prevLikedEvents.includes(eventId);
 
-        if (isEventLiked) {
-            // Remove event ID from liked events
-            setLikedEvents((prevLikedEvents) =>
-                prevLikedEvents.filter((id) => id !== eventId)
-            );
-        } else {
-            // Add event ID to liked events
-            setLikedEvents((prevLikedEvents) => [...prevLikedEvents, eventId]);
-        }
-
-        addBackend();
+            if (isEventLiked) {
+                // Remove event ID from liked events
+                return prevLikedEvents.filter((id) => id !== eventId);
+            } else {
+                // Add event ID to liked events
+                return [...prevLikedEvents, eventId];
+            }
+        });
     };
+
+    useEffect(() => {
+        // This will be executed after the state has been updated
+        addBackend();
+    }, [likedEvents]);
     // make object for backend
     const addBackend = async () => {
         const userLikedEvents = {
@@ -145,55 +147,54 @@ const Search = ({ events }) => {
             <div className="max-w-3xl mx-auto mt-8 p-8 bg-transparent rounded-md shadow-md">
                 <h2 className="text-2xl font-semibold mb-4"></h2>
 
-        {/* List of Events */}
-        {filteredEvents.map((event) => (
-          <div
-            key={event._id}
-            className="mb-8 p-4 bg-transparent border border-white rounded-md"
-          >
-            <img
-              src={event.imageUrl}
-              alt={event.eventName}
-              className="mb-4 w-full h-48 object-cover rounded-md"
-            />
-            <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
-            <p className="text-gray-600 mb-2">{event.eventDate}</p>
-            <p className="text-gray-600 mb-2">{event.eventLocation}</p>
-            <p className="text-gray-600 mb-4">{event.eventDescription}</p>
-            <div className="flex justify-between items-center">
-              <Link
-              href={{
-                pathname: '/events/[id]',
-                query: {
-                  eventId: event?._id,
-                  // Add other data you want to pass
-                },
-              }}
-              as={`/events/${event._id}`}
-              ><button 
-                type="button"
-                className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
-              >
-                Details
-              </button></Link>
-              <div className="flex">
-                <button
-                  onClick={() => router.push("/dashboard/payments")}
-                  className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500"
-                >
-                  Buy
-                </button>
-                <div className="">
-                  <button
-                    className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
-                    onClick={() => handleShareClick(event._id)}
-                  >
-                    Share{" "}
-                    <span>
-                      <FaShare />
-                    </span>
-                  </button>
-                </div>
+                {/* List of Events */}
+                {filteredEvents.map((event) => (
+                    <div
+                        key={event._id}
+                        className="mb-8 p-4 bg-transparent border border-white rounded-md"
+                    >
+                        <img
+                            src={event.imageUrl}
+                            alt={event.eventName}
+                            className="mb-4 w-full h-48 object-cover rounded-md"
+                        />
+                        <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
+                        <p className="text-gray-600 mb-2">{event.eventDate}</p>
+                        <p className="text-gray-600 mb-2">{event.eventLocation}</p>
+                        <p className="text-gray-600 mb-4">{event.eventDescription}</p>
+                        <div className="flex justify-between items-center">
+                            <Link
+                                href={{
+                                    pathname: '/events/[id]',
+                                    query: {
+                                        eventId: event?._id,
+                                        // Add other data you want to pass
+                                    },
+                                }}
+                                as={`/events/${event._id}`}
+                            ><button
+                                type="button"
+                                className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
+                            >
+                                    Details
+                                </button></Link>
+                            <div className="flex">
+                                <Link href={`/dashboard/payments/${event._id}`}>
+                                    <button onClick={() => handleBuyClick(event)} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
+                                        Buy
+                                    </button>
+                                </Link>
+                                <div className="">
+                                    <button
+                                        className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
+                                        onClick={() => handleShareClick(event._id)}
+                                    >
+                                        Share{" "}
+                                        <span>
+                                            <FaShare />
+                                        </span>
+                                    </button>
+                                </div>
 
                                 {selectedEventId === event._id && (
                                     <div className="flex gap-2 justify-between items-center">
@@ -231,7 +232,7 @@ const Search = ({ events }) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 

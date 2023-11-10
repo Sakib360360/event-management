@@ -11,8 +11,8 @@
 // export default getFavorite;
 
 
-const getFavorite = async () => {
-    const res = await fetch("https://server-event-management-iota.vercel.app/liked/saakibabrar@gmail.com");
+const getFavorite = async (email) => {
+    const res = await fetch(`https://server-event-management-iota.vercel.app/liked/${email}`);
     return res.json();
 };
 

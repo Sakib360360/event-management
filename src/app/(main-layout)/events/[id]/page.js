@@ -13,7 +13,7 @@ const singleEvent = ({ params }) => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/events/${id}`);
+        const res = await fetch(`https://server-event-management-iota.vercel.app/events/${id}`);
         const data = await res.json();
         setEventData(data);
         console.log(eventData);

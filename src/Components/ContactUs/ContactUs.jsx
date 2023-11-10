@@ -79,17 +79,17 @@ const ContactUs = () => {
         <div>
           <div className="my-12">
             <p className="mb-2 gray">Phone</p>
-            <p>+88012544365434</p>
+            <p>+880125443654343223</p>
           </div>
 
           <div className="my-12">
             <p className="mb-2 gray">Email</p>
-            <p>example@email.com</p>
+            <p>lunarbrigade@email.com</p>
           </div>
 
           <div className="my-12">
             <p className="mb-2 gray">Address</p>
-            <p>Abuja, Nigeria</p>
+            <p>Dhaka, Bangladesh</p>
           </div>
 
           <div className="my-12">
