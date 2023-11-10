@@ -14,6 +14,7 @@ const DeleteButton = (id) => {
               showConfirmButton: false,
               timer: 1500
             });
+            
           } else {
             Swal.fire({
               icon: "error",
