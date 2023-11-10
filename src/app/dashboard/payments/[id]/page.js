@@ -26,7 +26,7 @@ const page = ({ params }) => {
 
   const onSubmit = (data) => {
     data.eventId = id;
-    fetch("http://localhost:5000/order", {
+    fetch("https://server-event-management-iota.vercel.app/order", {
         method: "POST",
         headers: {"content-type" : "application/json"},
         body: JSON.stringify(data),
