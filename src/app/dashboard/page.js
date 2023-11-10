@@ -17,12 +17,12 @@ const dashboard = async () => {
 
 
   return (
-    <div className="ml-12 mr-12 min-h-screen">
-      <div className='py-4'>
+    <div className="p-20 min-h-screen">
+      <div className=''>
         <DashCard totalEvents={totalEvents}></DashCard>
         <DashCard totalParticipants={totalParticipants}></DashCard>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-5 mt-8 ">
           <div className='rounded w-full md:w-1/2 bg-stone-800'>
             <DashboardChart></DashboardChart>
           </div>
