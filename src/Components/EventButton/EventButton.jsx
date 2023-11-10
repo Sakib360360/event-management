@@ -8,7 +8,7 @@ const EventButton = ({ data }) => {
 
   const handleApprove = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/update-event/${id}?status=approved`, {
+    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=approved`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -22,7 +22,7 @@ const EventButton = ({ data }) => {
 
   const handleDeny = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/update-event/${id}?status=denied`, {
+    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=denied`, {
       method: "PATCH",
     })
       .then((res) => res.json())
