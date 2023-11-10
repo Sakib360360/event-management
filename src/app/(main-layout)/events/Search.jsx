@@ -145,39 +145,55 @@ const Search = ({ events }) => {
             <div className="max-w-3xl mx-auto mt-8 p-8 bg-transparent rounded-md shadow-md">
                 <h2 className="text-2xl font-semibold mb-4"></h2>
 
-                {/* List of Events */}
-                {filteredEvents.map((event) => (
-                    <div
-                        key={event._id}
-                        className="mb-8 p-4 bg-transparent border border-white rounded-md"
-                    >
-                        <img
-                            src={event.imageUrl}
-                            alt={event.eventName}
-                            className="mb-4 w-full h-48 object-cover rounded-md"
-                        />
-                        <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
-                        <p className="text-gray-600 mb-2">{event.eventDate}</p>
-                        <p className="text-gray-600 mb-2">{event.eventLocation}</p>
-                        <p className="text-gray-600 mb-4">{event.eventDescription}</p>
-                        <div className="flex justify-between items-center">
-                            <button className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500">
-                                Details
-                            </button>
-                            <div className="flex">
-                              <Link href={`/dashboard/payments/${event._id}`}>
-                              <button onClick={() => handleBuyClick(event)} className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
-                                    Buy
-                                </button>
-                              </Link>
-                                <div className="">
-                                    <button
-                                        className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
-                                        onClick={() => handleShareClick(event._id)}
-                                    >
-                                        Share <span><FaShare /></span>
-                                    </button>
-                                </div>
+        {/* List of Events */}
+        {filteredEvents.map((event) => (
+          <div
+            key={event._id}
+            className="mb-8 p-4 bg-transparent border border-white rounded-md"
+          >
+            <img
+              src={event.imageUrl}
+              alt={event.eventName}
+              className="mb-4 w-full h-48 object-cover rounded-md"
+            />
+            <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
+            <p className="text-gray-600 mb-2">{event.eventDate}</p>
+            <p className="text-gray-600 mb-2">{event.eventLocation}</p>
+            <p className="text-gray-600 mb-4">{event.eventDescription}</p>
+            <div className="flex justify-between items-center">
+              <Link
+              href={{
+                pathname: '/events/[id]',
+                query: {
+                  eventId: event?._id,
+                  // Add other data you want to pass
+                },
+              }}
+              as={`/events/${event._id}`}
+              ><button 
+                type="button"
+                className="bg-transparent border border-white text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
+              >
+                Details
+              </button></Link>
+              <div className="flex">
+                <button
+                  onClick={() => router.push("/dashboard/payments")}
+                  className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500"
+                >
+                  Buy
+                </button>
+                <div className="">
+                  <button
+                    className="bg-transparent border-white border flex gap-1 justify-between items-center mr-4 text-white p-2 rounded-md hover:bg-white hover:text-black transition duration-500"
+                    onClick={() => handleShareClick(event._id)}
+                  >
+                    Share{" "}
+                    <span>
+                      <FaShare />
+                    </span>
+                  </button>
+                </div>
 
                                 {selectedEventId === event._id && (
                                     <div className="flex gap-2 justify-between items-center">

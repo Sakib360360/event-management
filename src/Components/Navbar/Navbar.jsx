@@ -71,7 +71,7 @@ function Navbar() {
   // }, []);
 
   return (
-    <div>
+    <div className="z-100">
       <nav className="navigation container mx-auto flex justify-between items-center py-5 overflow-x-hidden">
         <div className="logo">
           <Link href={"/"}>
