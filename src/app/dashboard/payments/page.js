@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 const PaymentHistory = () => {
   const [paymentHistory, setPaymentHistory] =useState([]); 
   const {user } = useAuth();
-   const url =`http://localhost:5000/payments/registeredevents?email=${user?.email}`
+   const url =`https://server-event-management-iota.vercel.app/payments/registeredevents?email=${user?.email}`
      useEffect(()=>{
  
          fetch(url)
