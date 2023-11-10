@@ -22,7 +22,7 @@ const Testimonial = () => {
                <p className="text-blue-700 text-[12px] mt-1">CFO of Acme Co</p>
               </div>
               <div>
-                <img className="w-10 h-10 rounded-full object-cover" src="https://randomuser.me/api/portraits/women/4.jpg" alt="" />
+                <img className="w-10 h-10 rounded-full object-cover" src="https://i.ibb.co/n0GRSQV/a.jpg" alt="" />
               </div>
               </div>
             </div>
@@ -41,7 +41,7 @@ const Testimonial = () => {
                <p className="text-blue-700 text-[12px] mt-1">CTO of 456 Enterprises</p>
               </div>
               <div>
-                <img className="w-10 h-10 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/5.jpg" alt="" />
+                <img className="w-10 h-10 rounded-full object-cover" src="https://i.ibb.co/cvQpSq5/b.jpg" alt="" />
               </div>
               </div>
             </div>
@@ -60,7 +60,7 @@ const Testimonial = () => {
                <p className="text-blue-700 text-[12px] mt-1">COO of DEF Corp</p>
               </div>
               <div>
-                <img className="w-10 h-10 rounded-full object-cover" src="https://randomuser.me/api/portraits/women/6.jpg" alt="" />
+                <img className="w-10 h-10 rounded-full object-cover" src="https://i.ibb.co/6wTL28X/c.jpg" alt="" />
               </div>
               </div>
             </div>
