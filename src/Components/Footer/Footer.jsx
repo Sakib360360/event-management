@@ -35,6 +35,31 @@ const Footer = () => {
           <p className="text-2xl">Menu</p>
           <ul className="mt-2">{links}</ul>
         </div>
+        {/* socials */}
+        <div className="legal my-7">
+          <p className="text-2xl">Socials</p>
+          <ul className="mt-2">
+            <li className="gray flex  gap-2 items-center">
+              <Link className="text-xl" href={"/"}>
+                <FaFacebook></FaFacebook>
+              </Link>
+              <Link href={"/#"}>Facebook</Link>
+            </li>
+            <li className="gray flex  gap-2 items-center">
+              <Link className="text-xl" href={"/"}>
+                <FaTwitter></FaTwitter>
+              </Link>
+              <Link href={"/#"}>Twitter</Link>
+            </li>
+            <li className="gray flex gap-2 items-center">
+              <Link className="text-xl" href={"/"}>
+                <FaLinkedinIn></FaLinkedinIn>
+              </Link>
+              <Link href={"/#"}>LinkedIn</Link>
+            </li>
+          </ul>
+        </div>
+
 
         <div className="legal my-7">
           <p className="text-2xl">Legal</p>
@@ -52,24 +77,10 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container mx-auto flex flex-col items-center py-5 px-4 md:justify-between md:items-center md:flex-row">
-        <p className="my-5">
+      <div className="container  py-2 px-4">
+        <p className="my-5 mx-auto text-center">
           Copyright &copy; 2023 - All right reserved by Lunar Brigade
         </p>
-        <div className="social flex justify-center items-center">
-          <Link className="text-xl mx-2" href={"/"}>
-            <FaFacebook></FaFacebook>
-          </Link>
-          <Link className="text-xl mx-2" href={"/"}>
-            <FaTwitter></FaTwitter>
-          </Link>
-          <Link className="text-xl mx-2" href={"/"}>
-            <FaLinkedinIn></FaLinkedinIn>
-          </Link>
-          <Link className="text-xl mx-2" href={"/"}>
-            <FaGithub></FaGithub>
-          </Link>
-        </div>
       </div>
     </footer>
   );
