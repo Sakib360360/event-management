@@ -73,7 +73,7 @@ const Testimonial2 = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="card  border shadow-xl  bg-black p-10  rounded-2xl w-[450px] "
+              className="card   border shadow-xl  bg-black p-10   rounded-2xl w-[450px] "
             >
               <div className="">
                 <div>
