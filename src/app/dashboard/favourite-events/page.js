@@ -33,6 +33,7 @@ const FavouriteEvents = () => {
   },[user])
 
   const handleRemoveFavorite =(userId)=>{
+    // handle
     console.log(userId)
   }
 
