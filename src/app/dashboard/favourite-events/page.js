@@ -1,8 +1,6 @@
 'use client'  // we cannot async await from 2 client component getFavorite have to be server components
 import {BiMoney} from 'react-icons/bi'
 import AuthContext from '@/context/AuthContext';
-import getEvents from '@/utils/getEvents';
-import getFavorite from '@/utils/getFavorite';
 //import getFavorite from '@/utils/getFavorite';
 import React from 'react';
 import { useEffect } from 'react';
@@ -10,6 +8,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import Link from 'next/link';
+import deleteFavoriteEvent from '@/utils/deleteFavoriteEvent';
 const FavouriteEvents = () => {
   const [allEvents,setAllEvents] = useState([])
   const [favorites,setFavorites] = useState([])
@@ -32,9 +31,9 @@ const FavouriteEvents = () => {
     })
   },[user])
 
-  const handleRemoveFavorite =(userId)=>{
-    // handle
+  const handleRemoveFavorite =async(userId)=>{
     console.log(userId)
+    const dlt = await deleteFavoriteEvent(user?.email,userId)
   }
 
 

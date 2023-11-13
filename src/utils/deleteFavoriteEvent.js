@@ -1,6 +1,6 @@
 
-const deleteFavoriteEvent = async (userId,eventId) => {
-    const res = await fetch(`http://localhost:5000/deleteFavEvent/${userId}/${eventId}`, {
+const deleteFavoriteEvent = async (username,eventId) => {
+    const res = await fetch(`https://server-event-management-iota.vercel.app/deleteFavEvent/${username}/${eventId}`, {
         method: "DELETE"
     });
     return res.json();
