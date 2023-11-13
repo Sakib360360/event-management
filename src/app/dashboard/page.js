@@ -18,7 +18,7 @@ const upcomingEvents = events.filter((event) => event.date >= currentDate);
 
 
   return (
-    <div className="ml-12 mr-12 min-h-screen">
+    <div className="container">
       <div className='my-4'>
       <DashCard totalEvents={totalEvents}></DashCard>
       <DashCard totalParticipants={totalParticipants}></DashCard>
