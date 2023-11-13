@@ -1,7 +1,6 @@
 'use client'  // we cannot async await from 2 client component getFavorite have to be server components
 import {BiMoney} from 'react-icons/bi'
 import AuthContext from '@/context/AuthContext';
-//import getFavorite from '@/utils/getFavorite';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -13,6 +12,7 @@ const FavouriteEvents = () => {
   const [allEvents,setAllEvents] = useState([])
   const [favorites,setFavorites] = useState([])
   const { user } = useContext(AuthContext)
+  const [count,setCount] = useState(0)
   useEffect(()=>{
     fetch(`https://server-event-management-iota.vercel.app/events`)
     .then(res=>res.json())
@@ -29,11 +29,15 @@ const FavouriteEvents = () => {
       setFavorites(data)
       
     })
-  },[user])
+  },[user,count])
 
   const handleRemoveFavorite =async(userId)=>{
     console.log(userId)
     const dlt = await deleteFavoriteEvent(user?.email,userId)
+    console.log(dlt.success)
+    if(dlt.success){
+      setCount(count+1)
+    }
   }
 
 
