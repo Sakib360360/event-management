@@ -50,7 +50,8 @@ const FavouriteEvents = () => {
                 <th className="">Event Name</th>
                 <th className="">Ticket Price</th>
                 <th className="">Event Date</th>
-                <th className="">Action</th>
+                <th className="">Delete</th>
+                <th className="">Pay</th>
               </tr>
             </thead>
             <tbody>
@@ -58,7 +59,7 @@ const FavouriteEvents = () => {
                 <tr key={event._id}>
                   <td className="">{event.eventName}</td>
                   <td className="">{event.ticketPrice}</td>
-                  <td className="">{event.eventTime}</td>
+                  <td className="">{event.eventDate}</td>
                   <td className="">
                     <button className="px-2 py-1 bg-red-500 text-white rounded" onClick={() => handleRemoveFavorite(event.id)}> <RiDeleteBin6Line></RiDeleteBin6Line></button>
                   </td>
