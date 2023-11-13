@@ -1,8 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { FaFacebook, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import Modal from "../Modal/Modal";
 import "./Footer.css";
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const userName = form.name.value;
+  const userEmail = form.email.value;
+  const feedback = form.feedback.value;
+  const status = "feedback";
+
+  const feedbackObj = {
+    userName,
+    userEmail,
+    feedback,
+    status,
+  };
+
+  fetch("http://localhost:5000/feedback", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(feedbackObj),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.insertedId) {
+        form.reset();
+      }
+    });
+};
 
 const Footer = () => {
   const links = (
@@ -17,7 +48,12 @@ const Footer = () => {
         <Link href={"/events"}>Events</Link>
       </li>
       <li className="gray">
-        <Link href={"/feedback"}>Feedback</Link>
+        <button
+          onClick={() => document.getElementById("my_modal_2").showModal()}
+        >
+          Feedback
+        </button>
+        <Modal handleSubmit={handleSubmit}></Modal>
       </li>
     </>
   );
@@ -59,7 +95,6 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-
 
         <div className="legal my-7">
           <p className="text-2xl">Legal</p>

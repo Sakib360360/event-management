@@ -41,6 +41,10 @@ thead tr {
     overflow-x: auto;
 }
 
+.table tbody .btn:disabled {
+    background-color: rgb(216, 216, 216);
+}
+
 .pagination-container {
     display: flex;
     justify-content: center;
