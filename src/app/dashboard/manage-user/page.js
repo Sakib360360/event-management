@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { DiGhostSmall } from "react-icons/di";
+import { FaUserAlt } from "react-icons/fa";
 import { HiOutlineSearch } from "react-icons/hi";
-import { MdDeleteSweep, MdGppGood } from "react-icons/md";
+import { MdGppGood } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
+import Swal from 'sweetalert2';
 import "../all-events/events.css";
 
 const AllEvents = () => {
@@ -39,6 +42,18 @@ const AllEvents = () => {
       (_, index) => startPage + index
     );
   };
+
+  const refetch = (url)=>{
+    fetch(
+      `${url}/?pageSize=${selectedPageSize}&currentPage=${currentPage}&role=${selectedFilter}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.items);
+        setTotalPages(data.totalPages);
+      })
+      .catch((err) => console.log(err));
+  }
 
 
   useEffect(() => {
@@ -74,31 +89,74 @@ const AllEvents = () => {
     }
   };
 
-  const handleApproved = (id)=>{
+  const handleAdmin = (id)=>{
     console.log(id)
-    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=approved`, {
+    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=admin`, {
       method: "PATCH"
     })
     .then(res => res.json())
     .then(data => {
       if(data.modifiedCount > 0){
         router.refresh();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "This is now a admin",
+          showConfirmButton: false,
+          timer: 1500
+      });
+
+      // refetch the data
+      refetch("https://server-event-management-iota.vercel.app/users");
       }
     })
     .catch(err => console.log(err));
   }
 
-  const handleDenied = (id)=>{
+  const handleOrganizer = (id)=>{
     console.log(id)
-    fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=denied`, {
+    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=organizer`, {
       method: "PATCH"
     })
     .then(res => res.json())
     .then(data => {
       if(data.modifiedCount > 0){
         router.refresh();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "This is now a organizer",
+          showConfirmButton: false,
+          timer: 1500
+      });
+
+      // refetch the data
+      refetch("https://server-event-management-iota.vercel.app/users")
       }
-      console.log(data);
+    })
+    .catch(err => console.log(err));
+  }
+
+  const handleAttendee = (id)=>{
+    console.log(id)
+    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=attendee`, {
+      method: "PATCH"
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.modifiedCount > 0){
+        router.refresh();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "This is now a attendee",
+          showConfirmButton: false,
+          timer: 1500
+      });
+
+      // refetch the data
+      refetch("https://server-event-management-iota.vercel.app/users");
+      }
     })
     .catch(err => console.log(err));
   }
@@ -169,25 +227,31 @@ const AllEvents = () => {
                 <td>{dt.role ? dt.role : "N/A"}</td>
                 <td className="flex flex-wrap justify-center items-center">
                   <button
-                    onClick={()=> handleApproved(dt._id)}
-                    disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
-                    className="p-1 rounded-md text-xl bg-green-500 text-black"
-                    title="Approve"
+                    onClick={()=> handleAttendee(dt._id)}
+                    className="p-1 rounded-md text-xl bg-red-500 text-black"
+                    title="Make Attendee"
+                  >
+                    <FaUserAlt></FaUserAlt>
+                  </button>
+
+                  <button
+                    onClick={()=> handleOrganizer(dt._id)}
+                    className="p-1 rounded-md text-xl mx-2 bg-blue-500 text-black"
+                    title="Make Organizer"
+                  >
+                    <DiGhostSmall></DiGhostSmall>
+                  </button>
+
+                  <button
+                    onClick={()=> handleAdmin(dt._id)}
+                    className="p-1 rounded-md text-xl mr-2 bg-green-500 text-black"
+                    title="Make Admin"
                   >
                     <MdGppGood></MdGppGood>
                   </button>
 
-                  <button
-                    onClick={()=> handleDenied(dt._id)}
-                    disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
-                    className="p-1 rounded-md mx-2 text-xl bg-red-500 text-black"
-                    title="Delete"
-                  >
-                    <MdDeleteSweep></MdDeleteSweep>
-                  </button>
-
                   <Link
-                    href={`/dashboard/all-events/${dt._id}`}
+                    href={`/dashboard/manage-user/${dt._id}`}
                     className="p-1 rounded-md text-xl bg-yellow-300 text-black"
                     title="View details"
                   >

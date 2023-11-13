@@ -30,9 +30,9 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="container mx-auto my-[7em]">
-      <h1 className="text-4xl md:text-6xl font-bold  mb-12">GET IN TOUCH</h1>
-      <div className="flex flex-col justify-center items-center md:justify-around md:items-center md:flex-row">
+    <section className="max-w-[60em] mx-auto my-[7em]">
+      <h1 className="text-4xl md:text-6xl font-bold mb-8">GET IN TOUCH</h1>
+      <div className="flex flex-col justify-center items-center md:justify-between md:items-center md:flex-row">
         <form
           className="min-w-full px-3 md:min-w-[30em]"
           onSubmit={(e) => {
@@ -79,17 +79,17 @@ const ContactUs = () => {
         <div>
           <div className="my-12">
             <p className="mb-2 gray">Phone</p>
-            <p>+88012544365434</p>
+            <p>+880125443654343223</p>
           </div>
 
           <div className="my-12">
             <p className="mb-2 gray">Email</p>
-            <p>example@email.com</p>
+            <p>lunarbrigade@email.com</p>
           </div>
 
           <div className="my-12">
             <p className="mb-2 gray">Address</p>
-            <p>Abuja, Nigeria</p>
+            <p>Dhaka, Bangladesh</p>
           </div>
 
           <div className="my-12">

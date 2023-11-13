@@ -11,10 +11,6 @@ const ThreeDot = ({ id }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
 
-  const handleClick = () => {
-    setShowDropdown(!showDropdown);
-  };
-
   const handleSeen = async (id) => {
     const seen = await markAsSeen(id);
     console.log(seen);
@@ -38,7 +34,7 @@ const ThreeDot = ({ id }) => {
     <div className="three-dot">
       <BsThreeDotsVertical
         className="dots"
-        onClick={handleClick}
+        onClick={() => setShowDropdown(!showDropdown)}
       ></BsThreeDotsVertical>
 
       <div
