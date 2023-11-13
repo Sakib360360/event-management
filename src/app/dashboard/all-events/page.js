@@ -1,5 +1,6 @@
 "use client";
 
+import SliceText from "@/utils/SliceText";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ const AllEvents = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [selectedPageSize, setSelectedPageSize] = useState(10);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const getPageRange = () => {
@@ -41,7 +43,7 @@ const AllEvents = () => {
     );
   };
 
-  const refetch = (url)=>{
+  const refetch = (url) => {
     fetch(
       `${url}/?pageSize=${selectedPageSize}&currentPage=${currentPage}&status=${selectedFilter}`
     )
@@ -49,6 +51,7 @@ const AllEvents = () => {
       .then((data) => {
         setData(data.items);
         setTotalPages(data.totalPages);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   }
@@ -62,11 +65,12 @@ const AllEvents = () => {
       .then((data) => {
         setData(data.items);
         setTotalPages(data.totalPages);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   }, [selectedFilter, selectedPageSize, currentPage]);
 
-  
+
   // fetch new data based on filter
   const handleFilterChange = (selectedOption) => {
     if (selectedOption.target.value === "all") {
@@ -87,52 +91,52 @@ const AllEvents = () => {
     }
   };
 
-  const handleApproved = (id)=>{
+  const handleApproved = (id) => {
     console.log(id)
     fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=approved`, {
       method: "PATCH"
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.modifiedCount > 0){
-        router.refresh();
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Event Approved",
-          showConfirmButton: false,
-          timer: 1500
-      });
-          
-      // refetch the data
-      refetch("https://server-event-management-iota.vercel.app/all-events")
-      }
-    })
-    .catch(err => console.log(err));
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          router.refresh();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Event Approved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          // refetch the data
+          refetch("https://server-event-management-iota.vercel.app/all-events")
+        }
+      })
+      .catch(err => console.log(err));
   }
 
-  const handleDenied = (id)=>{
+  const handleDenied = (id) => {
     console.log(id)
     fetch(`https://server-event-management-iota.vercel.app/update-event/${id}?status=denied`, {
       method: "PATCH"
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.modifiedCount > 0){
-        router.refresh();
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Event Denied",
-          showConfirmButton: false,
-          timer: 1500
-      });
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          router.refresh();
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Event Denied",
+            showConfirmButton: false,
+            timer: 1500
+          });
 
-      // refetch the data
-      refetch("https://server-event-management-iota.vercel.app/all-events")
-      }
-    })
-    .catch(err => console.log(err));
+          // refetch the data
+          refetch("https://server-event-management-iota.vercel.app/all-events")
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   const handleSearch = (e) => {
@@ -183,53 +187,98 @@ const AllEvents = () => {
       </div>
 
       <div className="table min-w-full">
-        <table className="min-w-full">
-          <thead>
-            <tr>
-              <td className="id">#id</td>
-              <td>Event Name</td>
-              <td>Status</td>
-              <td>Action</td>
-            </tr>
-          </thead>
-
-          <tbody>
-            {(searchQuery ? filteredData : data).map((dt) => (
-              <tr key={dt._id}>
-                <td className="id">{dt._id}</td>
-                <td>{dt.eventName}</td>
-                <td>{dt.eventStatus}</td>
-                <td className="flex flex-wrap justify-center items-center">
-                  <button
-                    onClick={()=> handleApproved(dt._id)}
-                    disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
-                    className="p-1 rounded-md text-xl bg-green-500 text-black"
-                    title="Approve"
-                  >
-                    <MdGppGood></MdGppGood>
-                  </button>
-
-                  <button
-                    onClick={()=> handleDenied(dt._id)}
-                    disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
-                    className="p-1 rounded-md mx-2 text-xl bg-red-500 text-black"
-                    title="Deny"
-                  >
-                    <MdDeleteSweep></MdDeleteSweep>
-                  </button>
-
-                  <Link
-                    href={`/dashboard/all-events/${dt._id}`}
-                    className="p-1 rounded-md text-xl bg-yellow-300 text-black"
-                    title="View details"
-                  >
-                    <TbListDetails></TbListDetails>
-                  </Link>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>
+                  <label>
+                    <input type="checkbox" className="checkbox" />
+                  </label>
+                </th>
+                <th>Event Name</th>
+                <th>Status</th>
+                <th>Favorite Color</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {
+                loading ? <tr>
+                  <td><span className="loading loading-infinity loading-lg"></span></td>
+                </tr> :
+                (searchQuery ? filteredData : data).map((dt) => <tr key={dt._id}>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                          <img src={dt.imageUrl} alt={dt.eventName} />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{dt.eventCategory}</div>
+                        <div className="text-sm opacity-50">{dt.eventLocation}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {SliceText(dt.eventName, 30)}
+                    <br />
+                    <span className="badge badge-ghost badge-sm">{dt.eventDate ? dt.eventDate : "N/A"}</span>
+                  </td>
+                  <td>
+                    {
+                      dt.eventStatus === "approved"
+                        ? <div className="badge badge-accent">{dt.eventStatus}</div>
+                        : dt.eventStatus === "pending"
+                          ? <div className="badge badge-primary">{dt.eventStatus}</div>
+                          : <div className="badge badge-secondary">{dt.eventStatus}</div>
+                    }
+                  </td>
+                  <th>
+                    <button
+                      onClick={() => handleApproved(dt._id)}
+                      disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
+                      className="btn btn-active btn-accent px-[0.3rem] min-h-[2.2rem] h-0"
+                      title="Approve"
+                    >
+                      <MdGppGood className="text-2xl"></MdGppGood>
+                    </button>
+
+                    <button
+                      onClick={() => handleDenied(dt._id)}
+                      disabled={dt.eventStatus === "approved" || dt.eventStatus === "denied" ? true : false}
+                      className="btn btn-active btn-secondary px-[0.3rem] min-h-[2.2rem] h-0 mx-2"
+                      title="Deny"
+                    >
+                      <MdDeleteSweep className="text-2xl"></MdDeleteSweep>
+                    </button>
+
+                    <Link
+                      href={`/dashboard/all-events/${dt._id}`}
+                      className="btn btn-active btn-primary px-[0.3rem] min-h-[2.2rem] h-0"
+                      title="View details"
+                    >
+                      <TbListDetails className="text-2xl"></TbListDetails>
+                    </Link>
+                  </th>
+                </tr>)
+              }
+            </tbody>
+            {/* foot */}
+            <tfoot>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Favorite Color</th>
+                <th></th>
+              </tr>
+            </tfoot>
+
+          </table>
+        </div>
       </div>
 
       <div className="pagination-container">

@@ -13,7 +13,7 @@ const Message = ({ message }) => {
           {message.name}
         </p>
         <p className={message.status === "seen" ? "regular" : "bold"}>
-          {SliceText(message.message, 120)}
+          {SliceText(message.message, 100)}
         </p>
       </Link>
 

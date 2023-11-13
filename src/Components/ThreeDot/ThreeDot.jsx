@@ -2,12 +2,14 @@
 
 import deleteMessage from "@/utils/deleteMessage";
 import markAsSeen from "@/utils/markAsSeen";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import "./ThreeDot.css";
 
 const ThreeDot = ({ id }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const router = useRouter();
 
   const handleSeen = async (id) => {
     const seen = await markAsSeen(id);
