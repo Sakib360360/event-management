@@ -95,13 +95,7 @@ const CreateEventForm = () => {
         const event = await saveEvent(createdEvent)
         console.log(event)
         if (event.insertedId) {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Created successfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            Swal.fire("Your event is pending! When an admin approve this it will be available to the users. Thank you!!!");
         } else {
             Swal.fire({
                 icon: "error",
