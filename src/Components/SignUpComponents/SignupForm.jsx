@@ -9,6 +9,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { startTransition, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 
 const SignupForm = () => {
   const {
@@ -23,12 +25,17 @@ const SignupForm = () => {
   const search = useSearchParams();
   const from = search.get("redirectUrl") || "/";
   const { replace, refresh } = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
 
   const onSubmit = async (data) => {
-    const { name, email, password, photoUrl, role} = data;
-       //console.log(data)
+    const { name, email, password, photoUrl, role } = data;
+    //console.log(data)
 
-                          // ********sadia********//
+    // ********sadia********//
     const img = photoUrl[0];//extract image
 
     const formData = new FormData(); //create instance
@@ -37,24 +44,25 @@ const SignupForm = () => {
     formData.append('upload_preset', 'lunar-brigade')//bind upload preset
     console.log(formData);
 
-    const uploadImg=await fetch(`https://api.cloudinary.com/v1_1/dmaabideu/image/upload`,{
-      method:'POST',
-      body:formData,
+    const uploadImg = await fetch(`https://api.cloudinary.com/v1_1/dmaabideu/image/upload`, {
+      method: 'POST',
+      body: formData,
     })
-    const uploadedImgData= await uploadImg.json()
+    const uploadedImgData = await uploadImg.json()
     //console.log(uploadedImgData)
 
-                          // **************//
+    // **************//
     const photo = uploadedImgData.secure_url
-                          
+
     const toastId = toast.loading("Loading...");
     try {
       await createUser(email, password);
       console.log(name, email, password, photo);
       /*    await createJWT({ email }); */
       await profileUpdate(name, photo)
-      .then(() => {
-        toast.success('Signup successful')});
+        .then(() => {
+          toast.success('Signup successful')
+        });
 
 
       const createdUser = {
@@ -66,7 +74,7 @@ const SignupForm = () => {
       console.log(createdUser);
 
       const user = await saveUser(createdUser);
-      
+
       startTransition(() => {
         refresh();
         replace(from);
@@ -124,7 +132,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-      <div className="form-control">
+      {/* <div className="form-control">
         <label htmlFor="password" className="label text-white label-text">
           Password
         </label>
@@ -142,9 +150,31 @@ const SignupForm = () => {
             Please enter a password.
           </span>
         )}
+      </div> */}
+      <div className="form-control relative">
+        <label htmlFor="password" className="label text-white label-text">
+          Password
+        </label>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          placeholder="password"
+          id="password"
+          name="password"
+          className="input text-white bg-transparent border-b border-white input-bordered w-full pr-12" // Adjusted width and added padding for the button
+          autoComplete="new-password"
+          {...register('password', { required: true, minLength: 6 })}
+        />
+        <button
+          type="button"
+          className="absolute right-2 bottom-4 text-white"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </button>
       </div>
-    
-           <div className="form-control">
+
+
+      <div className="form-control">
         <label htmlFor="photo" className="label text-white label-text ">
           Photo
         </label>
@@ -155,7 +185,7 @@ const SignupForm = () => {
           // onChange={uploadImage}
           className="file-input file-input-bordered text-white bg-transparent border-b border-white  w-full"
         />
-          {errors.photUrl && (
+        {errors.photUrl && (
           <span className="text-red-500 text-base mt-1">
             Please select a profile photo.
           </span>
