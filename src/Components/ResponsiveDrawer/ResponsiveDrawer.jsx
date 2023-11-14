@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -29,6 +30,10 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import Link from "next/link";
 import { People } from "@mui/icons-material";
 import { Avatar, Stack } from "@mui/material";
+import { useEffect } from "react";
+import { useContext } from "react";
+import AuthContext from "@/context/AuthContext";
+import { useState } from "react";
 
 const drawerWidth = 240;
 
@@ -73,14 +78,26 @@ function ResponsiveDrawer(props) {
     { icon: <PaymentIcon />, label: "Payments", href: "/dashboard/payments" },
   ];
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const { user } = useContext(AuthContext)
+    const [role,setRole] = useState('')
+    useEffect(() => {
+        fetch(`https://server-event-management-iota.vercel.app/users/role/${user?.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setRole(data.role)
+        })
+    }, [user])
+    console.log(role)
+    const isAdmin = role==="admin";
+    const isOrganizer = role==="organizer";
 
-  const isAdmin = false;
-  const isOrganizer = true;
+  // const isAdmin = false;
+  // const isOrganizer = true;
 
   const drawer = (
     <Box
