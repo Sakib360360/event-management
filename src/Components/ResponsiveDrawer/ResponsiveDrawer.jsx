@@ -23,6 +23,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 const drawerWidth = 240;
@@ -107,8 +108,9 @@ function ResponsiveDrawer(props) {
       <div>
         <Toolbar />
         <div>
+          <Link href="/dashboard">
           <ListItemButton
-            href="/dashboard"
+            
             sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
           >
             <ListItemIcon sx={{ color: "inherit" }}>
@@ -119,11 +121,12 @@ function ResponsiveDrawer(props) {
               primaryTypographyProps={{ fontSize: 20, fontWeight: "medium" }}
             />
           </ListItemButton>
+          </Link>
           {isOrganizer &&
             organizerData.map((item) => (
+              <Link href={item.href}>
               <ListItemButton
                 key={item.label}
-                href={item.href}
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
                 <ListItemIcon sx={{ color: "inherit" }}>
@@ -137,12 +140,14 @@ function ResponsiveDrawer(props) {
                   }}
                 />
               </ListItemButton>
+              </Link>
             ))}
           {isAdmin &&
             adminData.map((item) => (
+              <Link href={item.href}>
               <ListItemButton
                 key={item.label}
-                href={item.href}
+                
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
                 <ListItemIcon sx={{ color: "inherit" }}>
@@ -156,12 +161,14 @@ function ResponsiveDrawer(props) {
                   }}
                 />
               </ListItemButton>
+              </Link>
             ))}
           {!isAdmin && !isOrganizer
             ? userData.map((item) => (
+                <Link href={item.href}>
                 <ListItemButton
                   key={item.label}
-                  href={item.href}
+                  
                   sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
                 >
                   <ListItemIcon sx={{ color: "inherit" }}>
@@ -175,6 +182,7 @@ function ResponsiveDrawer(props) {
                     }}
                   />
                 </ListItemButton>
+                </Link>
               ))
             : null}
           <Divider />
