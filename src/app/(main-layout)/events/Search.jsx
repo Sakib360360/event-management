@@ -15,7 +15,7 @@ const Search = ({ events }) => {
     const [favorites, setFavorites] = useState([]);
     const { user } = useContext(AuthContext);
     const approvedEvents = events.filter(event => event.eventStatus === "approved")
-  
+    console.log(events);
     const handleLikeToggle = (eventId, isLiked) => {
       setFavorites((prevFavorites) => {
         return isLiked
@@ -23,7 +23,7 @@ const Search = ({ events }) => {
           : [...prevFavorites, eventId]; // Add event if not liked
       });
     };
-  
+
     const handleSelectChange = (event) => {
       const selectedValue = event.target.value;
       setSelectedFilter(selectedValue);
@@ -40,6 +40,7 @@ const Search = ({ events }) => {
     const handleShareClick = (eventId) => {
       setSelectedEventId(eventId === selectedEventId ? null : eventId);
     };
+    
   
     const filteredEvents = approvedEvents?.filter((event) => {
       const eventNameMatch = event?.eventName.toLowerCase().includes(search.toLowerCase());
@@ -152,23 +153,35 @@ const Search = ({ events }) => {
                   {selectedEventId === event._id && (
                     <div className="flex gap-2 justify-between items-center">
                       <a
-                        className="bg-transparent text-white  p-2 rounded-full"
-                        href={`https://www.facebook.com/sharer/sharer.php?u=`}
-                      >
-                        Facebook
-                      </a>
-                      <a
-                        className="bg-transparent text-white  p-2 rounded-full"
-                        href={`https://twitter.com/intent/tweet?url=`}
-                      >
-                        Twitter
-                      </a>
-                      <a
-                        className="bg-transparent text-white  p-2 rounded-full"
-                        href={`https://www.linkedin.com/sharing/share-offsite/?url=`}
-                      >
-                        LinkedIn
-                      </a>
+                  className="bg-transparent text-white p-2 rounded-full"
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                    `https://server-event-management-f9enhmfs8-sakib360360.vercel.app/events/${event._id}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
+                <a
+                  className="bg-transparent text-white p-2 rounded-full"
+                  href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                    `https://server-event-management-f9enhmfs8-sakib360360.vercel.app/events/${event._id}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </a>
+                <a
+                  className="bg-transparent text-white p-2 rounded-full"
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                    `https://server-event-management-f9enhmfs8-sakib360360.vercel.app/events/${event._id}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
                     </div>
                   )}
   
