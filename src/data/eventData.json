@@ -2,7 +2,7 @@
     {
       "id": 1,
       "eventName": "Music Festival",
-      "image": "music_festival.jpg",
+      "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699624598/lunar-brigade/tcx7bpgk68h0fneqq4ni.jpg",
       "eventCategory": "Music",
       "ticketSold": 1200,
       "gender": {
@@ -13,7 +13,7 @@
     {
       "id": 2,
       "eventName": "Tech Conference",
-      "image": "tech_conference.jpg",
+      "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699624598/lunar-brigade/tcx7bpgk68h0fneqq4ni.jpg",
       "eventCategory": "Conference",
       "ticketSold": 800,
       "gender": {
@@ -24,7 +24,7 @@
     {
       "id": 3,
       "eventName": "Art Exhibition",
-      "image": "art_exhibition.jpg",
+      "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699630284/lunar-brigade/csjozqlodeahag30psen.jpg",
       "eventCategory": "Art",
       "ticketSold": 500,
       "gender": {
@@ -35,7 +35,7 @@
     {
       "id": 4,
       "eventName": "Food Festival",
-      "image": "food_festival.jpg",
+      "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699541518/lunar-brigade/dpyjxxgwxzatz9hwup7a.png",
       "eventCategory": "Food",
       "ticketSold": 1000,
       "gender": {
@@ -46,7 +46,7 @@
     {
       "id": 5,
       "eventName": "Sports Tournament",
-      "image": "sports_tournament.jpg",
+      "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699541518/lunar-brigade/dpyjxxgwxzatz9hwup7a.png",
       "eventCategory": "Sports",
       "ticketSold": 1500,
       "gender": {
@@ -57,7 +57,7 @@
     {
         "id": 6,
         "eventName": "Film Premiere",
-        "image": "film_premiere.jpg",
+        "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699766370/lunar-brigade/y181nza2vsxdbeekbuql.png",
         "eventCategory": "Film",
         "ticketSold": 700,
         "gender": {
@@ -67,9 +67,9 @@
       },
       {
         "id": 7,
-        "eventName": "Health and Wellness Expo",
-        "image": "wellness_expo.jpg",
-        "eventCategory": "Health",
+        "eventName": "Graduation Party",
+        "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699940297/lunar-brigade/lagxbddtdumap2oxd7es.png",
+        "eventCategory": "Education",
         "ticketSold": 1200,
         "gender": {
           "male": 600,
@@ -79,7 +79,7 @@
       {
         "id": 8,
         "eventName": "Fashion Show",
-        "image": "fashion_show.jpg",
+        "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699630284/lunar-brigade/csjozqlodeahag30psen.jpg",
         "eventCategory": "Fashion",
         "ticketSold": 900,
         "gender": {
@@ -90,7 +90,7 @@
       {
         "id": 9,
         "eventName": "Science Fair",
-        "image": "science_fair.jpg",
+        "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699766370/lunar-brigade/y181nza2vsxdbeekbuql.png",
         "eventCategory": "Science",
         "ticketSold": 300,
         "gender": {
@@ -101,7 +101,7 @@
       {
         "id": 10,
         "eventName": "Business Summit",
-        "image": "business_summit.jpg",
+        "image": "https://res.cloudinary.com/dmaabideu/image/upload/v1699541518/lunar-brigade/dpyjxxgwxzatz9hwup7a.png",
         "eventCategory": "Business",
         "ticketSold": 600,
         "gender": {

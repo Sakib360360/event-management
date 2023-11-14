@@ -26,7 +26,7 @@ const dashboard = async () => {
   const topEvents = sortedEventData.slice(0, 5);
   return (
     <div className="container bg-black">
-      <div className='my-4 m'>
+      <div className='my-4'>
       <DashCard totalData={totalData}></DashCard>
 
         <div className="flex flex-col md:flex-row gap-5 mt-8 mx-2">
@@ -53,7 +53,9 @@ const dashboard = async () => {
             </div> */}
           </div>
         </div>
+        <div className="container rounded pt-4 my-4 mx-2 w-full bg-zinc-900">
         <DashTable topEvents={topEvents}></DashTable>
+        </div>
       </div>
 
     </div>
