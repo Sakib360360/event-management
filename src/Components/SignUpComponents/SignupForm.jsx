@@ -201,7 +201,7 @@ const SignupForm = () => {
         <select
           id="role"
           name="role"
-          className="select select-bordered w-full max-w-xs bg-transparent  border-b border-white "
+          className="select select-bordered w-full max-w-xs bg-transparent   border-b border-white "
           {...register("role", { required: true })}
         >
           <option value="" disabled>Select Role</option>
