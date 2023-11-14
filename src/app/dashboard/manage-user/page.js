@@ -302,7 +302,7 @@ const AllEvents = () => {
                       </div>
                     </div>
                   </td>
-                  <td>{dt.role === "admin" ? <div className="badge badge-accent">{dt.role}</div> : dt.role === "organizer" ? <div className="badge badge-primary">{dt.role}</div> : <div className="badge badge-secondary">{dt.role}</div>}</td>
+                  <td>{dt.role === "admin" ? <div className="badge badge-accent">{dt.role ? dt.role : "N/A"}</div> : dt.role === "organizer" ? <div className="badge badge-primary">{dt.role ? dt.role : "N/A"}</div> : <div className="badge badge-secondary">{dt.role ? dt.role : "N/A"}</div>}</td>
                   <td>
                     <button
                       onClick={() => handleAttendee(dt._id)}

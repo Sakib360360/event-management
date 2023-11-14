@@ -23,10 +23,10 @@ const dashboard = async () => {
       <DashCard totalParticipants={totalParticipants}></DashCard>
 
         <div className="flex flex-col md:flex-row gap-5 mt-8 ">
-          <div className='rounded w-full md:w-1/2 bg-stone-800'>
+          <div className='rounded w-full md:w-1/2 bg-zinc-900'>
             <DashboardChart></DashboardChart>
           </div>
-          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-gray-900">
+          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-zinc-900">
             <PieChartComp></PieChartComp>
             {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 

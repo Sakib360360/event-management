@@ -16,7 +16,7 @@ const DashCard = ({ params }) => {
         <Paper
           sx={{
             height: 100,
-            backgroundColor: "rgb(38, 38, 38)",
+            backgroundColor: "rgb(24 24 27)",
             color: "rgba(255, 255, 255, 0.8)",
             display: 'flex',
             justifyContent: 'center',
