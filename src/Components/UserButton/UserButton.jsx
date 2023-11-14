@@ -8,9 +8,12 @@ import Swal from "sweetalert2";
 const UserButton = ({ data }) => {
   const handleAdmin = (id) => {
     console.log(id);
-    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=admin`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://server-event-management-iota.vercel.app/users/${id}?role=admin`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -28,9 +31,12 @@ const UserButton = ({ data }) => {
 
   const handleOrganizer = (id) => {
     console.log(id);
-    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=organizer`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://server-event-management-iota.vercel.app/users/${id}?role=organizer`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -48,9 +54,12 @@ const UserButton = ({ data }) => {
 
   const handleAttendee = (id) => {
     console.log(id);
-    fetch(`https://server-event-management-iota.vercel.app/users/${id}?role=attendee`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://server-event-management-iota.vercel.app/users/${id}?role=attendee`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -69,23 +78,26 @@ const UserButton = ({ data }) => {
     <div className="flex flex-col items-center py-5 md:flex-row">
       <button
         onClick={() => handleAttendee(data._id)}
-        className="bg-red-500 text-lg flex items-center p-1 rounded-md"
+        className="btn btn-active btn-secondary px-[0.3rem] min-h-[2.2rem] h-0 text-[12px]"
+        title="Make Attendee"
       >
-        <FaUserAlt className="mr-1"></FaUserAlt> Make Attendee
+        <FaUserAlt className="text-lg"></FaUserAlt>Make Attendee
       </button>
 
       <button
         onClick={() => handleOrganizer(data._id)}
-        className="bg-blue-500 text-lg flex my-4 md:mx-4 items-center p-1 rounded-md"
+        className="btn btn-active btn-primary px-[0.3rem] min-h-[2.2rem] h-0 mx-2 text-[12px]"
+        title="Make Organizer"
       >
-        <DiGhostSmall className="mr-1"></DiGhostSmall> Make Organizer
+        <DiGhostSmall className="text-lg"></DiGhostSmall>Make Organizer
       </button>
 
       <button
         onClick={() => handleAdmin(data._id)}
-        className="bg-green-500 text-lg flex items-center p-1 rounded-md"
+        className="btn btn-active btn-accent px-[0.3rem] min-h-[2.2rem] h-0 mr-2 text-[12px]"
+        title="Make Admin"
       >
-        <MdGppGood className="mr-1"></MdGppGood> Make Admin
+        <MdGppGood className="text-lg"></MdGppGood>Make Admin
       </button>
     </div>
   );
