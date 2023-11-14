@@ -20,7 +20,7 @@ const handleSubmit = (e) => {
     status,
   };
 
-  fetch("http://localhost:5000/feedback", {
+  fetch("https://server-event-management-iota.vercel.app/feedback", {
     method: "POST",
     headers: {
       "content-type": "application/json",

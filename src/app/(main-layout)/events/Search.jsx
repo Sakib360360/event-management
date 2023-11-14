@@ -159,7 +159,7 @@ const Search = ({ events, loading }) => {
                       <a
                   className="bg-transparent text-white p-2 rounded-full"
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                    `https://event-management-nu.vercel.app/events/${event._id}`
+                    `https://server-event-management-iota.vercel.app/events/${event._id}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -169,7 +169,7 @@ const Search = ({ events, loading }) => {
                 <a
                   className="bg-transparent text-white p-2 rounded-full"
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                    `https://event-management-nu.vercel.app/events/${event._id}`
+                    `https://server-event-management-iota.vercel.app/events/${event._id}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -179,7 +179,7 @@ const Search = ({ events, loading }) => {
                 <a
                   className="bg-transparent text-white p-2 rounded-full"
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                    `https://event-management-nu.vercel.app/events/${event._id}`
+                    `https://server-event-management-iota.vercel.app/events/${event._id}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"

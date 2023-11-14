@@ -205,7 +205,9 @@ function ResponsiveDrawer(props) {
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
-              Sadia
+              {
+                user?.email
+              }
             </Typography>
             <IconButton sx={{ color: "rgba(255,255,255,.8)" }}
             href="/"
