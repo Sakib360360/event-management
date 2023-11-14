@@ -13,12 +13,14 @@ const Modal = ({ handleSubmit }) => {
             type="text"
             placeholder="Your Name"
             name="name"
+            autoComplete="off"
             className="input input-bordered input-primary w-full my-3 input-filed"
           />
           <input
             type="text"
             placeholder="Your email"
             name="email"
+            autoComplete="off"
             className="input input-bordered input-primary w-full my-3 input-filed"
           />
 
