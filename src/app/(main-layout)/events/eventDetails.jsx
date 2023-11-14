@@ -1,6 +1,7 @@
 // pages/event/[id].js
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Link from "next/link"; // Import the Link component
 
 export default function EventDetails() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function EventDetails() {
       try {
         if (id) {
           const response = await fetch(
-            `https://server-event-management-f9enhmfs8-sakib360360.vercel.app/events/${id}`
+            `https://server-event-management-iota.vercel.app/events/${id}`
           );
           if (response.ok) {
             const eventData = await response.json();
@@ -25,7 +26,8 @@ export default function EventDetails() {
         console.error("Error fetching event details:", error);
       }
     };
-console.log(id);
+
+    console.log(id);
     fetchEventDetails();
   }, [id]);
 
@@ -40,6 +42,8 @@ console.log(id);
       ) : (
         <p>Loading...</p>
       )}
+
+      
     </div>
   );
 }

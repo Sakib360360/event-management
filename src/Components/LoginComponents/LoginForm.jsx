@@ -5,9 +5,11 @@ import useAuth from "@/hooks/useAuth";
 /* import createJWT from "@/utils/createJWT"; */
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { startTransition } from "react";
+import { startTransition, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import "./LoginForm.css"
 
 const LoginForm = () => {
@@ -21,6 +23,11 @@ const LoginForm = () => {
   const search = useSearchParams();
   const from = search.get("redirectUrl") || "/";
   const { replace, refresh } = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -64,7 +71,7 @@ const LoginForm = () => {
           </span>
         )}
       </div>
-      <div className="form-control">
+      {/* <div className="form-control">
         <label htmlFor="password" className="label text-white label-text">
           Password
         </label>
@@ -87,7 +94,31 @@ const LoginForm = () => {
             Forgot password?
           </a>
         </label>
+      </div> */}
+      <div className="form-control relative">
+        <label htmlFor="password" className="label text-white label-text">
+          Password
+        </label>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          placeholder="password"
+          id="password"
+          name="password"
+          className="input text-white bg-transparent border-b border-white input-bordered w-full pr-12" // Adjusted width and added padding for the button
+          autoComplete="new-password"
+          {...register('password', { required: true, minLength: 6 })}
+        />
+        <button
+          type="button"
+          className="absolute right-2 bottom-4 text-white"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </button>
       </div>
+
+
+
       <div className="form-control mt-6">
         <button className="btn bg-custom" type="submit" >
           Login

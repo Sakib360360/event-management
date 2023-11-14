@@ -18,7 +18,7 @@ const dashboard = async () => {
 
 
   return (
-    <div className="container">
+    <div className="container bg-black">
       <div className='my-4'>
       <DashCard totalParticipants={totalParticipants}></DashCard>
 

@@ -1,34 +1,29 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+"use client";
+import AuthContext from "@/context/AuthContext";
+import { People } from "@mui/icons-material";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LineAxisIcon from "@mui/icons-material/LineAxis";
+import MenuIcon from "@mui/icons-material/Menu";
+import MessageIcon from "@mui/icons-material/Message";
+import PaymentIcon from "@mui/icons-material/Payment";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import { Avatar, Stack } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import MessageIcon from "@mui/icons-material/Message";
-import LineAxisIcon from "@mui/icons-material/LineAxis";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import PaymentIcon from "@mui/icons-material/Payment";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import Link from "next/link";
-import { People } from "@mui/icons-material";
-import { Avatar, Stack } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
 
 const drawerWidth = 240;
 
@@ -73,14 +68,29 @@ function ResponsiveDrawer(props) {
     { icon: <PaymentIcon />, label: "Payments", href: "/dashboard/payments" },
   ];
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  // co
+  const { user } = useContext(AuthContext);
+  const [role, setRole] = useState("");
+  useEffect(() => {
+    fetch(
+      `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setRole(data.role);
+      });
+  }, [user]);
+  console.log(role);
+  const isAdmin = role === "admin";
+  const isOrganizer = role === "organizer";
 
-  const isAdmin = false;
-  const isOrganizer = true;
+  // const isAdmin = false;
+  // const isOrganizer = true;
 
   const drawer = (
     <Box
@@ -98,7 +108,7 @@ function ResponsiveDrawer(props) {
         <Toolbar />
         <div>
           <ListItemButton
-            href='/dashboard'
+            href="/dashboard"
             sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
           >
             <ListItemIcon sx={{ color: "inherit" }}>
@@ -187,11 +197,11 @@ function ResponsiveDrawer(props) {
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
-              Sadia
+              {
+                user?.email
+              }
             </Typography>
-            <IconButton sx={{ color: "rgba(255,255,255,.8)" }}
-            href="/"
-            >
+            <IconButton sx={{ color: "rgba(255,255,255,.8)" }} href="/">
               <ExitToAppIcon />
             </IconButton>
           </Stack>
