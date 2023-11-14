@@ -124,9 +124,10 @@ function ResponsiveDrawer(props) {
           </Link>
           {isOrganizer &&
             organizerData.map((item) => (
-              <Link href={item.href}>
+              <Link href={item.href}
+              key={item.label}>
               <ListItemButton
-                key={item.label}
+                // key={item.label}
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
                 <ListItemIcon sx={{ color: "inherit" }}>
@@ -144,9 +145,11 @@ function ResponsiveDrawer(props) {
             ))}
           {isAdmin &&
             adminData.map((item) => (
-              <Link href={item.href}>
+              <Link href={item.href}
+              key={item.label}>
+                
               <ListItemButton
-                key={item.label}
+                // key={item.label}
                 
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
@@ -165,9 +168,10 @@ function ResponsiveDrawer(props) {
             ))}
           {!isAdmin && !isOrganizer
             ? userData.map((item) => (
-                <Link href={item.href}>
+                <Link href={item.href}
+                key={item.label}>
                 <ListItemButton
-                  key={item.label}
+                  // key={item.label}
                   
                   sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
                 >

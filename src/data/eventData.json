@@ -1,0 +1,113 @@
+[
+    {
+      "id": 1,
+      "eventName": "Music Festival",
+      "image": "music_festival.jpg",
+      "eventCategory": "Music",
+      "ticketSold": 1200,
+      "gender": {
+        "male": 600,
+        "female": 600
+      }
+    },
+    {
+      "id": 2,
+      "eventName": "Tech Conference",
+      "image": "tech_conference.jpg",
+      "eventCategory": "Conference",
+      "ticketSold": 800,
+      "gender": {
+        "male": 400,
+        "female": 400
+      }
+    },
+    {
+      "id": 3,
+      "eventName": "Art Exhibition",
+      "image": "art_exhibition.jpg",
+      "eventCategory": "Art",
+      "ticketSold": 500,
+      "gender": {
+        "male": 250,
+        "female": 250
+      }
+    },
+    {
+      "id": 4,
+      "eventName": "Food Festival",
+      "image": "food_festival.jpg",
+      "eventCategory": "Food",
+      "ticketSold": 1000,
+      "gender": {
+        "male": 500,
+        "female": 500
+      }
+    },
+    {
+      "id": 5,
+      "eventName": "Sports Tournament",
+      "image": "sports_tournament.jpg",
+      "eventCategory": "Sports",
+      "ticketSold": 1500,
+      "gender": {
+        "male": 800,
+        "female": 700
+      }
+    },
+    {
+        "id": 6,
+        "eventName": "Film Premiere",
+        "image": "film_premiere.jpg",
+        "eventCategory": "Film",
+        "ticketSold": 700,
+        "gender": {
+          "male": 350,
+          "female": 350
+        }
+      },
+      {
+        "id": 7,
+        "eventName": "Health and Wellness Expo",
+        "image": "wellness_expo.jpg",
+        "eventCategory": "Health",
+        "ticketSold": 1200,
+        "gender": {
+          "male": 600,
+          "female": 600
+        }
+      },
+      {
+        "id": 8,
+        "eventName": "Fashion Show",
+        "image": "fashion_show.jpg",
+        "eventCategory": "Fashion",
+        "ticketSold": 900,
+        "gender": {
+          "male": 450,
+          "female": 450
+        }
+      },
+      {
+        "id": 9,
+        "eventName": "Science Fair",
+        "image": "science_fair.jpg",
+        "eventCategory": "Science",
+        "ticketSold": 300,
+        "gender": {
+          "male": 150,
+          "female": 150
+        }
+      },
+      {
+        "id": 10,
+        "eventName": "Business Summit",
+        "image": "business_summit.jpg",
+        "eventCategory": "Business",
+        "ticketSold": 600,
+        "gender": {
+          "male": 300,
+          "female": 300
+        }
+    }
+  ]
+  

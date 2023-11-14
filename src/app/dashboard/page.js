@@ -4,25 +4,32 @@ import DashboardChart from '@/Components/DashboardChart';
 import getEvents from '@/utils/getEvents';
 import "./scroll.css";
 import PieChartComp from '@/Components/PieChart';
+import DashTable from '@/Components/DashTable';
+import eventData from 'src/data/eventData.json';
 
 
 
 const dashboard = async () => {
-  const events = await getEvents();
-  const currentDate = new Date().toISOString().split('T')[0];
 
-  const upcomingEvents = events.filter((event) => event.date >= currentDate);
+  const totalData = {
+    totalEvents: 10,
+    totalTicketSold: 500,
+    totalInterested: 1000,
+    totalUsers: 300,
+    totalRevenue: 5000,
+    totalExpense: 2000,
+    totalMale: 150,
+    totalFemale: 150,
+  };
 
-  const totalEvents = 15;
-  const totalParticipants = 320;
-
-
+  const sortedEventData = eventData.sort((a, b) => b.ticketSold - a.ticketSold);
+  const topEvents = sortedEventData.slice(0, 5);
   return (
     <div className="container bg-black">
-      <div className='my-4'>
-      <DashCard totalParticipants={totalParticipants}></DashCard>
+      <div className='my-4 m'>
+      <DashCard totalData={totalData}></DashCard>
 
-        <div className="flex flex-col md:flex-row gap-5 mt-8 ">
+        <div className="flex flex-col md:flex-row gap-5 mt-8 mx-2">
           <div className='rounded w-full md:w-1/2 bg-zinc-900'>
             <DashboardChart></DashboardChart>
           </div>
@@ -46,7 +53,7 @@ const dashboard = async () => {
             </div> */}
           </div>
         </div>
-        {/* <CalenderComp></CalenderComp> */}
+        <DashTable topEvents={topEvents}></DashTable>
       </div>
 
     </div>
