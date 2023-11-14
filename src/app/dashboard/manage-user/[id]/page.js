@@ -42,10 +42,10 @@ const SingleUser = async ({ params }) => {
                             <p>Id: {data._id}</p>
                             <p>email: {data.email}</p>
                             <div>Role: {data.role === "admin"
-                                ? <div className="badge badge-accent">{data.role}</div>
+                                ? <div className="badge badge-accent">{data.role ? data.role : "N/A"}</div>
                                 : data.role === "organizer"
-                                    ? <div className="badge badge-primary">{data.role}</div>
-                                    : <div className="badge badge-secondary">{data.role}</div>}</div>
+                                    ? <div className="badge badge-primary">{data.role ? data.role : "N/A"}</div>
+                                    : <div className="badge badge-secondary">{data.role ? data.role : "N/A"}</div>}</div>
                         </div>
                     </div>
                     <div className="card-actions justify-end">
