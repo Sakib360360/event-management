@@ -18,10 +18,10 @@ const data = [
   };
   
   const StyledText = styled('text')(({ theme }) => ({
-    fill: theme.palette.text.primary,
+    fill: 'rgba(255, 255, 255, 0.8)',
     textAnchor: 'middle',
     dominantBaseline: 'central',
-    fontSize: 20,
+    fontSize: 30,
   }));
 
   function PieCenterLabel({ children }) {
@@ -35,7 +35,8 @@ const data = [
 const PieChartComp = () => {
     return (
         <PieChart series={[{ data, innerRadius: 60 }]} {...size}>
-        <PieCenterLabel>80%</PieCenterLabel>
+        <PieCenterLabel
+        >80%</PieCenterLabel>
       </PieChart>
     );
 };

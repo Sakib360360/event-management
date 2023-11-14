@@ -1,6 +1,9 @@
 "use client";
 import { Line } from "react-chartjs-2";
 import { LineChart } from '@mui/x-charts/LineChart';
+import { Stack } from "@mui/material";
+import { Box } from "@mui/system";
+import { styled } from '@mui/material/styles';
 
 // import {
 //   Chart as ChartJS,
@@ -23,17 +26,17 @@ import { LineChart } from '@mui/x-charts/LineChart';
 //   Filler
 // );
 
-const salesData = [
-  { month: "January", sales: 100 },
-  { month: "February", sales: 150 },
-  { month: "March", sales: 200 },
-  { month: "April", sales: 120 },
-  { month: "May", sales: 180 },
-  { month: "June", sales: 230 },
-  { month: "July", sales: 240 },
-  { month: "August", sales: 270 },
-  { month: "September", sales: 280 },
-];
+// const salesData = [
+//   { month: "January", sales: 100 },
+//   { month: "February", sales: 150 },
+//   { month: "March", sales: 200 },
+//   { month: "April", sales: 120 },
+//   { month: "May", sales: 180 },
+//   { month: "June", sales: 230 },
+//   { month: "July", sales: 240 },
+//   { month: "August", sales: 270 },
+//   { month: "September", sales: 280 },
+// ];
 
 const DashboardChart = ()=> {
   const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490,1234,3452,4500,1243,3278];
@@ -52,6 +55,12 @@ const DashboardChart = ()=> {
     'November',
     'December',
   ];
+  const StyledText = styled('text')(({ theme }) => ({
+    fill: 'rgba(255, 255, 255, 0.8)',
+    // textAnchor: 'middle',
+    // dominantBaseline: 'central',
+    fontSize: 30,
+  }));
   // const data = {
   //   labels: salesData.map((data) => data.month),
   //   datasets: [
@@ -127,15 +136,17 @@ const DashboardChart = ()=> {
   // };
 
   return (
-    <LineChart
+     <Box sx={{color: "rgba(255,255,255,.8)" }}>
+       <LineChart
     width={500}
     height={300}
     series={[
-      { data: pData, label: '2023' },
-      { data: uData, label: '2022' },
+      { data: pData, label: '2023' ,},
+      { data: uData, label: '2022',},
     ]}
-    xAxis={[{ scaleType: 'point', data: xLabels }]}
+    xAxis={[{ scaleType: 'point', data: xLabels ,}]}
   />
+     </Box>
     // <div>
     //   <h1 className="font-semisbold text-2xl text-center mt-8">
     //    Ticket Sales
