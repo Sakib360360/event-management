@@ -3,6 +3,7 @@ import DashCard from '@/Components/DashCard';
 import DashboardChart from '@/Components/DashboardChart';
 import getEvents from '@/utils/getEvents';
 import "./scroll.css";
+import PieChartComp from '@/Components/PieChart';
 
 
 
@@ -17,17 +18,17 @@ const dashboard = async () => {
 
 
   return (
-    <div className="p-20 min-h-screen">
-      <div className=''>
-        <DashCard totalEvents={totalEvents}></DashCard>
-        <DashCard totalParticipants={totalParticipants}></DashCard>
+    <div className="container">
+      <div className='my-4'>
+      <DashCard totalParticipants={totalParticipants}></DashCard>
 
         <div className="flex flex-col md:flex-row gap-5 mt-8 ">
           <div className='rounded w-full md:w-1/2 bg-stone-800'>
             <DashboardChart></DashboardChart>
           </div>
-          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-stone-800">
-            <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
+          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-gray-900">
+            <PieChartComp></PieChartComp>
+            {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
             <div className="overflow-y-auto sm:h-60 scroll-bar">
               <div className="grid grid-cols-1 gap-8">
@@ -42,7 +43,7 @@ const dashboard = async () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* <CalenderComp></CalenderComp> */}
