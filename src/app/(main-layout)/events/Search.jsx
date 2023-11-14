@@ -8,7 +8,6 @@ import "./event.module.css";
 import Link from "next/link";
 import LikedEvent from "@/Components/LikedEvent/LikedEvent";
 
-<<<<<<< HEAD
 const Search = ({ events, loading }) => {
   const [search, setSearch] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('');
@@ -22,45 +21,6 @@ const Search = ({ events, loading }) => {
       return isLiked
         ? prevFavorites.filter((id) => id !== eventId) // Remove event if liked
         : [...prevFavorites, eventId]; // Add event if not liked
-=======
-const Search = ({ events }) => {
-    const [search, setSearch] = useState('');
-    const [selectedFilter, setSelectedFilter] = useState('');
-    const [selectedEventId, setSelectedEventId] = useState(null);
-    const [favorites, setFavorites] = useState([]);
-    const { user } = useContext(AuthContext);
-    const approvedEvents = events.filter(event => event.eventStatus === "approved")
-    console.log(events);
-    const handleLikeToggle = (eventId, isLiked) => {
-      setFavorites((prevFavorites) => {
-        return isLiked
-          ? prevFavorites.filter((id) => id !== eventId) // Remove event if liked
-          : [...prevFavorites, eventId]; // Add event if not liked
-      });
-    };
-
-    const handleSelectChange = (event) => {
-      const selectedValue = event.target.value;
-      setSelectedFilter(selectedValue);
-    };
-  
-    console.log(selectedFilter);
-  
-    const handleSearchChange = (e) => {
-      const searchText = e.target.value;
-      setSearch(searchText);
-      console.log(searchText);
-    };
-  
-    const handleShareClick = (eventId) => {
-      setSelectedEventId(eventId === selectedEventId ? null : eventId);
-    };
-    
-  
-    const filteredEvents = approvedEvents?.filter((event) => {
-      const eventNameMatch = event?.eventName.toLowerCase().includes(search.toLowerCase());
-      return eventNameMatch;
->>>>>>> 565ce4ca31ce8b4bff5d70eeea283d53a8341a95
     });
   };
 
