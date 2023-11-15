@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MessageIcon from "@mui/icons-material/Message";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import { Avatar, Stack } from "@mui/material";
+import { Avatar, Stack, Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -203,20 +203,26 @@ function ResponsiveDrawer(props) {
       ></div>
       <div>
         <div>
-          <Stack direction="row" spacing={4} ml={2} mb={3}>
-            <Avatar
+          <Stack direction="column" spacing={0} mx={8} mb={2}>
+            <div className="flex gap-8">
+            <Avatar className="my-auto"
               alt="Remy Sharp"
               src={user?.photoURL}
-              sx={{ width: 56, height: 56 }}
+              sx={{ width: 50, height: 50 }}
             />
             <Typography variant="h6" pt={1}>
               {user?.displayName}
             </Typography>
+            </div>
+            <div>
             <Link href="/">
-              <IconButton sx={{ color: "rgba(255,255,255,.8)" }}>
+            <Tooltip title="Home" arrow>
+              <IconButton sx={{ color: "rgba(255,255,255,.8)", mt:4 ,ml:5}}>
                 <ExitToAppIcon />
               </IconButton>
+              </Tooltip>
             </Link>
+            </div>
           </Stack>
         </div>
       </div>

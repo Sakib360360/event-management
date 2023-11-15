@@ -18,7 +18,6 @@ const singleLegal = ({ params }) => {
 
   return (
     <div className="mb-20 ml-10">
-        {/* <LegalDetails id={id}></LegalDetails> */}
         {singleLegal.content}
             </div>
   );

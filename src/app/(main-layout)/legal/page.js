@@ -1,12 +1,10 @@
 import React from "react";
-import TabsComponent from "@/Components/Tabs/TabsComponent";
 import LegalDetails from "./LegalDetails";
 
 const LegalPage = () => {
   return (
     <div className="m-8 p-8">
       <LegalDetails legalItems={legalItems}></LegalDetails>
-      {/* <TabsComponent legalItems={legalItems}></TabsComponent> */}
     </div>
   );
 };
