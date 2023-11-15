@@ -1,0 +1,9 @@
+input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: invert(1);
+}
+input[type="time"]::-webkit-calendar-picker-indicator{
+    filter: invert(1);
+}
+.btn-bg-custom{
+    background: -webkit-linear-gradient(40deg, rgb(var(--third-gradient)), rgb(var(--first-gradient)));
+}

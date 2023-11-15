@@ -138,8 +138,8 @@ const EditEvent = ({ params }) => {
       {/* <EditEventForm id={params.id}></EditEventForm>
       <p className="text-white">hello</p>
       Add your modal with the form here */}
-      <div className='py-8'>
-        <form className="max-w-md mx-auto p-8 py-8 border border-white rounded-md shadow-md">
+      <div className='py-8 '>
+        <form className="max-w-md mx-auto p-8 py-8 border dashboard-bg border-white rounded-md shadow-md">
 
           <h2 className="text-2xl font-semibold mb-4">Update Event</h2>
 
@@ -311,16 +311,16 @@ const EditEvent = ({ params }) => {
             <select
               id="eventCategory"
               required
-              className="mt-1 p-2 w-full border bg-black text-white rounded-md"
+              className="mt-1 p-2 w-full border bg-transparent text-white rounded-md"
               value={eventCategory}
               defaultValue={prevEvent.eventCategory}
               onChange={handleCategoryChange}
             >
-              <option value="">Select a category</option>
-              <option value="music">Music Festival</option>
-              <option value="conferences">Conferences</option>
-              <option value="concerts">Concerts</option>
-              <option value="workshops">Workshops</option>
+              <option className='dashboard-tile' value="">Select a category</option>
+              <option className='dashboard-tile' value="music">Music Festival</option>
+              <option className='dashboard-tile' value="conferences">Conferences</option>
+              <option className='dashboard-tile' value="concerts">Concerts</option>
+              <option className='dashboard-tile' value="workshops">Workshops</option>
             </select>
           </div>
 
@@ -329,7 +329,7 @@ const EditEvent = ({ params }) => {
             <button
               type="submit"
               onClick={handleSubmit}
-              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+              className="btn-bg-custom text-white p-2 rounded-md hover:bg-blue-600"
             >
               Update
             </button>
