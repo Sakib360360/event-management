@@ -1,6 +1,6 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
-import { People } from "@mui/icons-material";
+import { Feedback, People } from "@mui/icons-material";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
@@ -36,6 +36,7 @@ function ResponsiveDrawer(props) {
       href: "/dashboard/all-events",
     },
     { icon: <MessageIcon />, label: "Messages", href: "/dashboard/messages" },
+    { icon: <Feedback />, label: "Feedback", href: "/dashboard/feedbacks" },
   ];
   const organizerData = [
     {
@@ -197,9 +198,7 @@ function ResponsiveDrawer(props) {
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
-              {
-                user?.email
-              }
+              {user?.email}
             </Typography>
             <IconButton sx={{ color: "rgba(255,255,255,.8)" }} href="/">
               <ExitToAppIcon />
