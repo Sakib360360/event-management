@@ -222,12 +222,12 @@ function ResponsiveDrawer(props) {
           <Stack direction="row" spacing={4} ml={2} mb={3}>
             <Avatar
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={user?.photoURL}
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
               {
-                user?.email
+                user?.displayName
               }
             </Typography>
             <Link href="/">
