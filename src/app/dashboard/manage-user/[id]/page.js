@@ -24,8 +24,8 @@ const SingleUser = async ({ params }) => {
         //     </div>
         // </div>
 
-        <div className="min-h-screen grid place-content-center">
-            <div className="flex flex-col items-center lg:flex-row bg-[#1D232A] rounded-xl p-3">
+        <div className="min-h-screen grid place-content-center dashboard-bg">
+            <div className="flex flex-col items-center lg:flex-row dashboard-tile rounded-xl p-3">
 
                 <div className="w-full lg:w-[30em] mb-5 lg:mr-12">
                     <img className="w-full" src={data.photoUrl} alt={data.name} />
@@ -34,14 +34,14 @@ const SingleUser = async ({ params }) => {
                 <div className="card-body">
                     <div>
                         <div className="mb-7">
-                            <h1 className="text-3xl font-semibold">{data.name}</h1>
+                            <h1 className="text-3xl font-semibold dashboard-color">{data.name}</h1>
                         </div>
 
                         <div className="mb-7">
                             <p className="underline font-semibold accent-color">Details</p>
-                            <p>Id: {data._id}</p>
-                            <p>email: {data.email}</p>
-                            <div>Role: {data.role === "admin"
+                            <p className="dashboard-color">Id: {data._id}</p>
+                            <p className="dashboard-color">email: {data.email}</p>
+                            <div><span className="dashboard-color">Role:</span> {data.role === "admin"
                                 ? <div className="badge badge-accent">{data.role ? data.role : "N/A"}</div>
                                 : data.role === "organizer"
                                     ? <div className="badge badge-primary">{data.role ? data.role : "N/A"}</div>

@@ -117,10 +117,10 @@ const CreateEventForm = () => {
 
     return (
 
-        <div className='py-8'>
-            <form className="max-w-md mx-auto p-8 py-8 border border-white rounded-md shadow-md">
+        <div className='py-8 bg-black'>
+            <form className="max-w-md mx-auto bg-transparent p-8 py-8 border border-white rounded-md shadow-md">
 
-                <h2 className="text-2xl font-semibold mb-4">Create Event</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Create Event</h2>
 
                 {/* Event Name */}
                 <div className="mb-4">
