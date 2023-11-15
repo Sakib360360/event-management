@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import Modal from "../Modal/Modal";
@@ -65,6 +66,7 @@ const Footer = () => {
           <Link href={"/"}>
             <h1 className="mx-3 active font-bold text-3xl">EventGuru</h1>
           </Link>
+          <Image src={"/images/logo.png"} alt="logo" width={150} height={150} />
         </div>
 
         <div className="my-7">
