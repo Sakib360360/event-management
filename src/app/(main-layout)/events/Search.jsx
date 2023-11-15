@@ -49,7 +49,7 @@ const Search = ({ events }) => {
     if (selectedFilter === 'latest') {
       filteredEvents.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
     }
-  
+
     return (
       <div>
         <div className="flex justify-center gap-4 md:gap-40">
