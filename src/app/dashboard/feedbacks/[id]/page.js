@@ -64,15 +64,15 @@ const FeedbackDetails = ({ params }) => {
         <div className="card-body">
           <div>
             <div className="mb-7">
-              <h1 className="text-3xl font-semibold">
+              <h1 className="text-3xl font-semibold dashboard-color">
                 Name: {feedback.userName}
               </h1>
             </div>
 
             <div className="mb-7">
-              <p>Email: {feedback.userEmail}</p>
-              <div>Status: {feedback.status === "feedback" ? <div className="badge badge-primary">{feedback.status}</div> : <div className="badge badge-secondary">{feedback.status}</div>}</div>
-              <p>Feedback: {feedback.feedback}</p>
+              <p className="dashboard-color">Email: {feedback.userEmail}</p>
+              <div><span className="dashboard-color">Status:</span> {feedback.status === "feedback" ? <div className="badge badge-primary">{feedback.status}</div> : <div className="badge badge-secondary">{feedback.status}</div>}</div>
+              <p className="dashboard-color">Feedback: {feedback.feedback}</p>
             </div>
 
             <button

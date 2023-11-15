@@ -23,13 +23,13 @@ const Message = async ({ params }) => {
                 <div className="card-body">
                     <div>
                         <div className="mb-7">
-                            <h1 className="text-3xl font-semibold">Name: {message.name}</h1>
+                            <h1 className="text-3xl font-semibold dashboard-color">Name: {message.name}</h1>
                         </div>
 
                         <div className="mb-7">
-                            <p>Email: {message.email}</p>
-                            <p>Date: {formatDate(message.date)}</p>
-                            <p>{message.message}</p>
+                            <p className="dashboard-color">Email: {message.email}</p>
+                            <p className="dashboard-color">Date: {formatDate(message.date)}</p>
+                            <p className="dashboard-color">{message.message}</p>
                         </div>
                     </div>
                     <div className="card-actions justify-end">

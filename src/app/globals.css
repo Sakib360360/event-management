@@ -32,6 +32,10 @@ body {
   background-color: rgb(var(--dashboard-tile));
 }
 
+.dashboard-color {
+  color: rgba(var(--secondary-color));
+}
+
 /* Add custom styles for react-select */
 .react-select-container {
   width: 100%;

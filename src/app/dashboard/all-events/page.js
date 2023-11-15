@@ -149,7 +149,7 @@ const AllEvents = () => {
   );
 
   return (
-    <div className="min-h-screen px-4 md:px-12 py-6 dashboard-bg">
+    <div className="min-h-screen px-4 md:px-12 py-6 dashboard-bg dashboard-color">
       <div className="filter-container flex flex-col md:flex-row md:justify-between md:items-center my-5">
         <div className="search-box sm:mb-4 px-4 py-2 rounded-xl">
           <input type="search" placeholder="Search" className="mr-3 h-10" onChange={handleSearch} />
