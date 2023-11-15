@@ -93,6 +93,7 @@ function ResponsiveDrawer(props) {
   }, [user]);
     const isAdmin = role === "admin";
   const isOrganizer = role === "organizer";
+  // role set
   // co
   // useEffect(() => {
   //   fetch(
