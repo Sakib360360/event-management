@@ -11,7 +11,7 @@ const DashTable = ({topEvents}) => {
         <th className='text-white'>Event Name</th>
         <th className='text-white'>Category</th>
         <th className='text-white'>Ticket Sold</th>
-        <th></th>
+        <th className='text-white'>Action</th>
       </tr>
     </thead>
     <tbody>
