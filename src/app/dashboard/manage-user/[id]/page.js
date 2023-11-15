@@ -34,14 +34,14 @@ const SingleUser = async ({ params }) => {
                 <div className="card-body">
                     <div>
                         <div className="mb-7">
-                            <h1 className="text-3xl font-semibold">{data.name}</h1>
+                            <h1 className="text-3xl font-semibold dashboard-color">{data.name}</h1>
                         </div>
 
                         <div className="mb-7">
                             <p className="underline font-semibold accent-color">Details</p>
-                            <p>Id: {data._id}</p>
-                            <p>email: {data.email}</p>
-                            <div>Role: {data.role === "admin"
+                            <p className="dashboard-color">Id: {data._id}</p>
+                            <p className="dashboard-color">email: {data.email}</p>
+                            <div><span className="dashboard-color">Role:</span> {data.role === "admin"
                                 ? <div className="badge badge-accent">{data.role ? data.role : "N/A"}</div>
                                 : data.role === "organizer"
                                     ? <div className="badge badge-primary">{data.role ? data.role : "N/A"}</div>

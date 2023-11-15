@@ -56,7 +56,7 @@ const MessagesPage = () => {
     };
 
     return (
-        <div className="py-1 min-h-screen message-wrapper dashboard-bg">
+        <div className="py-1 min-h-screen message-wrapper dashboard-bg dashboard-color">
             <div className="overflow-x-auto mt-12 mx-2 rounded-2xl">
                 <table className="table dashboard-tile">
                     <thead>
