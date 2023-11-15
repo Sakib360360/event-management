@@ -55,10 +55,10 @@ const FavouriteEvents = () => {
   const allFavoriteEvents = allEvents.filter(event => favorites[0]?.likedEvents.includes(event._id))
   console.log(allFavoriteEvents)
   return (
-    <div className="flex justify-center items-center h-screen bg-black text-white">
+    <div className="flex justify-center items-center h-screen text-white">
       <div className="w-3/4">
         <h2 className="text-2xl font-bold mb-4">Favorite Events</h2>
-        <div className='overflow-x-auto'>
+        <div className='overflow-x-auto dashboard-tile p-4 rounded-lg'>
           <table className="table">
             {
               loading ? <><div className="flex justify-center items-center mx-auto py-8 w-16">

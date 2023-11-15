@@ -52,22 +52,22 @@ const MyEventsDashboard = () => {
     const myEvents = events.filter(event => event?.eventCreator === user?.email)
     console.log(myEvents)
     return (
-        <div className="max-w-3xl mx-auto min-h-screen p-8 bg-black rounded-md shadow-md">
+        <div className="max-w-3xl mx-auto min-h-screen p-8 dasboard-bg rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
 
             {/* List of Events */}
             {
                 myEvents.length > 0 ? <>{myEvents?.map((event) => (
-                    <div key={event._id} className="mb-8 p-4 bg-transparent border border-white rounded-md">
+                    <div key={event._id} className="mb-8 p-4 dashboard-tile border border-white rounded-md">
                         <img
                             src={event.imageUrl}
                             alt={event.eventName}
                             className="mb-4 w-full h-48 object-cover rounded-md"
                         />
                         <h3 className="text-xl text-white font-semibold mb-2">{event.eventName}</h3>
-                        <p className="text-gray-600 mb-2">{event.eventDate}</p>
-                        <p className="text-gray-600 mb-2">{event.eventLocation}</p>
-                        <p className="text-gray-600 mb-4">{event.eventDescription}</p>
+                        <p className="text-gray-400 mb-2">{event.eventDate}</p>
+                        <p className="text-gray-400 mb-2">{event.eventLocation}</p>
+                        <p className="text-gray-400 mb-4">{event.eventDescription}</p>
                         <div className="flex justify-between items-center">
                             <button
                                 className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600" onClick={() => handleDelete(event._id)}
@@ -81,7 +81,7 @@ const MyEventsDashboard = () => {
                     </div>
                 ))}</> : <>
                     <div>
-                        <h1 className=''>You didn't have any event yet. Please create an event...</h1>
+                        <h1 className='text-white'>You didn't have any event yet. Please create an event...</h1>
                     </div>
                 </>
             }
