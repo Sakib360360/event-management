@@ -74,21 +74,38 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  // co
+
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState("");
+  // *******fixing******//
   useEffect(() => {
-    fetch(
-      `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setRole(data.role);
-      });
+    if (user) {
+      fetch(`https://server-event-management-iota.vercel.app/users/role/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRole(data.role);
+          console.log(data.role);
+        })
+        .catch((error) => {
+          console.error('Error fetching user role:', error);
+        });
+    }
   }, [user]);
-  console.log(role);
-  const isAdmin = role === "admin";
+    const isAdmin = role === "admin";
   const isOrganizer = role === "organizer";
+  // co
+  // useEffect(() => {
+  //   fetch(
+  //     `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRole(data.role);
+  //     });
+  // }, [user]);
+  // console.log(role);
+  // const isAdmin = role === "admin";
+  // const isOrganizer = role === "organizer";
 
   // const isAdmin = false;
   // const isOrganizer = true;
@@ -124,9 +141,10 @@ function ResponsiveDrawer(props) {
           </Link>
           {isOrganizer &&
             organizerData.map((item) => (
-              <Link href={item.href}>
+              <Link href={item.href}
+              key={item.label}>
               <ListItemButton
-                key={item.label}
+                // key={item.label}
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
                 <ListItemIcon sx={{ color: "inherit" }}>
@@ -144,9 +162,11 @@ function ResponsiveDrawer(props) {
             ))}
           {isAdmin &&
             adminData.map((item) => (
-              <Link href={item.href}>
+              <Link href={item.href}
+              key={item.label}>
+                
               <ListItemButton
-                key={item.label}
+                // key={item.label}
                 
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
@@ -165,9 +185,10 @@ function ResponsiveDrawer(props) {
             ))}
           {!isAdmin && !isOrganizer
             ? userData.map((item) => (
-                <Link href={item.href}>
+                <Link href={item.href}
+                key={item.label}>
                 <ListItemButton
-                  key={item.label}
+                  // key={item.label}
                   
                   sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
                 >
@@ -201,12 +222,12 @@ function ResponsiveDrawer(props) {
           <Stack direction="row" spacing={4} ml={2} mb={3}>
             <Avatar
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={user?.photoURL}
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
               {
-                user?.email
+                user?.displayName
               }
             </Typography>
             <Link href="/">

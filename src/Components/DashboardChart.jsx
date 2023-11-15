@@ -1,4 +1,5 @@
 "use client";
+import * as React from 'react';
 import { Line } from "react-chartjs-2";
 import { LineChart } from '@mui/x-charts/LineChart';
 import { Stack } from "@mui/material";
@@ -37,24 +38,24 @@ import { styled } from '@mui/material/styles';
 //   { month: "August", sales: 270 },
 //   { month: "September", sales: 280 },
 // ];
-
+const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490,1234,3452,4500,1243,3278];
+const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300,3456,3400,2487,4321,1234];
+const xLabels = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 const DashboardChart = ()=> {
-  const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490,1234,3452,4500,1243,3278];
-  const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300,3456,3400,2487,4321,1234];
-  const xLabels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+
   const StyledText = styled('text')(({ theme }) => ({
     fill: 'rgba(255, 255, 255, 0.8)',
     // textAnchor: 'middle',
@@ -136,17 +137,15 @@ const DashboardChart = ()=> {
   // };
 
   return (
-     <Box sx={{color: "rgba(255,255,255,.8)" }}>
        <LineChart
-    width={500}
+    width={400}
     height={300}
     series={[
-      { data: pData, label: '2023' ,},
-      { data: uData, label: '2022',},
+      { data: pData, label: '2023' ,StyledText},
+      { data: uData, label: '2022',StyledText},
     ]}
-    xAxis={[{ scaleType: 'point', data: xLabels ,}]}
+    xAxis={[{ scaleType: 'point', data: xLabels,StyledText}]}
   />
-     </Box>
     // <div>
     //   <h1 className="font-semisbold text-2xl text-center mt-8">
     //    Ticket Sales
