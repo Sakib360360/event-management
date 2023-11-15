@@ -23,6 +23,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 const drawerWidth = 240;
@@ -74,24 +75,30 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  // co
+
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState("");
+  const [loading, setLoading] = useState();
+  // *******fixing******//
   useEffect(() => {
-    fetch(
-      `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setRole(data.role);
-      });
+    if (user) {
+      setLoading(true);
+      fetch(
+        `https://server-event-management-iota.vercel.app/users/role/${user.email}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setRole(data.role);
+          console.log(data.role);
+        })
+        .catch((error) => {
+          console.error("Error fetching user role:", error);
+        });
+      setLoading(false);
+    }
   }, [user]);
-  console.log(role);
   const isAdmin = role === "admin";
   const isOrganizer = role === "organizer";
-
-  // const isAdmin = false;
-  // const isOrganizer = true;
 
   const drawer = (
     <Box
@@ -100,70 +107,34 @@ function ResponsiveDrawer(props) {
         flexDirection: "column",
         justifyContent: "space-between",
         height: "100%",
-        backgroundColor: "rgb(38, 38, 38)",
+        backgroundColor: "rgb(24 24 27)",
         color: "rgba(255, 255, 255, 0.8)",
-        paddingTop: 2, // Adjust the top padding as needed
+        paddingTop: 2,
       }}
     >
+      {loading && <span className="loading loading-dots loading-lg"></span>}
       <div>
         <Toolbar />
         <div>
-          <ListItemButton
-            href="/dashboard"
-            sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
-          >
-            <ListItemIcon sx={{ color: "inherit" }}>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="Dashboard"
-              primaryTypographyProps={{ fontSize: 20, fontWeight: "medium" }}
-            />
-          </ListItemButton>
+          <Link href="/dashboard">
+            <ListItemButton
+              sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
+            >
+              <ListItemIcon sx={{ color: "inherit" }}>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Dashboard"
+                primaryTypographyProps={{ fontSize: 20, fontWeight: "medium" }}
+              />
+            </ListItemButton>
+          </Link>
           {isOrganizer &&
             organizerData.map((item) => (
-              <ListItemButton
-                key={item.label}
-                href={item.href}
-                sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
-              >
-                <ListItemIcon sx={{ color: "inherit" }}>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.label}
-                  primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: "medium",
-                  }}
-                />
-              </ListItemButton>
-            ))}
-          {isAdmin &&
-            adminData.map((item) => (
-              <ListItemButton
-                key={item.label}
-                href={item.href}
-                sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
-              >
-                <ListItemIcon sx={{ color: "inherit" }}>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.label}
-                  primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: "medium",
-                  }}
-                />
-              </ListItemButton>
-            ))}
-          {!isAdmin && !isOrganizer
-            ? userData.map((item) => (
+              <Link href={item.href} key={item.label}>
                 <ListItemButton
-                  key={item.label}
-                  href={item.href}
-                  sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
+                  // key={item.label}
+                  sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
                 >
                   <ListItemIcon sx={{ color: "inherit" }}>
                     {item.icon}
@@ -176,6 +147,47 @@ function ResponsiveDrawer(props) {
                     }}
                   />
                 </ListItemButton>
+              </Link>
+            ))}
+          {isAdmin &&
+            adminData.map((item) => (
+              <Link href={item.href} key={item.label}>
+                <ListItemButton
+                  sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
+                >
+                  <ListItemIcon sx={{ color: "inherit" }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.label}
+                    primaryTypographyProps={{
+                      fontSize: 20,
+                      fontWeight: "medium",
+                    }}
+                  />
+                </ListItemButton>
+              </Link>
+            ))}
+          {!isAdmin && !isOrganizer
+            ? userData.map((item) => (
+                <Link href={item.href} key={item.label}>
+                  <ListItemButton
+                    // key={item.label}
+
+                    sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
+                  >
+                    <ListItemIcon sx={{ color: "inherit" }}>
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.label}
+                      primaryTypographyProps={{
+                        fontSize: 20,
+                        fontWeight: "medium",
+                      }}
+                    />
+                  </ListItemButton>
+                </Link>
               ))
             : null}
           <Divider />
@@ -194,15 +206,17 @@ function ResponsiveDrawer(props) {
           <Stack direction="row" spacing={4} ml={2} mb={3}>
             <Avatar
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={user?.photoURL}
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
-              {user?.email}
+              {user?.displayName}
             </Typography>
-            <IconButton sx={{ color: "rgba(255,255,255,.8)" }} href="/">
-              <ExitToAppIcon />
-            </IconButton>
+            <Link href="/">
+              <IconButton sx={{ color: "rgba(255,255,255,.8)" }}>
+                <ExitToAppIcon />
+              </IconButton>
+            </Link>
           </Stack>
         </div>
       </div>
@@ -220,7 +234,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "rgb(38, 38, 38)",
+          backgroundColor: "rgb(24 24 27)",
         }}
       >
         <Toolbar>
@@ -270,7 +284,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "rgb(38, 38, 38)",
+              backgroundColor: "rgb(24 24 27)",
             },
           }}
           open
