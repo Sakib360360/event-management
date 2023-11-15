@@ -8,9 +8,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { startTransition, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-import "./LoginForm.css"
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const {
@@ -27,7 +27,6 @@ const LoginForm = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -100,13 +99,13 @@ const LoginForm = () => {
           Password
         </label>
         <input
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           placeholder="password"
           id="password"
           name="password"
           className="input text-white bg-transparent border-b border-white input-bordered w-full pr-12" // Adjusted width and added padding for the button
           autoComplete="new-password"
-          {...register('password', { required: true, minLength: 6 })}
+          {...register("password", { required: true, minLength: 6 })}
         />
         <button
           type="button"
@@ -117,10 +116,8 @@ const LoginForm = () => {
         </button>
       </div>
 
-
-
       <div className="form-control mt-6">
-        <button className="btn bg-custom" type="submit" >
+        <button className="btn bg-custom" type="submit">
           Login
         </button>
       </div>

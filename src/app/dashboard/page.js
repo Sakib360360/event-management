@@ -1,11 +1,10 @@
 
 import DashCard from '@/Components/DashCard';
-import DashboardChart from '@/Components/DashboardChart';
-import getEvents from '@/utils/getEvents';
-import "./scroll.css";
-import PieChartComp from '@/Components/PieChart';
 import DashTable from '@/Components/DashTable';
+import DashboardChart from '@/Components/DashboardChart';
+import PieChartComp from '@/Components/PieChart';
 import eventData from 'src/data/eventData.json';
+import "./scroll.css";
 
 
 
@@ -24,7 +23,7 @@ const dashboard = async () => {
   const sortedEventData = eventData.sort((a, b) => b.ticketSold - a.ticketSold);
   const topEvents = sortedEventData.slice(0, 5);
   return (
-    <div className="container bg-black">
+    <div className="container dashboard-bg">
       <div className='my-4'>
         
       <DashCard totalData={totalData}></DashCard>
