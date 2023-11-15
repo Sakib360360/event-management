@@ -64,7 +64,7 @@ const MyEventsDashboard = () => {
                             alt={event.eventName}
                             className="mb-4 w-full h-48 object-cover rounded-md"
                         />
-                        <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
+                        <h3 className="text-xl text-white font-semibold mb-2">{event.eventName}</h3>
                         <p className="text-gray-600 mb-2">{event.eventDate}</p>
                         <p className="text-gray-600 mb-2">{event.eventLocation}</p>
                         <p className="text-gray-600 mb-4">{event.eventDescription}</p>
