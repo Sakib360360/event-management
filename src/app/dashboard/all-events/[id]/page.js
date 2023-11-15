@@ -16,17 +16,17 @@ const SingleEventPage = async ({ params }) => {
                 <div className="card-body">
                     <div>
                         <div className="mb-7">
-                            <h1 className="text-3xl font-semibold">{data.eventName}</h1>
+                            <h1 className="text-3xl font-semibold dashboard-color">{data.eventName}</h1>
                             <p className="text-xl mt-1 font-semibold accent-color">${data.ticketPrice} USD</p>
                         </div>
 
                         <div className="mb-7">
                             <p className="underline font-semibold accent-color">Details</p>
-                            <p>Location: {data.eventLocation}</p>
-                            <p>Date: {data.eventDate}</p>
-                            <p>Time: {data.eventTime}</p>
-                            <p>Available Tickets: {data.ticketAvailable}</p>
-                            <div>Status: {data.eventStatus === "approved"
+                            <p className="dashboard-color">Location: {data.eventLocation}</p>
+                            <p className="dashboard-color">Date: {data.eventDate}</p>
+                            <p className="dashboard-color">Time: {data.eventTime}</p>
+                            <p className="dashboard-color">Available Tickets: {data.ticketAvailable}</p>
+                            <div><span className="dashboard-color">Status:</span> {data.eventStatus === "approved"
                                 ? <div className="badge badge-accent">{data.eventStatus}</div>
                                 : data.eventStatus === "pending"
                                     ? <div className="badge badge-primary">{data.eventStatus}</div>
@@ -35,7 +35,7 @@ const SingleEventPage = async ({ params }) => {
 
                         <div>
                             <p className="underline font-semibold accent-color">Description</p>
-                            <p>{data.eventDescription}</p>
+                            <p className="dashboard-color">{data.eventDescription}</p>
                         </div>
                     </div>
                     <div className="card-actions justify-end">
