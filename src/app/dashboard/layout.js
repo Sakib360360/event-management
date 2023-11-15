@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
                 {/* <SideBar></SideBar> */}
                 <ResponsiveDrawer></ResponsiveDrawer>
             </div>
-            <div className="pt-12 container">
+            <div className="pt-12 container bg-black">
                 {children}
             </div>
             

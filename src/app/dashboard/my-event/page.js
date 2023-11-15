@@ -52,7 +52,7 @@ const MyEventsDashboard = () => {
     const myEvents = events.filter(event => event?.eventCreator === user?.email)
     console.log(myEvents)
     return (
-        <div className="max-w-3xl mx-auto min-h-screen p-8 bg-transparent rounded-md shadow-md">
+        <div className="max-w-3xl mx-auto min-h-screen p-8 bg-black rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
 
             {/* List of Events */}
