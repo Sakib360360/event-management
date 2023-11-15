@@ -60,7 +60,7 @@ function ResponsiveDrawer(props) {
     {
       icon: <AppRegistrationIcon />,
       label: "Registered",
-      href: "/dashboard/enrolled-events",
+      href: "/dashboard/registered-events",
     },
     {
       icon: <FavoriteIcon />,
