@@ -209,9 +209,11 @@ function ResponsiveDrawer(props) {
                 user?.displayName
               }
             </Typography>
-            <IconButton sx={{ color: "rgba(255,255,255,.8)" }} href="/">
+            <Link href="/">
+            <IconButton sx={{ color: "rgba(255,255,255,.8)" }} >
               <ExitToAppIcon />
             </IconButton>
+            </Link>
           </Stack>
         </div>
       </div>
