@@ -1,10 +1,12 @@
 import React from "react";
 import TabsComponent from "@/Components/Tabs/TabsComponent";
+import LegalDetails from "./LegalDetails";
 
 const LegalPage = () => {
   return (
     <div className="m-8 p-8">
-      <TabsComponent legalItems={legalItems}></TabsComponent>
+      <LegalDetails legalItems={legalItems}></LegalDetails>
+      {/* <TabsComponent legalItems={legalItems}></TabsComponent> */}
     </div>
   );
 };
@@ -13,6 +15,7 @@ export default LegalPage;
 
 const legalItems = [
   {
+    id:"1",
     title: "Terms of Use",
     ref:'terms-of-use',
     content: (
@@ -100,6 +103,7 @@ const legalItems = [
     ),
   },
   {
+    id:"2",
     title: "Privacy Policy",
     ref:'privacy-policy',
     content: (
@@ -168,6 +172,7 @@ const legalItems = [
     ),
   },
   {
+    id:"3",
     title: "Cookie Policy",
     ref:'cookie-policy',
     content: (
