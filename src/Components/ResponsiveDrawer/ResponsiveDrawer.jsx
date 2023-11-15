@@ -29,6 +29,7 @@ import { useContext, useEffect, useState } from "react";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+  
   const adminData = [
     { icon: <People />, label: "Manage User", href: "/dashboard/manage-user" },
     {
@@ -77,9 +78,11 @@ function ResponsiveDrawer(props) {
 
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState("");
+  const [loading, setLoading] = useState();
   // *******fixing******//
   useEffect(() => {
     if (user) {
+      setLoading(true)
       fetch(`https://server-event-management-iota.vercel.app/users/role/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
@@ -89,27 +92,11 @@ function ResponsiveDrawer(props) {
         .catch((error) => {
           console.error('Error fetching user role:', error);
         });
+        setLoading(false);
     }
   }, [user]);
     const isAdmin = role === "admin";
   const isOrganizer = role === "organizer";
-  // role set
-  // co
-  // useEffect(() => {
-  //   fetch(
-  //     `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setRole(data.role);
-  //     });
-  // }, [user]);
-  // console.log(role);
-  // const isAdmin = role === "admin";
-  // const isOrganizer = role === "organizer";
-
-  // const isAdmin = false;
-  // const isOrganizer = true;
 
   const drawer = (
     <Box
@@ -120,9 +107,10 @@ function ResponsiveDrawer(props) {
         height: "100%",
         backgroundColor: "rgb(24 24 27)",
         color: "rgba(255, 255, 255, 0.8)",
-        paddingTop: 2, // Adjust the top padding as needed
+        paddingTop: 2,
       }}
     >
+      {loading && <span className="loading loading-dots loading-lg"></span>}
       <div>
         <Toolbar />
         <div>
@@ -167,7 +155,6 @@ function ResponsiveDrawer(props) {
               key={item.label}>
                 
               <ListItemButton
-                // key={item.label}
                 
                 sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
               >
