@@ -59,8 +59,8 @@ const FeedbackDetails = ({ params }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center">
-      <div className="bg-[#1D232A] rounded-xl p-3 w-full m-4 min-h-[35em]">
+    <div className="min-h-screen flex items-center dashboard-bg">
+      <div className="dashboard-tile rounded-xl p-3 w-full m-4 min-h-[35em]">
         <div className="card-body">
           <div>
             <div className="mb-7">

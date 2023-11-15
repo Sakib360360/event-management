@@ -6,8 +6,8 @@ const SingleEventPage = async ({ params }) => {
     const data = await getSingleEvent(params.id);
 
     return (
-        <div className="min-h-screen grid place-content-center">
-            <div className="flex flex-col items-center lg:flex-row bg-[#1D232A] rounded-xl p-3">
+        <div className="min-h-screen grid place-content-center dashboard-bg">
+            <div className="flex flex-col items-center lg:flex-row dashboard-tile rounded-xl p-3">
 
                 <div className="w-full lg:w-[30em] mb-5 lg:mr-12">
                     <img className="w-full" src={data.imageUrl} alt={data.eventName} />

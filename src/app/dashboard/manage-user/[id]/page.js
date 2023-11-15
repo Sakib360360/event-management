@@ -24,8 +24,8 @@ const SingleUser = async ({ params }) => {
         //     </div>
         // </div>
 
-        <div className="min-h-screen grid place-content-center">
-            <div className="flex flex-col items-center lg:flex-row bg-[#1D232A] rounded-xl p-3">
+        <div className="min-h-screen grid place-content-center dashboard-bg">
+            <div className="flex flex-col items-center lg:flex-row dashboard-tile rounded-xl p-3">
 
                 <div className="w-full lg:w-[30em] mb-5 lg:mr-12">
                     <img className="w-full" src={data.photoUrl} alt={data.name} />
