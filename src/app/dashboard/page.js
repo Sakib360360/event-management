@@ -1,4 +1,4 @@
-// pages/dashboard.js
+
 import DashCard from '@/Components/DashCard';
 import DashboardChart from '@/Components/DashboardChart';
 import getEvents from '@/utils/getEvents';
@@ -10,7 +10,6 @@ import eventData from 'src/data/eventData.json';
 
 
 const dashboard = async () => {
-
   const totalData = {
     totalEvents: 10,
     totalTicketSold: 500,
@@ -27,6 +26,7 @@ const dashboard = async () => {
   return (
     <div className="container bg-black">
       <div className='my-4'>
+        
       <DashCard totalData={totalData}></DashCard>
 
         <div className="flex flex-col md:flex-row gap-5 mt-8 mx-2">
