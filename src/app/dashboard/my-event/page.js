@@ -52,7 +52,7 @@ const MyEventsDashboard = () => {
     const myEvents = events.filter(event => event?.eventCreator === user?.email)
     console.log(myEvents)
     return (
-        <div className="max-w-3xl mx-auto min-h-screen p-8 bg-transparent rounded-md shadow-md">
+        <div className="max-w-3xl mx-auto min-h-screen p-8 bg-black rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
 
             {/* List of Events */}
@@ -64,7 +64,7 @@ const MyEventsDashboard = () => {
                             alt={event.eventName}
                             className="mb-4 w-full h-48 object-cover rounded-md"
                         />
-                        <h3 className="text-xl font-semibold mb-2">{event.eventName}</h3>
+                        <h3 className="text-xl text-white font-semibold mb-2">{event.eventName}</h3>
                         <p className="text-gray-600 mb-2">{event.eventDate}</p>
                         <p className="text-gray-600 mb-2">{event.eventLocation}</p>
                         <p className="text-gray-600 mb-4">{event.eventDescription}</p>

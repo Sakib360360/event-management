@@ -1,33 +1,40 @@
-// pages/dashboard.js
+
 import DashCard from '@/Components/DashCard';
+import DashTable from '@/Components/DashTable';
 import DashboardChart from '@/Components/DashboardChart';
-import getEvents from '@/utils/getEvents';
+import PieChartComp from '@/Components/PieChart';
+import eventData from 'src/data/eventData.json';
 import "./scroll.css";
 
 
 
 const dashboard = async () => {
-  const events = await getEvents();
-  const currentDate = new Date().toISOString().split('T')[0];
+  const totalData = {
+    totalEvents: 10,
+    totalTicketSold: 500,
+    totalInterested: 1000,
+    totalUsers: 300,
+    totalRevenue: 5000,
+    totalExpense: 2000,
+    totalMale: 150,
+    totalFemale: 150,
+  };
 
-  const upcomingEvents = events.filter((event) => event.date >= currentDate);
-
-  const totalEvents = 15;
-  const totalParticipants = 320;
-
-
+  const sortedEventData = eventData.sort((a, b) => b.ticketSold - a.ticketSold);
+  const topEvents = sortedEventData.slice(0, 5);
   return (
-    <div className="p-20 min-h-screen">
-      <div className=''>
-        <DashCard totalEvents={totalEvents}></DashCard>
-        <DashCard totalParticipants={totalParticipants}></DashCard>
+    <div className="container dashboard-bg">
+      <div className='my-4'>
+        
+      <DashCard totalData={totalData}></DashCard>
 
-        <div className="flex flex-col md:flex-row gap-5 mt-8 ">
-          <div className='rounded w-full md:w-1/2 bg-stone-800'>
+        <div className="flex flex-col md:flex-row gap-5 mt-8 mx-2">
+          <div className='rounded w-full md:w-1/2 bg-zinc-900'>
             <DashboardChart></DashboardChart>
           </div>
-          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-stone-800">
-            <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
+          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-zinc-900">
+            <PieChartComp></PieChartComp>
+            {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
             <div className="overflow-y-auto sm:h-60 scroll-bar">
               <div className="grid grid-cols-1 gap-8">
@@ -42,10 +49,12 @@ const dashboard = async () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
-        {/* <CalenderComp></CalenderComp> */}
+        <div className="container rounded pt-4 my-4 mx-2 w-full bg-zinc-900">
+        <DashTable topEvents={topEvents}></DashTable>
+        </div>
       </div>
 
     </div>

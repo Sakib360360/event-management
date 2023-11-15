@@ -1,18 +1,20 @@
-import SideBar from "@/Components/Sidebar/page";
+"use client"
+import ResponsiveDrawer from "@/Components/ResponsiveDrawer/ResponsiveDrawer";
 import Link from "next/link";
 
 const DashboardLayout = ({ children }) => {
     return (
 
-        <>
-            <div className="w-48 h-screen bg-gray-800 text-white p-4 fixed top-0 left-0">
-                <SideBar></SideBar>
+        <div className="flex">
+            <div className="">
+                {/* <SideBar></SideBar> */}
+                <ResponsiveDrawer></ResponsiveDrawer>
             </div>
-            <div className="ml-48">
+            <div className="pt-12 container bg-black">
                 {children}
             </div>
             
-        </>
+        </div>
 
     );
 };

@@ -95,13 +95,7 @@ const CreateEventForm = () => {
         const event = await saveEvent(createdEvent)
         console.log(event)
         if (event.insertedId) {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Created successfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            Swal.fire("Your event is pending! When an admin approve this it will be available to the users. Thank you!!!");
         } else {
             Swal.fire({
                 icon: "error",
@@ -116,10 +110,10 @@ const CreateEventForm = () => {
 
     return (
 
-        <div className='py-8'>
-            <form className="max-w-md mx-auto p-8 py-8 border border-white rounded-md shadow-md">
+        <div className='py-8 bg-black'>
+            <form className="max-w-md mx-auto bg-transparent p-8 py-8 border border-white rounded-md shadow-md">
 
-                <h2 className="text-2xl font-semibold mb-4">Create Event</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Create Event</h2>
 
                 {/* Event Name */}
                 <div className="mb-4">
