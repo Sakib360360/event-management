@@ -20,7 +20,7 @@ const { totalEvents, totalTicketSold, totalInterested, totalUsers } = totalData;
         { icon: <SupervisedUserCircleIcon color="secondary"/>,title: 'User', quantity: totalUsers  },
       ];
       const iconStyle = {
-        fontSize: 'large', // Adjust the value as needed
+        fontSize: 'large',
       };
   return (
     <Grid container spacing={0}>

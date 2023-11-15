@@ -1,6 +1,6 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
-import { People } from "@mui/icons-material";
+import { Feedback, People } from "@mui/icons-material";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
@@ -37,6 +37,7 @@ function ResponsiveDrawer(props) {
       href: "/dashboard/all-events",
     },
     { icon: <MessageIcon />, label: "Messages", href: "/dashboard/messages" },
+    { icon: <Feedback />, label: "Feedback", href: "/dashboard/feedbacks" },
   ];
   const organizerData = [
     {
@@ -77,39 +78,27 @@ function ResponsiveDrawer(props) {
 
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState("");
+  const [loading, setLoading] = useState();
   // *******fixing******//
   useEffect(() => {
     if (user) {
-      fetch(`https://server-event-management-iota.vercel.app/users/role/${user.email}`)
+      setLoading(true);
+      fetch(
+        `https://server-event-management-iota.vercel.app/users/role/${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setRole(data.role);
           console.log(data.role);
         })
         .catch((error) => {
-          console.error('Error fetching user role:', error);
+          console.error("Error fetching user role:", error);
         });
+      setLoading(false);
     }
   }, [user]);
-    const isAdmin = role === "admin";
+  const isAdmin = role === "admin";
   const isOrganizer = role === "organizer";
-  // role set
-  // co
-  // useEffect(() => {
-  //   fetch(
-  //     `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setRole(data.role);
-  //     });
-  // }, [user]);
-  // console.log(role);
-  // const isAdmin = role === "admin";
-  // const isOrganizer = role === "organizer";
-
-  // const isAdmin = false;
-  // const isOrganizer = true;
 
   const drawer = (
     <Box
@@ -120,78 +109,32 @@ function ResponsiveDrawer(props) {
         height: "100%",
         backgroundColor: "rgb(24 24 27)",
         color: "rgba(255, 255, 255, 0.8)",
-        paddingTop: 2, // Adjust the top padding as needed
+        paddingTop: 2,
       }}
     >
+      {loading && <span className="loading loading-dots loading-lg"></span>}
       <div>
         <Toolbar />
         <div>
           <Link href="/dashboard">
-          <ListItemButton
-            
-            sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
-          >
-            <ListItemIcon sx={{ color: "inherit" }}>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="Dashboard"
-              primaryTypographyProps={{ fontSize: 20, fontWeight: "medium" }}
-            />
-          </ListItemButton>
+            <ListItemButton
+              sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
+            >
+              <ListItemIcon sx={{ color: "inherit" }}>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Dashboard"
+                primaryTypographyProps={{ fontSize: 20, fontWeight: "medium" }}
+              />
+            </ListItemButton>
           </Link>
           {isOrganizer &&
             organizerData.map((item) => (
-              <Link href={item.href}
-              key={item.label}>
-              <ListItemButton
-                // key={item.label}
-                sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
-              >
-                <ListItemIcon sx={{ color: "inherit" }}>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.label}
-                  primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: "medium",
-                  }}
-                />
-              </ListItemButton>
-              </Link>
-            ))}
-          {isAdmin &&
-            adminData.map((item) => (
-              <Link href={item.href}
-              key={item.label}>
-                
-              <ListItemButton
-                // key={item.label}
-                
-                sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
-              >
-                <ListItemIcon sx={{ color: "inherit" }}>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.label}
-                  primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: "medium",
-                  }}
-                />
-              </ListItemButton>
-              </Link>
-            ))}
-          {!isAdmin && !isOrganizer
-            ? userData.map((item) => (
-                <Link href={item.href}
-                key={item.label}>
+              <Link href={item.href} key={item.label}>
                 <ListItemButton
                   // key={item.label}
-                  
-                  sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
+                  sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
                 >
                   <ListItemIcon sx={{ color: "inherit" }}>
                     {item.icon}
@@ -204,6 +147,46 @@ function ResponsiveDrawer(props) {
                     }}
                   />
                 </ListItemButton>
+              </Link>
+            ))}
+          {isAdmin &&
+            adminData.map((item) => (
+              <Link href={item.href} key={item.label}>
+                <ListItemButton
+                  sx={{ py: 1, minHeight: 40, color: "rgba(255,255,255,.8)" }}
+                >
+                  <ListItemIcon sx={{ color: "inherit" }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.label}
+                    primaryTypographyProps={{
+                      fontSize: 20,
+                      fontWeight: "medium",
+                    }}
+                  />
+                </ListItemButton>
+              </Link>
+            ))}
+          {!isAdmin && !isOrganizer
+            ? userData.map((item) => (
+                <Link href={item.href} key={item.label}>
+                  <ListItemButton
+                    // key={item.label}
+
+                    sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
+                  >
+                    <ListItemIcon sx={{ color: "inherit" }}>
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.label}
+                      primaryTypographyProps={{
+                        fontSize: 20,
+                        fontWeight: "medium",
+                      }}
+                    />
+                  </ListItemButton>
                 </Link>
               ))
             : null}
@@ -227,14 +210,12 @@ function ResponsiveDrawer(props) {
               sx={{ width: 56, height: 56 }}
             />
             <Typography variant="h6" pt={1}>
-              {
-                user?.displayName
-              }
+              {user?.displayName}
             </Typography>
             <Link href="/">
-            <IconButton sx={{ color: "rgba(255,255,255,.8)" }} >
-              <ExitToAppIcon />
-            </IconButton>
+              <IconButton sx={{ color: "rgba(255,255,255,.8)" }}>
+                <ExitToAppIcon />
+              </IconButton>
             </Link>
           </Stack>
         </div>
