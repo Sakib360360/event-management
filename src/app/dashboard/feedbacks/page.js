@@ -78,9 +78,9 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="min-h-screen mt-6">
+    <div className="min-h-screen pt-6 dashboard-bg">
       <div className="overflow-x-auto mx-2 rounded-2xl">
-        <table className="table">
+        <table className="table dashboard-tile">
           {/* head */}
           <thead>
             <tr className="text-white">
