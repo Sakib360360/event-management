@@ -8,9 +8,9 @@ const DashTable = ({topEvents}) => {
     {/* head */}
     <thead>
       <tr>
-        <th>Event Name</th>
-        <th>Category</th>
-        <th>Ticket Sold</th>
+        <th className='text-white'>Event Name</th>
+        <th className='text-white'>Category</th>
+        <th className='text-white'>Ticket Sold</th>
         <th></th>
       </tr>
     </thead>
@@ -26,16 +26,16 @@ const DashTable = ({topEvents}) => {
               </div>
             </div>
             <div>
-              <div className="font-bold">{event.eventName}</div>
+              <div className="font-bold text-white">{event.eventName}</div>
             </div>
           </div>
         </td>
-        <td>
+        <td className='text-white'>
         {event.eventCategory}
         </td>
-        <td>{event.ticketSold}</td>
+        <td className='text-white'>{event.ticketSold}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button className="btn btn-ghost text-white btn-xs">details</button>
         </th>
       </tr>)}
     </tbody> 
