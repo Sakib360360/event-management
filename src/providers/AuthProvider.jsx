@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-/*   const profileUpdate = async (updateUser = {}) => {
+  /*   const profileUpdate = async (updateUser = {}) => {
     setLoading(true);
     await updateProfile(auth.currentUser, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
@@ -34,8 +34,8 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
-    })
-  }
+    });
+  };
 
   const googleLogin = () => {
     setLoading(true);
@@ -48,8 +48,12 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      // console.log(user);
+      if (currentUser) {
+        console.log("user exits");
+      }
       setLoading(false);
     });
 
