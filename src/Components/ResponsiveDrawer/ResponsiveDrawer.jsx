@@ -74,21 +74,38 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  // co
+
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState("");
+  // *******fixing******//
   useEffect(() => {
-    fetch(
-      `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setRole(data.role);
-      });
+    if (user) {
+      fetch(`https://server-event-management-iota.vercel.app/users/role/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRole(data.role);
+          console.log(data.role);
+        })
+        .catch((error) => {
+          console.error('Error fetching user role:', error);
+        });
+    }
   }, [user]);
-  console.log(role);
-  const isAdmin = role === "admin";
+    const isAdmin = role === "admin";
   const isOrganizer = role === "organizer";
+  // co
+  // useEffect(() => {
+  //   fetch(
+  //     `https://server-event-management-iota.vercel.app/users/role/${user?.email}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRole(data.role);
+  //     });
+  // }, [user]);
+  // console.log(role);
+  // const isAdmin = role === "admin";
+  // const isOrganizer = role === "organizer";
 
   // const isAdmin = false;
   // const isOrganizer = true;
