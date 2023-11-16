@@ -49,7 +49,7 @@ const PieChartComp = () => {
           <PieChart series={[{ data, innerRadius: 60 }]} 
           arcLinkLabelsClass={pieArcLabelClasses.label}
           responsive
-    maintainAspectRatio={false}
+          maintainAspectRatio={false}
          {...size}>
         <PieCenterLabel
         >80%</PieCenterLabel>
