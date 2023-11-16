@@ -29,7 +29,7 @@ const { totalEvents, totalTicketSold, totalInterested, totalUsers } = totalData;
         <Paper
           sx={{
             height: 100,
-            backgroundColor: "rgb(24 24 27)",
+            backgroundColor: "rgb(42, 45, 62)",
             color: "rgba(255, 255, 255, 0.8)",
             display: 'flex',
             justifyContent: 'center',

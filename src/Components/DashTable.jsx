@@ -4,7 +4,7 @@ const DashTable = ({topEvents}) => {
     //const {topEvents}=topEvents;
     return (
         <div className="overflow-x-auto">
-  <table className="table">
+  <table className="table rounded-none" >
     {/* head */}
     <thead>
       <tr>

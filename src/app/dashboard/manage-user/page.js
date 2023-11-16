@@ -174,15 +174,15 @@ const AllEvents = () => {
   );
 
   return (
-    <div className="min-h-screen px-4 md:px-12 py-6 dashboard-bg dashboard-color">
-      <div className="filter-container flex flex-col md:flex-row md:justify-between md:items-center my-5">
-        <div className="search-box sm:mb-4 px-4 py-2 rounded-xl">
+    <div className="min-h-screen px-3 md:px-12 py-6 dashboard-bg dashboard-color">
+      <div className="flex flex-col items-center text-center md:flex-row md:justify-between md:items-center my-5">
+        <div className="search-box px-4 py-2 rounded-xl">
           <input type="search" placeholder="Search" className="mr-3 h-10" onChange={handleSearch} />
           <HiOutlineSearch className="text-2xl"></HiOutlineSearch>
         </div>
 
-        <div>
-          <label>Filter: </label>
+        <div className="my-6 flex flex-col items-center lg:flex-row lg:my-0">
+          <label className="mb-2">Filter: </label>
           <select
             className="drop-down rounded-xl px-4 py-2"
             name="filter"
@@ -195,8 +195,8 @@ const AllEvents = () => {
           </select>
         </div>
 
-        <div>
-          <label>Item per page: </label>
+        <div className="flex flex-col items-center lg:flex-row">
+          <label className="mb-2">Item per page: </label>
           <select
             className="drop-down rounded-xl px-4 py-2"
             name="items"
@@ -211,63 +211,9 @@ const AllEvents = () => {
         </div>
       </div>
 
-      <div className="table min-w-full dashboard-tile">
-        {/* <table className="min-w-full">
-          <thead>
-            <tr>
-              <td className="id">#id</td>
-              <td>User Name</td>
-              <td>Role</td>
-              <td>Action</td>
-            </tr>
-          </thead>
-
-          <tbody>
-            {(searchQuery ? filteredData : data).map((dt) => (
-              <tr key={dt._id}>
-                <td className="id">{dt._id}</td>
-                <td>{dt.name}</td>
-                <td>{dt.role ? dt.role : "N/A"}</td>
-                <td className="flex flex-wrap justify-center items-center">
-                  <button
-                    onClick={()=> handleAttendee(dt._id)}
-                    className="p-1 rounded-md text-xl bg-red-500 text-black"
-                    title="Make Attendee"
-                  >
-                    <FaUserAlt></FaUserAlt>
-                  </button>
-
-                  <button
-                    onClick={()=> handleOrganizer(dt._id)}
-                    className="p-1 rounded-md text-xl mx-2 bg-blue-500 text-black"
-                    title="Make Organizer"
-                  >
-                    <DiGhostSmall></DiGhostSmall>
-                  </button>
-
-                  <button
-                    onClick={()=> handleAdmin(dt._id)}
-                    className="p-1 rounded-md text-xl mr-2 bg-green-500 text-black"
-                    title="Make Admin"
-                  >
-                    <MdGppGood></MdGppGood>
-                  </button>
-
-                  <Link
-                    href={`/dashboard/manage-user/${dt._id}`}
-                    className="p-1 rounded-md text-xl bg-yellow-300 text-black"
-                    title="View details"
-                  >
-                    <TbListDetails></TbListDetails>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
-
+      <div className="dashboard-tile rounded-2xl">
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table w-[170%] lg:w-[100%]">
             {/* head */}
             <thead>
               <tr>

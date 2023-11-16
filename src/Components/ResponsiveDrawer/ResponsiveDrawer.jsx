@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MessageIcon from "@mui/icons-material/Message";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import { Avatar, Stack } from "@mui/material";
+import { Avatar, Stack, Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -25,6 +25,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import './ResponsiveDrawer.css'
 
 const drawerWidth = 240;
 
@@ -60,7 +61,7 @@ function ResponsiveDrawer(props) {
     {
       icon: <AppRegistrationIcon />,
       label: "Registered",
-      href: "/dashboard/enrolled-events",
+      href: "/dashboard/registered-events",
     },
     {
       icon: <FavoriteIcon />,
@@ -107,13 +108,14 @@ function ResponsiveDrawer(props) {
         flexDirection: "column",
         justifyContent: "space-between",
         height: "100%",
-        backgroundColor: "rgb(24 24 27)",
+        backgroundColor: "rgb(42, 45, 62);",
         color: "rgba(255, 255, 255, 0.8)",
         paddingTop: 2,
       }}
     >
       {loading && <span className="loading loading-dots loading-lg"></span>}
       <div>
+        <Typography variant="h5" className="active" sx={{mt:4 ,mx:7,}}>EventGuru</Typography>
         <Toolbar />
         <div>
           <Link href="/dashboard">
@@ -203,20 +205,26 @@ function ResponsiveDrawer(props) {
       ></div>
       <div>
         <div>
-          <Stack direction="row" spacing={4} ml={2} mb={3}>
-            <Avatar
+          <Stack direction="column" spacing={0} mx={8} mb={2}>
+            <div className="flex gap-8">
+            <Avatar className="my-auto"
               alt="Remy Sharp"
               src={user?.photoURL}
-              sx={{ width: 56, height: 56 }}
+              sx={{ width: 50, height: 50 }}
             />
             <Typography variant="h6" pt={1}>
               {user?.displayName}
             </Typography>
+            </div>
+            <div>
             <Link href="/">
-              <IconButton sx={{ color: "rgba(255,255,255,.8)" }}>
+            <Tooltip title="Home" arrow>
+              <IconButton sx={{ color: "rgba(255,255,255,.8)", mt:4 ,ml:5}}>
                 <ExitToAppIcon />
               </IconButton>
+              </Tooltip>
             </Link>
+            </div>
           </Stack>
         </div>
       </div>
@@ -234,7 +242,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "rgb(24 24 27)",
+          backgroundColor: "rgb(42, 45, 62)",
         }}
       >
         <Toolbar>
@@ -248,7 +256,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            EventGuru
+            Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -270,7 +278,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "rgb(38, 38, 38)",
+              backgroundColor: "rgb(42, 45, 62)",
             },
             height: "100vh",
           }}
@@ -284,7 +292,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "rgb(24 24 27)",
+              backgroundColor: "rgb(42, 45, 62)",
             },
           }}
           open

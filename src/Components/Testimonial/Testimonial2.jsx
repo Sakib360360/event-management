@@ -1,6 +1,7 @@
 // Testimonial2.jsx
 "use client";
 
+import SliceText from "@/utils/SliceText";
 import { useEffect, useState } from "react";
 import { AiOutlineHolder } from "react-icons/ai";
 import Slider from "react-slick";
@@ -10,6 +11,7 @@ import "./Testimonial2.css";
 
 const Testimonial2 = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [singleTestimonial, setSingleTestimonial] = useState({});
 
   useEffect(() => {
     fetch(
@@ -19,6 +21,15 @@ const Testimonial2 = () => {
       .then((data) => setTestimonials(data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleClick = (id) => {
+    fetch(`https://server-event-management-iota.vercel.app/feedback/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSingleTestimonial(data);
+      })
+      .catch((err) => console.log(err));
+  };
   console.log(testimonials);
   // const testimonials = [
   //   {
@@ -96,8 +107,10 @@ const Testimonial2 = () => {
                     <AiOutlineHolder></AiOutlineHolder>
                   </span>
                 </div>
-                <div className="card-body min-h-[10em]">
-                  <p className="text-[18px]">{testimonial.feedback}</p>
+                <div className="card-body h-[10em]">
+                  <p className="text-[18px]">
+                    {SliceText(testimonial.feedback, 90)}
+                  </p>
                   <div className="flex justify-between items-center mt-4">
                     <div>
                       <h2 className="text-white font-medium text-[16px]">

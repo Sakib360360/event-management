@@ -25,7 +25,7 @@ body {
 }
 
 .dashboard-bg {
-  background-color: rgb(var(--dashboard-bg));
+  background-color: rgb(var(--dashboard-bg)) !important;
 }
 
 .dashboard-tile {
@@ -55,6 +55,15 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.8);
   /* Semi-transparent white background */
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter: invert(1);
+}
+input[type="time"]::-webkit-calendar-picker-indicator{
+  filter: invert(1);
+}
+.btn-bg-custom{
+  background: -webkit-linear-gradient(40deg, rgb(var(--third-gradient)), rgb(var(--first-gradient)));
 }
 
 .react-select__option {
