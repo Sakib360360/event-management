@@ -54,6 +54,17 @@ const FavouriteEvents = () => {
 
   const allFavoriteEvents = allEvents.filter(event => favorites[0]?.likedEvents.includes(event._id))
   console.log(allFavoriteEvents)
+
+
+ const handleBuyClick = () => {
+  console.log('yes')
+ }
+
+
+
+ 
+
+
   return (
     <div className="flex justify-center items-center h-screen text-white">
       <div className="w-3/4">
