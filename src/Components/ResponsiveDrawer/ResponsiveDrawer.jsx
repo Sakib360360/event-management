@@ -214,6 +214,7 @@ function ResponsiveDrawer(props) {
             />
             <Typography variant="h6" pt={1}>
               {user.displayName?user.displayName:"Hello there"}
+              {/* this portion done */}
             </Typography>
             </div>}
             <div>

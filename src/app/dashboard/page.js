@@ -2,24 +2,25 @@
 import DashCard from '@/Components/DashCard';
 import DashTable from '@/Components/DashTable';
 import DashboardChart from '@/Components/DashboardChart';
-import PieChartComp from '@/Components/PieChart';
+import { useEffect, useState } from 'react';
 import eventData from 'src/data/eventData.json';
 import "./scroll.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
-
-
+import PieChartComp from '@/Components/PieChart';
 
 
 
 const dashboard = () => {
-
-  const [totalInterested,setTotalInterested] = useState(0)
-  const [totalLiked,setTotalLiked] = useState([])
-  const [totalPayments,setTotalPayments] = useState([])
-  const [totalUsers,setTotalUsers] = useState(0)
-  const [totalEvents,setTotalEvents] = useState(0)
-  const [totalTicketSold,setTotalTicketSold] = useState(0)
+  const [pieData,setPieData] = useState([])
+    const [loading,setLoading] = useState(true)
+    useEffect(()=>{
+        fetch("http://localhost:5000/getPaidStatusCount")
+        .then(res=>res.json())
+        .then(data=>{
+            setPieData(data)
+            setLoading(false)
+            console.log(data);
+        })
+    },[])
   const totalData = {
     totalEvents,
     totalTicketSold,
