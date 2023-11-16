@@ -20,8 +20,8 @@ const RegisteredEvents = () => {
  
     return (
         <div className="min-h-screen">
-        <div className="py-8 px-12 lg:p-16">
-          <h1 className="text-2xl font-bold mb-5 text-center col-span-full ">
+        <div className="py-10 px-12 lg:p-16">
+          <h1 className="text-2xl font-bold mb-8 text-center col-span-full ">
             Registered Events
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -32,6 +32,7 @@ const RegisteredEvents = () => {
             <p className="text-sm mb-2 font-bold">Location: {registered.event.eventLocation}</p>
             <p className="text-sm font-bold mb-2">Price: ${registered.event.ticketPrice}</p>
             <p className="text-sm font-bold mb-2">Date: {registered.event.eventDate}</p>
+            <p className="text-sm font-bold mb-2">TrxId: {registered.tranjectionId}</p>
             <button className="btn btn-primary" onClick={() => toPDF()}>Download Ticket</button>
           </div>
         ))}
