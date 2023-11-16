@@ -20,13 +20,13 @@ const RegisteredEvents = () => {
  
     return (
         <div className="min-h-screen">
-        <div className="p-20">
+        <div className="py-8 px-12 lg:p-16">
           <h1 className="text-2xl font-bold mb-5 text-center col-span-full ">
             Registered Events
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {registeredEvents?.map((registered) => (
-          <div key={registered._id}  className="bg-white w-96 border rounded-md text-black shadow p-4" ref={targetRef}>
+          <div key={registered._id}  className="bg-white w-80 border rounded-md text-black shadow p-4" ref={targetRef}>
             <img className="object-fit mb-4" src={registered.event.imageUrl} alt="" />
             <h2 className="text-lg font-bold mb-2"> {registered.event.eventName}</h2>
             <p className="text-sm mb-2 font-bold">Location: {registered.event.eventLocation}</p>
