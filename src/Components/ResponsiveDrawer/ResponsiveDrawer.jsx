@@ -50,11 +50,6 @@ function ResponsiveDrawer(props) {
       label: "My Events",
       href: "/dashboard/my-event",
     },
-    {
-      icon: <LineAxisIcon />,
-      label: "Event Analytics",
-      href: "/dashboard/event-analytics",
-    },
   ];
   const userData = [
     {
