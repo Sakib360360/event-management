@@ -1,9 +1,8 @@
 "use client"
-"use client"
 import DashCard from '@/Components/DashCard';
 import DashTable from '@/Components/DashTable';
 import DashboardChart from '@/Components/DashboardChart';
-import { useEffect, useState } from 'react';
+import PieChartComp from '@/Components/PieChart';
 import eventData from 'src/data/eventData.json';
 import "./scroll.css";
 import { useState } from 'react';
@@ -11,18 +10,16 @@ import { useEffect } from 'react';
 
 
 
+
+
 const dashboard = () => {
-  const [pieData,setPieData] = useState([])
-    const [loading,setLoading] = useState(true)
-    useEffect(()=>{
-        fetch("http://localhost:5000/getPaidStatusCount")
-        .then(res=>res.json())
-        .then(data=>{
-            setPieData(data)
-            setLoading(false)
-            console.log(data);
-        })
-    },[])
+
+  const [totalInterested,setTotalInterested] = useState(0)
+  const [totalLiked,setTotalLiked] = useState([])
+  const [totalPayments,setTotalPayments] = useState([])
+  const [totalUsers,setTotalUsers] = useState(0)
+  const [totalEvents,setTotalEvents] = useState(0)
+  const [totalTicketSold,setTotalTicketSold] = useState(0)
   const totalData = {
     totalEvents,
     totalTicketSold,
@@ -117,7 +114,7 @@ const dashboard = () => {
             <DashboardChart></DashboardChart>
           </div>
           <div className="mx-auto rounded w-full md:w-1/2 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}} >
-            {/* <PieChartComp></PieChartComp> */}
+            <PieChartComp></PieChartComp>
             {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
             <div className="overflow-y-auto sm:h-60 scroll-bar">
