@@ -56,12 +56,6 @@ const xLabels = [
 ];
 const DashboardChart = ()=> {
 
-  const StyledText = styled('text')(({ theme }) => ({
-    fill: 'rgba(255, 255, 255, 0.8)',
-    // textAnchor: 'middle',
-    // dominantBaseline: 'central',
-    fontSize: 30,
-  }));
   // const data = {
   //   labels: salesData.map((data) => data.month),
   //   datasets: [
@@ -135,21 +129,27 @@ const DashboardChart = ()=> {
   //     },
   //   },
   // };
+  
 
   return (
-<Grid container>
-<LineChart
-    width={400}
-    height={300}
-    responsive
-    maintainAspectRatio={false}
-    series={[
-      { data: pData, label: '2023' ,StyledText},
-      { data: uData, label: '2022',StyledText},
-    ]}
-    xAxis={[{ scaleType: 'point', data: xLabels,StyledText}]}
-  />
-</Grid>
+    <Box sx={{ width: '100%', maxWidth: 500 }}>
+      <LineChart
+        xAxis={[{ scaleType: 'point', data: xLabels}]}
+        yAxis={[
+          { id: 'linearAxis', scaleType: 'linear' },
+          { id: 'logAxis', scaleType: 'log' },
+        ]}
+        series={[
+          { yAxisKey: 'linearAxis', data: pData, label: '2023' },
+          { yAxisKey: 'logAxis', data: uData, label: '2022' },
+        ]}
+        leftAxis="linearAxis"
+        rightAxis="logAxis"
+        height={400}
+        
+      />
+    </Box>
+
     // <div>
     //   <h1 className="font-semisbold text-2xl text-center mt-8">
     //    Ticket Sales
