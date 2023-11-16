@@ -75,12 +75,12 @@ const SignupForm = () => {
 
       const user = await saveUser(createdUser);
 
-      startTransition(() => {
+    /*   startTransition(() => {
         refresh();
         replace(from);
         toast.dismiss(toastId);
         toast.success("User signed in successfully");
-      });
+      }); */
     } catch (error) {
       toast.dismiss(toastId);
       toast.error(error.message || "User not signed in");
@@ -132,25 +132,7 @@ const SignupForm = () => {
           </span>
         )}
       </div>
-      {/* <div className="form-control">
-        <label htmlFor="password" className="label text-white label-text">
-          Password
-        </label>
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          name="password"
-          className="input text-white bg-transparent border-b border-white input-bordered"
-          autoComplete="new-password"
-          {...register("password", { required: true, minLength: 6 })}
-        />
-        {errors.password && (
-          <span className="text-red-500 text-base mt-1">
-            Please enter a password.
-          </span>
-        )}
-      </div> */}
+   
       <div className="form-control relative">
         <label htmlFor="password" className="label text-white label-text">
           Password

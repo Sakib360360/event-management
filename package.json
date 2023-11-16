@@ -34,7 +34,7 @@
     "react-slick": "^0.29.0",
     "react-to-pdf": "^1.0.1",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.9.0",
+    "sweetalert2": "^11.6.13",
     "use-client": "^1.1.0"
   },
   "devDependencies": {
