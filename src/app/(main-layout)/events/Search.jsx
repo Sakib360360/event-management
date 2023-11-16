@@ -22,37 +22,6 @@ const Search = ({ events, loading }) => {
         ? prevFavorites.filter((id) => id !== eventId) // Remove event if liked
         : [...prevFavorites, eventId]; // Add event if not liked
     });
-<<<<<<< HEAD
-  
-    if (selectedFilter === 'latest') {
-      filteredEvents.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
-    }
-
-    return (
-      <div>
-        <div className="flex justify-center gap-4 md:gap-40">
-          <div className="relative flex items-center">
-            <div className="relative text-white">
-              <input
-                type="text"
-                placeholder="Search event..."
-                value={search}
-                onChange={handleSearchChange}
-                className="bg-transparent border-2 border-white rounded-full py-2 px-4 pl-10 focus:outline-none focus:border-blue-500 transition-all duration-300"
-              />
-  
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4a8 8 0 100 16 8 8 0 000-16z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4-4" />
-              </svg>
-            </div>
-=======
   };
 
   const handleSelectChange = (event) => {
@@ -104,7 +73,6 @@ const Search = ({ events, loading }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4a8 8 0 100 16 8 8 0 000-16z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4-4" />
             </svg>
->>>>>>> 8ca6510531f53bce0103f1733dc46d4ac3143034
           </div>
         </div>
 
