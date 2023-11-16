@@ -73,8 +73,11 @@ const StartedSection = () => {
               className="img"
               src="/images/event.jpg"
               alt="Background Image"
-              layout="fill"
-              objectFit="cover"
+              // layout="fill"
+              // objectFit="cover"
+              height={300}
+              width={400}
+
             />
           </div>
         </div>
