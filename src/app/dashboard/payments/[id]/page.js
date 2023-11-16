@@ -15,7 +15,7 @@ const page = ({ params }) => {
       .then((res) => res.json())
       .then((data) => setSingleEvents(data));
   }, []);
-  console.log(singleEvents);
+  //console.log(singleEvents);
   const {
     eventDate,
     eventDescription,
@@ -44,7 +44,7 @@ const page = ({ params }) => {
   };
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen gap-20">
+      <div className="flex flex-col lg:flex-row p-10 justify-center items-center min-h-screen gap-10 lg:gap-20">
         <div className="card w-96 bg-base-100 shadow-xl text-black ">
           <figure>
             <img src={imageUrl} alt={eventName} />
