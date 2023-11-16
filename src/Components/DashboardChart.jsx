@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Line } from "react-chartjs-2";
 import { LineChart } from '@mui/x-charts/LineChart';
-import { Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { styled } from '@mui/material/styles';
 
@@ -137,15 +137,19 @@ const DashboardChart = ()=> {
   // };
 
   return (
-       <LineChart
+<Grid container>
+<LineChart
     width={400}
     height={300}
+    responsive
+    maintainAspectRatio={false}
     series={[
       { data: pData, label: '2023' ,StyledText},
       { data: uData, label: '2022',StyledText},
     ]}
     xAxis={[{ scaleType: 'point', data: xLabels,StyledText}]}
   />
+</Grid>
     // <div>
     //   <h1 className="font-semisbold text-2xl text-center mt-8">
     //    Ticket Sales

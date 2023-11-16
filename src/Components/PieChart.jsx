@@ -1,8 +1,10 @@
 "use client"
 import React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
+import { pieArcLabelClasses, PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Grid } from '@mui/material';
 
 
 const data = [
@@ -13,12 +15,20 @@ const data = [
   ];
   
   const size = {
-    width: 400,
+    width: 350,
     height: 200,
   };
-  
+  const theme = createTheme({
+    overrides: {
+      MuiSvgText: {
+        root: {
+          fill: 'red', // Set the fill color for all SVG text components
+        },
+      },
+    },
+  });
   const StyledText = styled('text')(({ theme }) => ({
-    fill: 'rgba(255, 255, 255, 0.8)',
+    fill: theme.palette.common.white,
     textAnchor: 'middle',
     dominantBaseline: 'central',
     fontSize: 30,
@@ -34,10 +44,18 @@ const data = [
   }
 const PieChartComp = () => {
     return (
-        <PieChart series={[{ data, innerRadius: 60 }]} {...size}>
+        <ThemeProvider theme={theme}>
+          <Grid container>
+          <PieChart series={[{ data, innerRadius: 60 }]} 
+          arcLinkLabelsClass={pieArcLabelClasses.label}
+          responsive
+    maintainAspectRatio={false}
+         {...size}>
         <PieCenterLabel
         >80%</PieCenterLabel>
       </PieChart>
+          </Grid>
+        </ThemeProvider>
     );
 };
 

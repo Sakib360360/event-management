@@ -19,6 +19,7 @@ const CreateEventForm = () => {
     const [eventDescription, setEventDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [eventCategory, setEventCategory] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     const resetForm = () => {
@@ -33,6 +34,7 @@ const CreateEventForm = () => {
         setImageUrl('');
         setEventCategory('');
     };
+    
 
                 //*********sadia********/
                 
@@ -42,6 +44,7 @@ const CreateEventForm = () => {
     
         if (file) {
             try {
+                setLoading(true);
                 const formData = new FormData();
                 formData.append("file", file);
                 formData.append('upload_preset', 'lunar-brigade')
@@ -62,6 +65,10 @@ const CreateEventForm = () => {
 
             } catch (error) {
                 console.error("Error uploading image:", error);
+                
+            }
+            finally {
+                setLoading(false);
             }
         }
     };
@@ -272,6 +279,7 @@ const CreateEventForm = () => {
                       
                 />
             </div>
+            {loading && <span className="loading loading-dots loading-lg"></span>}
 
                 {/* Event Category */}
                 <div className="mb-4">
