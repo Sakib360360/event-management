@@ -11,6 +11,7 @@ import "./Testimonial2.css";
 
 const Testimonial2 = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [singleTestimonial, setSingleTestimonial] = useState({});
 
   useEffect(() => {
     fetch(
@@ -20,6 +21,15 @@ const Testimonial2 = () => {
       .then((data) => setTestimonials(data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleClick = (id) => {
+    fetch(`https://server-event-management-iota.vercel.app/feedback/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSingleTestimonial(data);
+      })
+      .catch((err) => console.log(err));
+  };
   console.log(testimonials);
   // const testimonials = [
   //   {
