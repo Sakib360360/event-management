@@ -205,21 +205,22 @@ function ResponsiveDrawer(props) {
       ></div>
       <div>
         <div>
-          <Stack direction="column" spacing={0} mx={8} mb={2}>
-            <div className="flex gap-8">
+          <Stack direction="row" spacing={0} mx={4} mb={2}>
+            {user &&
+              <div className="flex flex-col gap-4">
             <Avatar className="my-auto"
               alt="Remy Sharp"
               src={user?.photoURL}
               sx={{ width: 50, height: 50 }}
             />
             <Typography variant="h6" pt={1}>
-              {user?.displayName}
+              {user.displayName?user.displayName:"Hello there"}
             </Typography>
-            </div>
+            </div>}
             <div>
             <Link href="/">
             <Tooltip title="Home" arrow>
-              <IconButton sx={{ color: "rgba(255,255,255,.8)", mt:4 ,ml:5}}>
+              <IconButton sx={{ color: "rgba(255,255,255,.8)", mt:6 ,ml:12}}>
                 <ExitToAppIcon />
               </IconButton>
               </Tooltip>
