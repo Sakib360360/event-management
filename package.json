@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mui/material": "^5.14.18",
+    "@mui/icons-material": "^5.14.18",
+    "@mui/x-charts": "^6.18.1",
     "@nextui-org/react": "^2.1.13",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.11",
