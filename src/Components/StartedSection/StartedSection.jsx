@@ -69,6 +69,7 @@ const StartedSection = () => {
 
         <div className="image translate-x-[70%] opacity-0">
           <div className="image-wrapper">
+            {/* need to update */}
             <Image
               className="img"
               src="/images/event.jpg"
