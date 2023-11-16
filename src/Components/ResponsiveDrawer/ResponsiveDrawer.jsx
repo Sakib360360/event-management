@@ -107,7 +107,7 @@ function ResponsiveDrawer(props) {
         flexDirection: "column",
         justifyContent: "space-between",
         height: "100%",
-        backgroundColor: "rgb(24 24 27)",
+        backgroundColor: "rgb(42, 45, 62);",
         color: "rgba(255, 255, 255, 0.8)",
         paddingTop: 2,
       }}
@@ -240,7 +240,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "rgb(24 24 27)",
+          backgroundColor: "rgb(42, 45, 62)",
         }}
       >
         <Toolbar>
@@ -276,7 +276,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "rgb(38, 38, 38)",
+              backgroundColor: "rgb(42, 45, 62)",
             },
             height: "100vh",
           }}
@@ -290,7 +290,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "rgb(24 24 27)",
+              backgroundColor: "rgb(42, 45, 62)",
             },
           }}
           open
