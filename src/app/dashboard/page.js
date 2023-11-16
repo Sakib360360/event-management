@@ -2,9 +2,11 @@
 import DashCard from '@/Components/DashCard';
 import DashTable from '@/Components/DashTable';
 import DashboardChart from '@/Components/DashboardChart';
-import { useEffect, useState } from 'react';
+import PieChartComp from '@/Components/PieChart';
 import eventData from 'src/data/eventData.json';
 import "./scroll.css";
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 
@@ -112,7 +114,7 @@ const dashboard = () => {
             <DashboardChart></DashboardChart>
           </div>
           <div className="mx-auto rounded w-full md:w-1/2 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}} >
-            {/* <PieChartComp></PieChartComp> */}
+            <PieChartComp></PieChartComp>
             {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
             <div className="overflow-y-auto sm:h-60 scroll-bar">

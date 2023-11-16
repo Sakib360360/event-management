@@ -107,32 +107,11 @@ const Footer = () => {
                     pathname: '/legal/[id]',
                     query: {
                       eventId: legal?.ref,
-                      // Add other data you want to pass
                     },
                   }}
                   as={`/legal/${legal.ref}`}>{legal.title}</Link>
             </li>
               )}
-            {/* <li className="gray">
-              <Link  href={{
-                    pathname: '/legal/[id]',
-                    query: {
-                      eventId: legal?._id,
-                      // Add other data you want to pass
-                    },
-                  }}
-                  as={`/events/${legal.ref}`}>Privacy Policy</Link>
-            </li> */}
-            {/* <li className="gray">
-              <Link  href={{
-                    pathname: '/legal/[id]',
-                    query: {
-                      eventId: legal?.ref,
-                      // Add other data you want to pass
-                    },
-                  }}
-                  as={`/events/${legal.ref}`}>Cookie Policy</Link>
-            </li> */}
           </ul>
         </div>
       </div>
