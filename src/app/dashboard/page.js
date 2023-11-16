@@ -102,16 +102,18 @@ const dashboard = () => {
   const sortedEventData = eventData.sort((a, b) => b.ticketSold - a.ticketSold);
   const topEvents = sortedEventData.slice(0, 5);
   return (
-    <div className="container dashboard-bg">
-      <div className='my-4'>
+    <div className="container dashboard-bg my-4">
+      {/* <div className='my-4'> */}
         
+      <div className='mx-2'>
       <DashCard totalData={totalData}></DashCard>
+      </div>
 
-        <div className="flex flex-col md:flex-row gap-5 mt-8 mx-2">
-          <div className='rounded w-full md:w-1/2 bg-zinc-900'>
+        <div className="mx-4 flex flex-col md:flex-row gap-5 mt-4">
+          <div className='rounded w-full md:w-1/2 bg-zinc-900' style={{backgroundColor:'rgb(42, 45, 62)',}}>
             <DashboardChart></DashboardChart>
           </div>
-          <div className="container mx-auto rounded pt-4 w-full md:w-1/2 bg-zinc-900">
+          <div className="mx-auto rounded w-full md:w-1/2 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}} >
             <PieChartComp></PieChartComp>
             {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
@@ -131,10 +133,10 @@ const dashboard = () => {
             </div> */}
           </div>
         </div>
-        <div className="container rounded pt-4 my-4 mx-2 w-full bg-zinc-900">
+        <div className="mx-4 rounded mt-4 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}}>
         <DashTable topEvents={topEvents}></DashTable>
         </div>
-      </div>
+      {/* </div> */}
 
     </div>
   );
