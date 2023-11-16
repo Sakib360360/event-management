@@ -25,6 +25,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import './ResponsiveDrawer.css'
 
 const drawerWidth = 240;
 
@@ -114,6 +115,7 @@ function ResponsiveDrawer(props) {
     >
       {loading && <span className="loading loading-dots loading-lg"></span>}
       <div>
+        <Typography variant="h5" className="active" sx={{mt:4 ,mx:7,}}>EventGuru</Typography>
         <Toolbar />
         <div>
           <Link href="/dashboard">
@@ -254,7 +256,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            EventGuru
+            Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
