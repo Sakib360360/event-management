@@ -103,7 +103,7 @@ const dashboard = () => {
 
 // payment status
   useEffect(()=>{
-    fetch(`https://server-event-management-git-sadia-binta-sakib360360.vercel.app/getPaidStatusCount`)
+    fetch(`https://server-event-management-iota.vercel.app/getPaidStatusCount`)
     .then(res=>res.json())
     .then(data=>{
       setPaymentSuccess((prevPaymentSuccess) => data.trueCount);
