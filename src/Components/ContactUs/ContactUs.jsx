@@ -3,6 +3,7 @@
 import saveMessage from "@/utils/saveMessage";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import "./ContactUs.css";
+import Link from "next/link";
 
 const ContactUs = () => {
   const handleSubmit = async (e) => {
@@ -95,9 +96,15 @@ const ContactUs = () => {
           <div className="my-12">
             <p className="mb-2 gray">socials</p>
             <div className="flex">
+              <Link href={"https://www.facebook.com"}  target="_blank">
               <FaFacebook className="text-2xl"></FaFacebook>
+              </Link>
+              <Link href={"https://www.linkedin.com/"} target="_blank">
               <FaLinkedin className="mx-3 text-2xl"></FaLinkedin>
+              </Link>
+              <Link href={"https://github.com/"} target="_blank">
               <FaGithub className="text-2xl"></FaGithub>
+              </Link>
             </div>
           </div>
         </div>

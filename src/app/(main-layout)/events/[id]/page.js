@@ -13,7 +13,9 @@ const singleEvent = ({ params }) => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`https://server-event-management-iota.vercel.app/events/${id}`);
+        const res = await fetch(
+          `https://server-event-management-iota.vercel.app/events/${id}`
+        );
         const data = await res.json();
         setEventData(data);
         console.log(eventData);
@@ -29,68 +31,65 @@ const singleEvent = ({ params }) => {
 
   return (
     <div>
-      <div className="relative min-h-screen bg-black bg-opacity-70 over overflow-y-auto">
-      {eventData?.imageUrl && (
-        <div
-          className="fixed top-15 left-0 w-full h-full z-0"
-          style={{
-            backgroundImage: `url(${eventData.imageUrl})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundColor: "black",
-            opacity: 0.3,
-          }}
-        />
-      )}
+      <div className="relative min-h-screen overflow-y-auto">
+        {eventData?.imageUrl && (
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: `url(${eventData.imageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundColor: "black",
+              opacity: .2,
+            }}
+          />
+        )}
 
-      <div className="absolute w-full p-8 text-white rounded-lg mb-16 z-10">
-        <h1 className="text-3xl font-semibold text-white text-center pb-4">
-          {eventData?.eventName}
-        </h1>
-        <div className="flex flex-col justify-center">
+        <div className="absolute w-full p-8 text-white rounded-lg mb-16 z-10">
+          <h1 className="text-3xl font-semibold text-white text-center pb-4">
+            {eventData?.eventName}
+          </h1>
           <div className="flex justify-center">
-            {eventData?.imageUrl && (
-              <Image
-                src={eventData.imageUrl}
-                alt="event"
-                width={700}
-                height={700}
-                className="rounded-lg"
-              />
-            )}
+            <div className="flex justify-center">
+              {eventData?.imageUrl && (
+                <Image
+                  src={eventData.imageUrl}
+                  alt="event"
+                  width={700}
+                  height={700}
+                  className="rounded-lg"
+                />
+              )}
+            </div>
           </div>
-        </div>
-        <div className="flex justify-around w-1/2 mx-auto py-2 bg-black-500 text-white">
-          <div className="">
-            <header className="footer-title text-xl">When</header>
-            <p className="text-lg">{eventData?.eventDate}</p>
-          </div>
-          <div className="">
-            <header className="footer-title text-xl">Where</header>
+          <div className="flex justify-around w-1/2 mx-auto py-2 bg-black-500 text-white">
+            <div className="">
+              <header className="footer-title text-xl">When</header>
+              <p className="text-lg">{eventData?.eventDate}</p>
+            </div>
+            <div className="">
+              <header className="footer-title text-xl">Where</header>
 
-            <p className="text-lg">{eventData?.eventLocation}</p>
+              <p className="text-lg">{eventData?.eventLocation}</p>
+            </div>
+            <div className="">
+              <header className="footer-title text-xl">Cost</header>
+              <p className="text-lg">
+                {eventData?.ticketPrice ? `$${eventData.ticketPrice}` : "Free"}
+              </p>
+            </div>
           </div>
-          <div className="">
-            <header className="footer-title text-xl">Cost</header>
-            <p className="text-lg">
-              {eventData?.ticketPrice ? `$${eventData.ticketPrice}` : "Free"}
-            </p>
+          <div className="text-white py-4 text-center">
+            <p className="text-lg font-semibold">Event Details </p>
+            <p>{eventData?.eventDescription}</p>
           </div>
-        </div>
-        <div className="text-white py-4 text-center">
-          <p className="text-lg font-semibold">Event Details </p>
-          <p>{eventData?.eventDescription}</p>
-        </div>
-        <div className="text-center">
-        <button
-                 
-                  className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500"
-                >
-                  Buy
-                </button>
+          <div className="text-center">
+            <button className="bg-transparent border-white border text-white p-2 mr-4 rounded-md hover:bg-white hover:text-black transition duration-500">
+              Buy
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
