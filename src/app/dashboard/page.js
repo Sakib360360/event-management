@@ -3,10 +3,9 @@ import DashCard from '@/Components/DashCard';
 import DashTable from '@/Components/DashTable';
 import DashboardChart from '@/Components/DashboardChart';
 import PieChartComp from '@/Components/PieChart';
+import { useEffect, useState } from 'react';
 import eventData from 'src/data/eventData.json';
 import "./scroll.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 
 
@@ -19,9 +18,15 @@ const dashboard = () => {
   const [totalPayments,setTotalPayments] = useState([])
   const [totalUsers,setTotalUsers] = useState(0)
   const [totalEvents,setTotalEvents] = useState(0)
+<<<<<<< HEAD
   const [totalTicketSold,setTotalTicketSold] = useState(0)
   const [paymentSuccess,setPaymentSuccess] = useState()
   const [paymentUnsuccess,setPaymentUnsuccess] = useState()
+=======
+  const [totalTicketSold,setTotalTicketSold] = useState(0);
+  const [paidData, setPaidData] = useState({});
+
+>>>>>>> b2bbf9426baa3ed43ba0c65d9eec21537016292b
   const totalData = {
     totalEvents,
     totalTicketSold,
@@ -63,16 +68,14 @@ const dashboard = () => {
       setTotalPayments(data)
     })
   },[])
-  // console.log(totalPayments)
-  useEffect(() => {
-    const countSoldTickets = totalPayments.reduce((count, item) => {
-      return item.paidStatus ? count + 1 : count;
-    }, 0);
+  // // console.log(totalPayments)
+  // useEffect(() => {
+  //   const countSoldTickets = totalPayments.reduce((count, item) => {
+  //     return item.paidStatus ? count + 1 : count;
+  //   }, 0);
 
-    setTotalTicketSold(countSoldTickets);
-  }, [totalPayments]);
-
-  
+  //   setTotalTicketSold(countSoldTickets);
+  // }, [totalPayments]);
 
 // liked events
 
@@ -83,6 +86,17 @@ const dashboard = () => {
       setTotalLiked(data)
     })
   },[])
+
+  useEffect(()=>{
+    fetch("https://server-event-management-iota.vercel.app/getPaidStatusCount")
+    .then(res => res.json())
+    .then(data => {
+      setPaidData(data);
+      setTotalTicketSold(data?.trueCount)
+    })
+    .catch(err => console.log(err));
+
+  }, [])
   // console.log(totalLiked)
   useEffect(() => {
     let totalLikedCount = 0;
@@ -126,7 +140,27 @@ setPaymentUnsuccess((prevPaymentUnsuccess) => data.falseCount);
             <DashboardChart></DashboardChart>
           </div>
           <div className="mx-auto rounded w-full md:w-1/2 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}} >
+<<<<<<< HEAD
             <PieChartComp status={{paymentSuccess,paymentUnsuccess}}></PieChartComp>
+=======
+            <PieChartComp paidData={paidData}></PieChartComp>
+            {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
+
+            <div className="overflow-y-auto sm:h-60 scroll-bar">
+              <div className="grid grid-cols-1 gap-8">
+                {events.map((event, index) => (
+                  <div key={index} className=" p-4 rounded-lg shadow-md">
+                    <img className='rounded-full w-24 h-24' src={event.imageUrl} />
+                    <h2 className="text-xl font-semibold text-white mb-2">{event.eventName}</h2>
+                    <p className="text-gray-400">Date: {event.eventDate}</p>
+                    <p className="text-gray-400">Location: {event.eventLocation}</p>
+                    <a href="#" className="text-blue-500 hover:underline pb-2">Learn More</a>
+                    <hr />
+                  </div>
+                ))}
+              </div>
+            </div> */}
+>>>>>>> b2bbf9426baa3ed43ba0c65d9eec21537016292b
           </div>
         </div>
         <div className="mx-4 rounded mt-4 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}}>

@@ -1,71 +1,63 @@
-"use client"
-import React from 'react';
-import { pieArcLabelClasses, PieChart } from '@mui/x-charts/PieChart';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import { styled } from '@mui/material/styles';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Grid } from '@mui/material';
-import './basic.css'
+"use client";
+import getPercentage from "@/utils/getPercentage";
+import { Grid } from "@mui/material";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
+import { useDrawingArea } from "@mui/x-charts/hooks";
+import { pieArcLabelClasses, PieChart } from "@mui/x-charts/PieChart";
 
-
-const data = [
-    { value: 5, label: 'Successfull' },
-    { value: 10, label: 'Unsuccessfull' },
-
-  ];
-  
-  const size = {
-    width: 350,
-    height: 200,
-  };
-  const theme = createTheme({
-    overrides: {
-      MuiSvgText: {
-        root: {
-          fill: 'red', // Set the fill color for all SVG text components
-        },
+const size = {
+  width: 350,
+  height: 200,
+};
+const theme = createTheme({
+  overrides: {
+    MuiSvgText: {
+      root: {
+        fill: "red", // Set the fill color for all SVG text components
       },
     },
-  });
-  const StyledText = styled('text')(({ theme }) => ({
-    fill: theme.palette.common.white,
-    textAnchor: 'middle',
-    dominantBaseline: 'central',
-    fontSize: 30,
-  }));
+  },
+});
+const StyledText = styled("text")(({ theme }) => ({
+  fill: theme.palette.common.white,
+  textAnchor: "middle",
+  dominantBaseline: "central",
+  fontSize: 30,
+}));
 
-  function PieCenterLabel({ children }) {
-    const { width, height, left, top } = useDrawingArea();
-    return (
-      <StyledText x={left + width / 2} y={top + height / 2}>
-        {children}
-      </StyledText>
-    );
-  }
-const PieChartComp = ({status}) => {
-  const success=status.paymentSuccess;
-  const fail=status.paymentUnsuccess;
-
+function PieCenterLabel({ children }) {
+  const { width, height, left, top } = useDrawingArea();
+  return (
+    <StyledText x={left + width / 2} y={top + height / 2}>
+      {children}
+    </StyledText>
+  );
+}
+const PieChartComp = ({ paidData }) => {
   const data = [
-    { value: success, label: 'Success' },
-    { value: fail, label: 'Fail' },
+    { value: paidData?.trueCount, label: "Paid" },
+    { value: paidData?.falseCount, label: "Unpaid" },
   ];
-  const ratio=parseInt((success/(success+fail)*100))
-    return (
-        <ThemeProvider theme={theme}>
-          <Grid container sx={{py:10}}>
-            {/* Payment Success Rate */}
-          <PieChart className='colorPie' series={[{ data, innerRadius: 60 }]} 
-          arcLinkLabelsClass={pieArcLabelClasses.label }
+  return (
+    <ThemeProvider theme={theme}>
+      <Grid container>
+        <PieChart
+          series={[{ data, innerRadius: 60 }]}
+          arcLinkLabelsClass={pieArcLabelClasses.label}
           responsive
           maintainAspectRatio={false}
-         {...size}>
-        <PieCenterLabel
-        >{ratio}%</PieCenterLabel>
-      </PieChart>
-          </Grid>
-        </ThemeProvider>
-    );
+          {...size}
+        >
+          <PieCenterLabel>
+            {Math.floor(
+              getPercentage(paidData?.totalCount, paidData?.falseCount)
+            )}
+            %
+          </PieCenterLabel>
+        </PieChart>
+      </Grid>
+    </ThemeProvider>
+  );
 };
 
 export default PieChartComp;

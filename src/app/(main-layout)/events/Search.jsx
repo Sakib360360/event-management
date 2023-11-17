@@ -88,12 +88,12 @@ const Search = ({ events, loading }) => {
           <option className="text-black" value="latest">
             Latest
           </option>
-          <option className="text-black" value="topRated">
+          {/* <option className="text-black" value="topRated">
             Top rated
           </option>
           <option className="text-black" value="mostSold">
             Most sold
-          </option>
+          </option> */}
         </select>
       </div>
 
