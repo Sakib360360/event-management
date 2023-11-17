@@ -78,22 +78,22 @@ const Footer = () => {
           <p className="text-2xl">Socials</p>
           <ul className="mt-2">
             <li className="gray flex  gap-2 items-center">
-              <Link className="text-xl" href={"/"}>
+              <Link className="text-xl" href={"https://www.facebook.com"}  target="_blank">
                 <FaFacebook></FaFacebook>
               </Link>
-              <Link href={"/#"}>Facebook</Link>
+              <Link href={"https://www.facebook.com"}  target="_blank">Facebook</Link>
             </li>
             <li className="gray flex  gap-2 items-center">
-              <Link className="text-xl" href={"/"}>
+              <Link className="text-xl" href={"https://twitter.com/"} target="_blank">
                 <FaTwitter></FaTwitter>
               </Link>
-              <Link href={"/#"}>Twitter</Link>
+              <Link href={"https://twitter.com/"} target="_blank">Twitter</Link>
             </li>
             <li className="gray flex gap-2 items-center">
-              <Link className="text-xl" href={"/"}>
+              <Link className="text-xl" href={"https://www.linkedin.com/"} target="_blank">
                 <FaLinkedinIn></FaLinkedinIn>
               </Link>
-              <Link href={"/#"}>LinkedIn</Link>
+              <Link href={"https://www.linkedin.com/"} target="_blank">LinkedIn</Link>
             </li>
           </ul>
         </div>
