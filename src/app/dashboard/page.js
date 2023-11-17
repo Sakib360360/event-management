@@ -82,7 +82,7 @@ const dashboard = () => {
   },[])
 
   useEffect(()=>{
-    fetch("http://localhost:5000/getPaidStatusCount")
+    fetch("https://server-event-management-iota.vercel.app/getPaidStatusCount")
     .then(res => res.json())
     .then(data => {
       setPaidData(data);
