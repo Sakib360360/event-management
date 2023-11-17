@@ -3,10 +3,9 @@ import DashCard from '@/Components/DashCard';
 import DashTable from '@/Components/DashTable';
 import DashboardChart from '@/Components/DashboardChart';
 import PieChartComp from '@/Components/PieChart';
+import { useEffect, useState } from 'react';
 import eventData from 'src/data/eventData.json';
 import "./scroll.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 
 
@@ -19,7 +18,9 @@ const dashboard = () => {
   const [totalPayments,setTotalPayments] = useState([])
   const [totalUsers,setTotalUsers] = useState(0)
   const [totalEvents,setTotalEvents] = useState(0)
-  const [totalTicketSold,setTotalTicketSold] = useState(0)
+  const [totalTicketSold,setTotalTicketSold] = useState(0);
+  const [paidData, setPaidData] = useState({});
+
   const totalData = {
     totalEvents,
     totalTicketSold,
@@ -61,16 +62,14 @@ const dashboard = () => {
       setTotalPayments(data)
     })
   },[])
-  // console.log(totalPayments)
-  useEffect(() => {
-    const countSoldTickets = totalPayments.reduce((count, item) => {
-      return item.paidStatus ? count + 1 : count;
-    }, 0);
+  // // console.log(totalPayments)
+  // useEffect(() => {
+  //   const countSoldTickets = totalPayments.reduce((count, item) => {
+  //     return item.paidStatus ? count + 1 : count;
+  //   }, 0);
 
-    setTotalTicketSold(countSoldTickets);
-  }, [totalPayments]);
-
-  
+  //   setTotalTicketSold(countSoldTickets);
+  // }, [totalPayments]);
 
 // liked events
 
@@ -81,6 +80,17 @@ const dashboard = () => {
       setTotalLiked(data)
     })
   },[])
+
+  useEffect(()=>{
+    fetch("https://server-event-management-iota.vercel.app/getPaidStatusCount")
+    .then(res => res.json())
+    .then(data => {
+      setPaidData(data);
+      setTotalTicketSold(data?.trueCount)
+    })
+    .catch(err => console.log(err));
+
+  }, [])
   // console.log(totalLiked)
   useEffect(() => {
     let totalLikedCount = 0;
@@ -114,7 +124,7 @@ const dashboard = () => {
             <DashboardChart></DashboardChart>
           </div>
           <div className="mx-auto rounded w-full md:w-1/2 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}} >
-            <PieChartComp></PieChartComp>
+            <PieChartComp paidData={paidData}></PieChartComp>
             {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
             <div className="overflow-y-auto sm:h-60 scroll-bar">
