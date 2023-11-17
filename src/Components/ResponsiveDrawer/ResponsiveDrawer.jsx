@@ -1,7 +1,6 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
-import { Feedback, People } from "@mui/icons-material";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import { Feedback, People } from "@mui/icons-material";import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
