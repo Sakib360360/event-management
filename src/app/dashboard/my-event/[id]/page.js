@@ -141,7 +141,7 @@ const EditEvent = ({ params }) => {
       <div className='py-8 '>
         <form className="max-w-md mx-auto p-8 py-8 border dashboard-bg border-white rounded-md shadow-md">
 
-          <h2 className="text-2xl font-semibold mb-4">Update Event</h2>
+          <h2 className="text-2xl text-white font-semibold mb-4">Update Event</h2>
 
           {/* Event Name */}
           <div className="mb-4">
