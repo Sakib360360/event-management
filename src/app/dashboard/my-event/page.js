@@ -53,7 +53,7 @@ const MyEventsDashboard = () => {
     console.log(myEvents)
     return (
         <div className="max-w-3xl mx-auto min-h-screen p-8 dasboard-bg rounded-md shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">My Events Dashboard</h2>
+            <h2 className="text-2xl text-white font-semibold mb-4">My Events Dashboard</h2>
 
             {/* List of Events */}
             {
