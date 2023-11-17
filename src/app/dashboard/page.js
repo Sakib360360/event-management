@@ -18,15 +18,9 @@ const dashboard = () => {
   const [totalPayments,setTotalPayments] = useState([])
   const [totalUsers,setTotalUsers] = useState(0)
   const [totalEvents,setTotalEvents] = useState(0)
-<<<<<<< HEAD
-  const [totalTicketSold,setTotalTicketSold] = useState(0)
-  const [paymentSuccess,setPaymentSuccess] = useState()
-  const [paymentUnsuccess,setPaymentUnsuccess] = useState()
-=======
   const [totalTicketSold,setTotalTicketSold] = useState(0);
   const [paidData, setPaidData] = useState({});
 
->>>>>>> b2bbf9426baa3ed43ba0c65d9eec21537016292b
   const totalData = {
     totalEvents,
     totalTicketSold,
@@ -140,9 +134,6 @@ setPaymentUnsuccess((prevPaymentUnsuccess) => data.falseCount);
             <DashboardChart></DashboardChart>
           </div>
           <div className="mx-auto rounded w-full md:w-1/2 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}} >
-<<<<<<< HEAD
-            <PieChartComp status={{paymentSuccess,paymentUnsuccess}}></PieChartComp>
-=======
             <PieChartComp paidData={paidData}></PieChartComp>
             {/* <h1 className="font-semisbold text-2xl text-center mt-4">Upcoming Events</h1>
 
@@ -160,7 +151,6 @@ setPaymentUnsuccess((prevPaymentUnsuccess) => data.falseCount);
                 ))}
               </div>
             </div> */}
->>>>>>> b2bbf9426baa3ed43ba0c65d9eec21537016292b
           </div>
         </div>
         <div className="mx-4 rounded mt-4 bg-zinc-900" style={{backgroundColor:'rgb(42, 45, 62)',}}>
