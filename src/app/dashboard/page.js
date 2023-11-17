@@ -109,21 +109,11 @@ const dashboard = () => {
     setTotalInterested(totalLikedCount);
   }, [totalLiked]);
 
-// payment status
-  useEffect(()=>{
-    fetch(`https://server-event-management-iota.vercel.app/getPaidStatusCount`)
-    .then(res=>res.json())
-    .then(data=>{
-      setPaymentSuccess((prevPaymentSuccess) => data.trueCount);
-setPaymentUnsuccess((prevPaymentUnsuccess) => data.falseCount);
-      console.log(paymentSuccess,paymentUnsuccess)
-    })
-  },[paymentSuccess,paymentUnsuccess])
-
   const sortedEventData = eventData.sort((a, b) => b.ticketSold - a.ticketSold);
   const topEvents = sortedEventData.slice(0, 5);
   return (
     <div className="container dashboard-bg my-4">
+      {/* <div className='my-4'> */}
         
       <div className='mx-2'>
       <DashCard totalData={totalData}></DashCard>
